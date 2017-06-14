@@ -28,11 +28,10 @@ export class HomePage {
     let mapOptions = { center: latLng, zoom: 7 };
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
     this.map.data.addGeoJson(this.geoJson);
-    this.map.mapTypes.set('customtype', this.getDefaultMapType());
     this.map.setMapTypeId('terrain');
     this.map.data.setStyle((feature) => {
       let id = feature.getProperty('ac');
-      console.log(id);
+      console.log(feature);
       return {
         strokeWeight: 0.5,
         fillOpacity: 0.5,
@@ -41,66 +40,4 @@ export class HomePage {
       };
     })
   }
-
-  getDefaultMapType() {
-    var defaultMapType = new google.maps.StyledMapType([
-      {
-        featureType: 'water',
-        elementType: 'geometry',
-        stylers: [
-          { hue: '#0000ff' },
-          { saturation: 50 },
-          { lightness: -50 }
-        ]
-      },
-      {
-        featureType: 'road.arterial',
-        elementType: 'all',
-        stylers: [
-          { visibility: 'off' },
-        ]
-      }, {
-        featureType: 'road.local',
-        elementType: 'all',
-        stylers: [
-          { visibility: 'off' },
-        ]
-      },
-      {
-        featureType: 'road.highway',
-        elementType: 'geometry',
-        stylers: [
-          { hue: '#ff0000' },
-          { lightness: 50 },
-          { visibility: 'on' },
-          { saturation: 98 }
-        ]
-      },
-      {
-        featureType: 'road.highway',
-        elementType: 'labels',
-        stylers: [
-          { visibility: 'off' },
-        ]
-      },
-      {
-        featureType: 'administrative',
-        elementType: 'labels',
-        stylers: [
-          { visibility: 'on' },
-        ]
-      },
-      {
-        featureType: 'transit.line',
-        elementType: 'geometry',
-        stylers: [
-          { hue: '#ff0000' },
-          { visibility: 'on' },
-          { lightness: -70 }
-        ]
-      }
-    ], { name: 'customtype' });
-    return defaultMapType;
-  }
-
 }
