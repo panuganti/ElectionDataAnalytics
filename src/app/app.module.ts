@@ -5,8 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-//import { MapComponent } from '../components/map/map';
-//import { HomePage } from '../pages/home/home';
 
 @NgModule({
   declarations: [
