@@ -31,7 +31,6 @@ export class HomePage {
     this.map.setMapTypeId('terrain');
     this.map.data.setStyle((feature) => {
       let id = feature.getProperty('ac');
-      console.log(feature);
       return {
         strokeWeight: 0.5,
         fillOpacity: 0.5,
