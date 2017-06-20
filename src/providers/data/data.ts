@@ -9,8 +9,12 @@ export class DataProvider {
   constructor(public http: Http) {
   }
 
-
   async getGeoJson() {
-    return await this.http.get('assets/data/karnataka.assembly.geojson').map(res => res.json()).toPromise();
+    return await this.http.get('assets/data/karnataka.assembly.geo.json').map(res => res.json()).toPromise();
   }
+
+  async getPreDelimGeoJson() {
+    return await this.http.get('assets/data/predelimitation.karnataka.geo.json').map(res => res.json()).toPromise();
+  }
+
 }
