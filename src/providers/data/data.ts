@@ -11,6 +11,6 @@ export class DataProvider {
 
 
   async getGeoJson() {
-    return await this.http.get('assets/data/karnataka.assembly.geojson').map(res => res.json()).toPromise();
+    return await this.http.get('assets/data/karnataka.booth.geojson').map(res => res.json()).toPromise();
   }
 }

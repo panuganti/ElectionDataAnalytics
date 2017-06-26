@@ -30,7 +30,9 @@ export class HomePage {
     this.map.data.addGeoJson(this.geoJson);
     this.map.setMapTypeId('terrain');
     this.map.data.setStyle((feature) => {
-      let id = feature.getProperty('ac');
+      //let id = feature.getProperty('ac');
+      //console.log(feature);
+      if (this.i == 0) {console.log(feature); this.i++;}
       return {
         strokeWeight: 0.5,
         fillOpacity: 0.5,
@@ -38,5 +40,11 @@ export class HomePage {
         fillColor: "red"
       };
     })
+  }
+i: number = 0;
+
+  load() {
+
+
   }
 }
