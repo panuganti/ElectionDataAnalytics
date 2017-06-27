@@ -18,14 +18,16 @@ export class HomePage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
   geoJson: any;
+  boothGeoJson: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public data: DataProvider, public color: ColorProvider) {
   }
 
   async ionViewDidLoad() {
-    this.geoJson = await this.data.getGeoJson();
-    this.setDefaultMap();
+    this.boothGeoJson = await this.data.getBoothJson();
+    //this.setDefaultMap();
+    this.setBoothMap();
   }
 
   async showBoothResultsOnMap(year: number) {
@@ -48,6 +50,31 @@ export class HomePage {
       let id = feature.getProperty('ac');
       return styleMapsEn.first(t => t.Id == id).Style;
     });
+  }
+
+  booths: any[];
+
+  async setBoothMap() {
+    let latLng = new google.maps.LatLng(12.96, 77.59);
+    let mapOptions = { center: latLng, zoom: 7 };
+    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+    this.map.setMapTypeId('terrain');
+
+    var lineSymbol = {
+      path: google.maps.SymbolPath.CIRCLE,
+      scale: 5,
+      strokeColor: '#393'
+    };
+
+    this.boothGeoJson.features.forEach(element => {
+      let id = element.properties.pc;
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(element.geometry.coordinates[1], element.geometry.coordinates[0]),
+        icon: lineSymbol
+      });
+      marker.setMap(this.map);
+    });
+
   }
 
   async setDefaultMap() {

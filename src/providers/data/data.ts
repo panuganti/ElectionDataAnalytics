@@ -15,7 +15,7 @@ export class DataProvider {
   }
 
   async getBoothJson() {
-    return await this.http.get('assets/data/karnataka.booth.geojson').map(res => res.json()).toPromise();
+    return await this.http.get('assets/data/karnataka.booth.geojson.json').map(res => res.json()).toPromise();
   }
 
   async getPreDelimGeoJson() {
