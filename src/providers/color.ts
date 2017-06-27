@@ -2,39 +2,126 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
+import * as Enumerable from 'linq';
+import { Result } from '../models/result';
+
+export interface PartyToColorMap {
+    [party: string]: string;
+}
 
 declare var d3;
+declare var google;
 
 @Injectable()
 export class ColorProvider {
+    colorMap: PartyToColorMap;
 
     constructor(public http: Http) {
+        this.initializeColorMap();
+        this.getPartyColor("bjp");
     }
-
     // json will be acid, name, winner party, winning margin
 
+    initializeColorMap() {
+        this.colorMap = {};
+        this.colorMap["bjp"] = "orange";
+        this.colorMap["jds"] = "darkgreen";
+        this.colorMap["inc"] = "lightblue"
+        this.colorMap["cpi"] = "darkred";
+        this.colorMap["none"] = "grey";
+        this.colorMap["ind"] = "black";
+    }
+
+    getPartyColor(party: string, margin: number = 1, max: number = 1) {
+        let p = party;
+        if (!this.colorMap[party] == undefined) {
+            p = "ind";
+        }
+        return this.getColor(this.colorMap[p], margin);
+    }
 
     getColor(color: string, value: number, min = -10, max = 100, nLevels = 9): any {
-		let colors: string[] = this.colorbrewer.Oranges[nLevels];
-		switch (color) {
-			case "orange":
-				colors = this.colorbrewer.Oranges[nLevels]; break;
-			case "green":
-				colors = this.colorbrewer.Greens[nLevels]; break;
-			case "red":
-				colors = this.colorbrewer.Reds[nLevels]; break;
-			case "black":
-				colors = this.colorbrewer.Greys[nLevels]; break;
-			case "blue":
-				colors = this.colorbrewer.Blues[nLevels]; break;
-			default:
-				throw new Error("color not supported: " + color)							    
-		}
-		var colorScale = d3.scale.quantize()
-			.domain([min, max]).range(colors);
-		return colorScale(value);
-	}
+        let colors: string[] = this.colorbrewer.Oranges[nLevels];
+        switch (color) {
+            case "orange":
+                colors = this.colorbrewer.Oranges[nLevels]; break;
+            case "green":
+                colors = this.colorbrewer.Greens[nLevels]; break;
+            case "red":
+                colors = this.colorbrewer.Reds[nLevels]; break;
+            case "black":
+                colors = this.colorbrewer.Greys[nLevels]; break;
+            case "blue":
+                colors = this.colorbrewer.Blues[nLevels]; break;
+            case "grey":
+                colors = this.colorbrewer.Set3[nLevels]; break;
+            default:
+                throw new Error("color not supported: " + color)
+        }
+        var colorScale = d3.scale.quantize()
+            .domain([min, max]).range(colors);
+        return colorScale(value);
+    }
 
+    public GenerateBoothStyleMaps(boothResults: Result[]) {
+        let en = Enumerable.from(boothResults);
+        let acStyleMaps: any[] = [];
+        en.forEach(element => {
+            let votes = Enumerable.from(en.where(t => t.Id == element.Id).first().Votes)
+            let party = votes.first(t => t.Position == 1).Party;
+            let styleMap = this.defaultStyle;
+            styleMap.Id = element.Id;
+            let totalVotes = votes.select(t => t.Votes).toArray().reduce((a, b) => a + b);
+            let margin = votes.first(t => t.Position == 1).Votes - votes.first(t => t.Position == 2).Votes;
+            let marginPercent = Math.ceil((margin) * 100 / totalVotes);
+            let color = this.getPartyColor(party, marginPercent, 25);
+            styleMap.Style = {
+                path: google.maps.SymbolPath.CIRCLE,
+                strokeWeight: this.defaultStyle.strokeWeight,
+                fillOpacity: this.defaultStyle.fillOpacity,
+                strokeOpacity: this.defaultStyle.strokeOpacity,
+                fillColor: color,
+                strokeColor: color,
+            }
+            acStyleMaps.push(styleMap);
+        });
+        return acStyleMaps;
+    }
+
+
+    public GenerateStyleMaps(acResults: Result[]): any[] {
+        let en = Enumerable.from(acResults);
+        let acStyleMaps: any[] = [];
+        en.forEach(element => {
+            let votes = Enumerable.from(en.where(t => t.Id == element.Id).first().Votes)
+            let party = votes.first(t => t.Position == 1).Party;
+            let styleMap = this.defaultStyle;
+            styleMap.Id = element.Id;
+            let totalVotes = votes.select(t => t.Votes).toArray().reduce((a, b) => a + b);
+            let margin = votes.first(t => t.Position == 1).Votes - votes.first(t => t.Position == 2).Votes;
+            let marginPercent = Math.ceil((margin) * 100 / totalVotes);
+            let color = this.getPartyColor(party, marginPercent, 25);
+            styleMap.Style = {
+                strokeWeight: this.defaultStyle.strokeWeight,
+                fillOpacity: this.defaultStyle.fillOpacity,
+                strokeOpacity: this.defaultStyle.strokeOpacity,
+                fillColor: color
+            }
+            acStyleMaps.push(styleMap);
+        });
+        return acStyleMaps;
+    }
+
+    defaultBoothStyle: any = {
+
+    }
+
+    defaultStyle: any = {
+        strokeWeight: 1,
+        fillOpacity: 0.9,
+        strokeOpacity: 0.3,
+        strokeColor: "white"
+    };
 
     colorbrewer: any = {
         YlGn: {
