@@ -31,7 +31,7 @@ export class HomePage {
     var results = await this.data.getResults('2008', 'ac');
     this.results = this.GenerateStyleMaps(results);
     this.setDefaultMap();
-    this.setBoothMap();
+//    this.setBoothMap();
   }
 
   async showBoothResultsOnMap(year: number) {
@@ -46,7 +46,7 @@ export class HomePage {
   }
 
   async showResultsOnMap(year: number) {
-    var results: Result[] = await this.data.getResults(year);
+    var results: Result[] = await this.data.getResults(year.toString(), 'ac');
     var styleMaps = this.color.GenerateStyleMaps(results);
 
     let styleMapsEn = Enumerable.from(styleMaps);
@@ -71,7 +71,7 @@ export class HomePage {
     };
 
     this.boothGeoJson.features.forEach(element => {
-      let id = element.properties.pc;
+//      let id = element.properties.pc;
       var marker = new google.maps.Marker({
         position: new google.maps.LatLng(element.geometry.coordinates[1], element.geometry.coordinates[0]),
         icon: lineSymbol
