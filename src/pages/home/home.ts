@@ -31,9 +31,8 @@ export class HomePage {
     var results = await this.data.getResults('2008', 'ac');
     this.results = this.GenerateStyleMaps(results);
     this.setDefaultMap();
-    this.setBoothMap();
   }
-
+/*
   async showBoothResultsOnMap(year: number) {
     var results: Result[] = await this.data.getBoothResults(year);
     var styleMaps = this.color.GenerateBoothStyleMaps(results);
@@ -55,7 +54,7 @@ export class HomePage {
       return styleMapsEn.first(t => t.Id == id).Style;
     });
   }
-
+*/
   booths: any[];
 
   async setBoothMap() {
