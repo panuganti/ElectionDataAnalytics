@@ -4,14 +4,14 @@
         <ion-card>
             <ion-list>
                 <ion-item>
-                    <ion-range min="0" max="100" step="20" [(ngModel)]="transparency" (ionChange)="changeTransparency()">
+                    <ion-range min="0" max="100" step="20" [(ngModel)]="transparency">
                         <ion-icon small range-left name="sunny"></ion-icon>
                         <ion-icon range-right name="sunny"></ion-icon>
                     </ion-range>
                 </ion-item>
                 <ion-item>
                     <ion-label color="dark"> Map Type </ion-label>
-                    <ion-select [(ngModel)]="mapType" (ionChange)="mapTypeChanged()">
+                    <ion-select [(ngModel)]="mapType">
                         <ion-option *ngFor="let type of mapTypes" value="{{type}}"> {{type}} </ion-option>
                     </ion-select>
                 </ion-item>
@@ -20,12 +20,12 @@
                     <ion-badge> {{electionYear}}</ion-badge>
                 </ion-item>
                 <ion-item>
-                    <ion-range min="1999" max="2014" snaps="true" [(ngModel)]="electionRangeValue" color="secondary" (ionChange)="changeYear()">
+                    <ion-range min="1999" max="2014" snaps="true" [(ngModel)]="electionRangeValue" color="secondary">
                         <ion-label range-left>1999</ion-label>
                         <ion-label range-right>2014</ion-label>
                     </ion-range>
                 </ion-item>
-                <ion-item>
+                <ion-item tappable>
                     <button block ion-button (click)="redraw()"> Change </button>
                 </ion-item>
             </ion-list>

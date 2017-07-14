@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, Loading } from 'ionic-angular';
-import { DataProvider } from '../../providers/data/data';
+import { DataProvider } from '../../providers/data';
 import { ColorProvider } from '../../providers/color';
 //import { Result } from '../../models/result';
 import * as Enumerable from 'linq';
@@ -36,7 +36,7 @@ export class HomePage {
     this.geoJson = await this.data.getGeoJson();
     var results = await this.data.getResults('2008', 'ac');
     this.results = this.GenerateStyleMaps(results);
-    this.setDefaultMap();
+    this.redraw();
   }
 
   changeYear() {
@@ -77,12 +77,13 @@ export class HomePage {
   }
 
   async showResultsOnMap(year: number) {
-    var results: Result[] = await this.data.getResults(year.toString(), 'ac');
-    var styleMaps = this.color.GenerateStyleMaps(results);
+    //var results: Result[] = await this.data.getResults(year.toString(), 'ac');
+    //var styleMaps = this.color.GenerateStyleMaps(results);
   }
-  
-  redraw() {
 
+  redraw() {
+    this.showLoading();
+    this.setDefaultMap();
   }
 
   /*
@@ -154,12 +155,10 @@ export class HomePage {
     let latLng = new google.maps.LatLng(12.96, 77.59);
     let mapOptions = { center: latLng, zoom: 7 };
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-    this.showLoading();
     google.maps.event.addListenerOnce(this.map, 'idle', () => {
       this.dismissLoading();
     });
     this.map.data.addGeoJson(this.geoJson);
-    let self = this;
     this.map.data.addListener('click', (event) => { this.zone.run(() => this.clicked(event)) })
     let styleMaps: any = Enumerable.from(this.results);
     this.map.setMapTypeId('terrain');
