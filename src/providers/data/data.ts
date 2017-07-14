@@ -41,6 +41,7 @@ export class DataProvider {
     }
   }
 
+<<<<<<< HEAD
   async getBoothResults(year: number): Promise<Result[]> {
     let filename: string = '';
     switch (year) {
@@ -58,4 +59,6 @@ export class DataProvider {
     return await this.http.get(filename).map(res => res.json()).toPromise();
   }
 
+=======
+>>>>>>> e14f566681d78922d246ed34104b49c351016a92
 }
