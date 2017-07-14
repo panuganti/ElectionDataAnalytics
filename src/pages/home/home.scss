@@ -1,6 +1,29 @@
 page-home {
     .gmap {
-        width: 100%;
+        width: 0%;
         height: 100%;
+        float:left;
+        overflow: scroll;
     }
+#content, html, body {
+    height: 98%;
+}
+#left {
+    float: left;
+    width: 80%;
+    height: 100%;
+}
+#right {
+    float: left;
+    width: 20%;
+    height: 100%;
+    overflow: scroll;
+}
+
+#infoWindow {
+    position:absolute;
+    left:300px;
+    top:300px;
+    
+}
 }

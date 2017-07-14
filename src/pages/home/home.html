@@ -1,4 +1,39 @@
-
 <ion-content>
- <div #map id="map" class="gmap"></div>
+    <div id="left" #map> </div>
+    <div id="right">
+        <ion-card>
+            <ion-list>
+                <ion-item>
+                    <ion-range min="0" max="100" step="20" [(ngModel)]="transparency" (ionChange)="changeTransparency()">
+                        <ion-icon small range-left name="sunny"></ion-icon>
+                        <ion-icon range-right name="sunny"></ion-icon>
+                    </ion-range>
+                </ion-item>
+                <ion-item>
+                    <ion-label color="dark"> Map Type </ion-label>
+                    <ion-select [(ngModel)]="mapType" (ionChange)="mapTypeChanged()">
+                        <ion-option *ngFor="let type of mapTypes" value="{{type}}"> {{type}} </ion-option>
+                    </ion-select>
+                </ion-item>
+                <ion-item text-right>
+                    <span style="float:left"> Election Year</span>
+                    <ion-badge> {{electionYear}}</ion-badge>
+                </ion-item>
+                <ion-item>
+                    <ion-range min="1999" max="2014" snaps="true" [(ngModel)]="electionRangeValue" color="secondary" (ionChange)="changeYear()">
+                        <ion-label range-left>1999</ion-label>
+                        <ion-label range-right>2014</ion-label>
+                    </ion-range>
+                </ion-item>
+                <ion-item>
+                    <button block ion-button (click)="redraw()"> Change </button>
+                </ion-item>
+            </ion-list>
+        </ion-card>
+        <ion-card>
+            <ion-item>
+                {{acName}}
+            </ion-item>
+        </ion-card>
+    </div>
 </ion-content>
