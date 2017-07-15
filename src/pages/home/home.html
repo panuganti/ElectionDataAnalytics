@@ -11,16 +11,16 @@
                 </ion-item>
                 <ion-item>
                     <ion-label color="dark"> Map Type </ion-label>
-                    <ion-select [(ngModel)]="mapType">
+                    <ion-select [(ngModel)]="mapType" (ionChange)="mapTypeChanged()">
                         <ion-option *ngFor="let type of mapTypes" value="{{type}}"> {{type}} </ion-option>
                     </ion-select>
                 </ion-item>
-                <ion-item text-right>
+                <ion-item text-right *ngIf="showYearRange">
                     <span style="float:left"> Election Year</span>
                     <ion-badge> {{electionYear}}</ion-badge>
                 </ion-item>
-                <ion-item>
-                    <ion-range min="1999" max="2014" snaps="true" [(ngModel)]="electionRangeValue" color="secondary">
+                <ion-item *ngIf="showYearRange">
+                    <ion-range  min="{{minYear}}" max="{{maxYear}}" snaps="true" [(ngModel)]="electionRangeValue" color="secondary">
                         <ion-label range-left>1999</ion-label>
                         <ion-label range-right>2014</ion-label>
                     </ion-range>

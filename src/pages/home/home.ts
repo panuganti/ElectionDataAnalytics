@@ -26,6 +26,9 @@ export class HomePage {
   electionYear: any = 2014;
   electionRangeValue: any = 2014;
   loading: Loading;
+  minYear: number = 1999;
+  maxYear: number = 2014;
+  showYearRange: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public data: DataProvider, public color: ColorProvider, public loadingCtrl: LoadingController, public zone: NgZone) {
@@ -34,36 +37,66 @@ export class HomePage {
   async ionViewDidLoad() {
     this.boothGeoJson = await this.data.getBoothJson();
     this.geoJson = await this.data.getGeoJson();
-    var results = await this.data.getResults('2008', 'ac');
+    var results = await this.data.getResults('2014', 'ac');
     this.results = this.GenerateStyleMaps(results);
     this.redraw();
   }
 
-  changeYear() {
-    if (this.electionRangeValue < 2003) {
-      this.electionYear = 1999;
+  mapTypeChanged() {
+    if (this.mapType == 'booth') {
+      this.minYear = 2008;
+      this.maxYear = 2014;
     }
-    else if (this.electionRangeValue < 2004) {
-      this.electionYear = 2003;
+    else if (this.mapType = 'pc' || this.mapType == 'ac') {
+      this.minYear = 1999;
+      this.maxYear = 2014;
     }
-    else if (this.electionRangeValue < 2008) {
-      this.electionYear = 2004;
-    }
-    else if (this.electionRangeValue < 2009) {
-      this.electionYear = 2008;
-    }
-    else if (this.electionRangeValue < 2013) {
-      this.electionYear = 2009;
-    }
-    else if (this.electionRangeValue < 2014) {
-      this.electionYear = 2013;
-    }
-    else {
-      this.electionYear = 2014;
-    }
+    this.showYearRange = true;
   }
 
-  mapTypeChanged() {
+  changeYear() {
+    if (this.mapType == 'booth') {
+      if (this.electionRangeValue < 2009) {
+        this.electionYear = 2008;
+      }
+      else if (this.electionRangeValue < 2013) {
+        this.electionYear = 2009;
+      }
+      else if (this.electionRangeValue < 2014) {
+        this.electionYear = 2013;
+      }
+      else {
+        this.electionYear = 2014;
+      }
+    }
+
+    if (this.mapType == 'pc') {
+      if (this.electionRangeValue < 2003) {
+        this.electionYear = this.minYear;
+      }
+      else if (this.electionRangeValue < 2004) {
+        this.electionYear = 2003;
+      }
+      else if (this.electionRangeValue < 2008) {
+        this.electionYear = 2004;
+      }
+      else if (this.electionRangeValue < 2009) {
+        this.electionYear = 2008;
+      }
+      else if (this.electionRangeValue < 2013) {
+        this.electionYear = 2009;
+      }
+      else if (this.electionRangeValue < 2014) {
+        this.electionYear = 2013;
+      }
+      else {
+        this.electionYear = 2014;
+      }
+    }
+
+  }
+
+  mapTypeChangead() {
     switch (this.mapType) {
       case 'pc':
         this.years = ["2014", "2009", "2004", "1999"];
@@ -136,7 +169,7 @@ export class HomePage {
     };
 
     this.boothGeoJson.features.forEach(element => {
-//      let id = element.properties.pc;
+      //      let id = element.properties.pc;
       var marker = new google.maps.Marker({
         position: new google.maps.LatLng(element.geometry.coordinates[1], element.geometry.coordinates[0]),
         icon: lineSymbol
@@ -166,12 +199,12 @@ export class HomePage {
       let id = feature.getProperty('ac');
       if (styleMaps.any(t => t.Id == id)) {
         var style = styleMaps.first(t => t.Id == id).Style;
-        style.fillOpacity = this.transparency/100;
+        style.fillOpacity = this.transparency / 100;
         return style;
       }
       return {
         strokeWeight: 0.5,
-        fillOpacity: this.transparency/100,
+        fillOpacity: this.transparency / 100,
         strokeOpacity: 0.5,
         fillColor: this.color.getColor("black", Math.floor(Math.random() * (100 - 25 + 1)) + 25, 0, 100, 9),
         title: id
@@ -180,7 +213,7 @@ export class HomePage {
   }
 
   transparency: number = 70;
-  visibility: boolean =  true;
+  visibility: boolean = true;
   changeTransparency() {
     this.setDefaultMap();
   }
