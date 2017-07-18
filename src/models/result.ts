@@ -1,4 +1,5 @@
 import * as Enumerable from 'linq';
+import {CandidateVote} from './candidate-vote';
 
 export class Result {
     Id: number;
@@ -18,14 +19,3 @@ export class Result {
     }
 }
 
-export class CandidateVote {
-    Votes: number;
-    Position: number;
-    Name: string;
-    Party: string;
-}
-
-export class Distribution {
-    AcNo: number;
-    Percent: number;
-}

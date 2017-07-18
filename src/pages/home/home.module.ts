@@ -4,14 +4,17 @@ import { HomePage } from './home';
 import { DataProvider } from '../../providers/data';
 import { ColorProvider } from '../../providers/color';
 //import { Result, CandidateVote } from '../../models/result';
-import { HttpModule} from '@angular/http';
+import { HttpModule } from '@angular/http';
+import { ComponentsModule } from '../../components/components.module';
+
 
 @NgModule({
   declarations: [
-    HomePage,
+    HomePage
   ],
   imports: [
     HttpModule,
+    ComponentsModule,
     IonicPageModule.forChild(HomePage),
   ],
   exports: [
@@ -22,4 +25,4 @@ import { HttpModule} from '@angular/http';
     ColorProvider
   ]
 })
-export class HomePageModule {}
+export class HomePageModule { }
