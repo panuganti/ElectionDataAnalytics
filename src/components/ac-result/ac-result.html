@@ -1,4 +1,14 @@
-<!-- Generated template for the AcResultComponent component -->
-<div>
-  {{text}}
-</div>
+<ion-card>
+  <ion-grid>
+    <ion-row style="color:white; background: black">
+      <ion-col> Party </ion-col>
+      <ion-col> %age </ion-col>
+      <ion-col> Votes </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let party of getParties(); let i = index" [style.backgroundColor]="getBkgndColor(i)">
+      <ion-col> {{party}} </ion-col>
+      <ion-col> {{getVotePercent(party)}}% </ion-col>
+      <ion-col> {{getVotes(party)}} </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>

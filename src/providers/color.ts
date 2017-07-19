@@ -18,26 +18,25 @@ export class ColorProvider {
 
     constructor(public http: Http) {
         this.initializeColorMap();
-        this.getPartyColor("bjp");
     }
     // json will be acid, name, winner party, winning margin
 
     initializeColorMap() {
         this.colorMap = {};
         this.colorMap["bjp"] = "orange";
-        this.colorMap["jds"] = "darkgreen";
-        this.colorMap["inc"] = "lightblue"
+        this.colorMap["jds"] = "green";
+        this.colorMap["inc"] = "blue"
         this.colorMap["cpi"] = "darkred";
-        this.colorMap["none"] = "grey";
-        this.colorMap["ind"] = "black";
+        this.colorMap["oth"] = "grey";
+        this.colorMap["ind"] = "red";
     }
 
     getPartyColor(party: string, margin: number = 1, max: number = 1) {
-        let p = party;
-        if (!this.colorMap[party] == undefined) {
+        let p = party.toLowerCase();
+        if (!this.colorMap[p] == undefined) {
             p = "ind";
         }
-        return this.getColor(this.colorMap[p], margin);
+        return this.getColor(this.colorMap[p], 50, -10, 100 );
     }
 
     getColor(color: string, value: number, min = -10, max = 100, nLevels = 9): any {
@@ -54,7 +53,7 @@ export class ColorProvider {
             case "blue":
                 colors = this.colorbrewer.Blues[nLevels]; break;
             case "grey":
-                colors = this.colorbrewer.Set3[nLevels]; break;
+                colors = this.colorbrewer.Greys[nLevels]; break;
             default:
                 throw new Error("color not supported: " + color)
         }

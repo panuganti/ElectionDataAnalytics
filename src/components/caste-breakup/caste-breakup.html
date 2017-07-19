@@ -1,1 +1,12 @@
-Caste Breakup
+<ion-card>
+    <ion-grid> 
+        <ion-row style="color:white; background: black"> 
+            <ion-col > Caste  </ion-col>
+            <ion-col> %age </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let caste of castes; let i = index" [style.backgroundColor]="getBkgndColor(i)"> 
+            <ion-col> {{caste}} </ion-col>
+            <ion-col> {{getCastePercent(caste)}} </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-card>

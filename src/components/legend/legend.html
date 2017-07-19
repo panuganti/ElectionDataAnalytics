@@ -1,5 +1,18 @@
-<ion-label text-right> Hide </ion-label>
-Legend
-<ion-item> 
-  <div style="width:10px;height10px;"
-</ion-item>
+<ion-list no-lines>
+  <ion-item>
+    <ion-buttons end>
+      <button clear small *ngIf="!hidden" ion-button (click)="toggle()" end> 
+      Hide
+    </button>
+      <button clear small *ngIf="hidden" ion-button (click)="toggle()" end> 
+        Show Legend
+    </button>
+    </ion-buttons>
+  </ion-item>
+  <div *ngIf="!hidden">
+    <ion-item class="legendItem" *ngFor="let party of getParties()">
+      <div class="legendColorBox" [style.backgroundColor]="getPartyColor(party)"> </div>
+      <div> {{party}} </div>
+    </ion-item>
+  </div>
+</ion-list>

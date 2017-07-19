@@ -58,4 +58,8 @@ export class DataProvider {
     return await this.http.get(filename).map(res => res.json()).toPromise();
   }
 
+  getAllParties(): string[] {
+    return ["BJP","INC","JDS","OTH","IND"];
+  }
+
 }

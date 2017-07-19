@@ -107,7 +107,6 @@ export class HomePage {
 
   acName: string = '';
   clicked(event: any) {
-    let id = event.feature.getProperty('ac');
     this.acName = event.feature.getProperty('ac_name');
   }
 
