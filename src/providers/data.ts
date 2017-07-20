@@ -22,6 +22,14 @@ export class DataProvider {
     return await this.http.get('assets/data/geojsons/predelimitation.karnataka.geo.json').map(res => res.json()).toPromise();
   }
 
+  getAcName(id: number): string {
+    return "Dharwad";
+  }
+
+  getWards(id: number): string[] {
+    return ["ward1", "ward2"];
+  }
+
   async getResults(year: string, type: string) {
     switch(year) {
       case '2014':  

@@ -1,22 +1,54 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { DataProvider } from '../../providers/data';
 
 @Component({
   selector: 'map-settings',
   templateUrl: 'map-settings.html'
 })
 export class MapSettingsComponent {
-@Output() settings: EventEmitter<any> = new EventEmitter<any>();
+  @Output() settings: EventEmitter<any> = new EventEmitter<any>();
 
 
   electionYear: any = 2014;
   electionRangeValue: any = 2014;
   minYear: number = 1999;
   maxYear: number = 2014;
-  showYearRange: boolean = false;
   mapTypes: string[] = ["pc", "ac", "booth"];
   mapType: string;
+  margins: boolean = true;
+  acBreakdown: boolean = true;
+  acs: number[] = [0, 44, 71, 203, 208];
 
-  constructor() {
+  showYearRange: boolean = false;
+  showTransparency: boolean = true;
+  showMapTypes: boolean = true;
+  showMarginsOption: boolean = true;
+  showAcBreakdownOption: boolean = true;
+  showSelectedConstituenciesOptions: boolean = true;
+  redrawDisabled: boolean = false;
+  showSelectedWardsOptions: boolean = false;
+  wards: string[];
+  selectedAC: number;
+  
+
+  constructor(public data: DataProvider) {
+  }
+
+  marginsOptionChanged() { }
+
+  electionYearChanged() { }
+
+  acBreakdownOptionChanged() { }
+
+  acSelectionChanged() {
+    this.wards = this.data.getWards(this.selectedAC);
+  }
+
+  wardSelectionChanged() {}
+
+  getAcName(id: number): string {
+    if (id == 0) { return 'All'; }
+    return this.data.getAcName(id);
   }
 
   mapTypeChanged() {
@@ -88,4 +120,4 @@ export class MapSettingsComponent {
 */
 
 
-  }
+}

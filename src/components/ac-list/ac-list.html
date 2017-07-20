@@ -1,0 +1,12 @@
+<ion-card>
+    <ion-grid> 
+        <ion-row style="color:white; background: black"> 
+            <ion-col > AC  </ion-col>
+            <ion-col> Value </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let ac of acs; let i = index" [style.backgroundColor]="getBkgndColor(i)"> 
+            <ion-col> {{getAcName(ac)}} </ion-col>
+            <ion-col> {{getValue(ac)}} </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-card>

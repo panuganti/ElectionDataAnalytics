@@ -1,12 +1,12 @@
 <ion-card>
   <ion-list>
-    <ion-item>
+    <ion-item *ngIf="showTransparency">
       <ion-range min="0" max="100" step="20" [(ngModel)]="transparency">
         <ion-icon small range-left name="sunny"></ion-icon>
         <ion-icon range-right name="sunny"></ion-icon>
       </ion-range>
     </ion-item>
-    <ion-item>
+    <ion-item *ngIf="showMapTypes">
       <ion-label color="dark"> Map Types </ion-label>
       <ion-select [(ngModel)]="mapType" (ionChange)="mapTypeChanged()">
         <ion-option *ngFor="let type of mapTypes" value="{{type}}"> {{type}} </ion-option>
@@ -17,13 +17,33 @@
       <ion-badge> {{electionYear}}</ion-badge>
     </ion-item>
     <ion-item *ngIf="showYearRange">
-      <ion-range min="{{minYear}}" max="{{maxYear}}" snaps="true" [(ngModel)]="electionRangeValue" color="secondary">
+      <ion-range min="{{minYear}}" max="{{maxYear}}" snaps="true" [(ngModel)]="electionRangeValue" color="secondary" (ionChange)="electionYearChanged()">
         <ion-label range-left>1999</ion-label>
         <ion-label range-right>2014</ion-label>
       </ion-range>
     </ion-item>
+    <ion-item *ngIf="showMarginsOption">
+      <ion-label text-left> Show Margins </ion-label>
+      <ion-checkbox [(ngModel)]="margins" color="dark" (ionChange)="marginsOptionChanged()"> </ion-checkbox>
+    </ion-item>
+    <ion-item *ngIf="showAcBreakdownOption">
+      <ion-label text-left> Show AC breakdown </ion-label>
+      <ion-checkbox [(ngModel)]="acBreakdown" color="dark" (ionChange)="acBreakdownOptionChanged()"> </ion-checkbox>
+    </ion-item>
+    <ion-item *ngIf="showSelectedConstituenciesOptions">
+      <ion-label color="dark"> Constituency </ion-label>
+      <ion-select [(ngModel)]="selectedAC" (ionChange)="acSelectionChanged()">
+        <ion-option *ngFor="let ac of acs" value="{{ac}}"> {{getAcName(ac)}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="showSelectedWardsOptions">
+      <ion-label color="dark"> Ward </ion-label>
+      <ion-select [(ngModel)]="selectedWard" (ionChange)="wardSelectionChanged()">
+        <ion-option *ngFor="let ward of wards"> {{ward}}</ion-option>
+      </ion-select>
+    </ion-item>
     <ion-item tappable>
-      <button block ion-button (click)="redraw()"> Change </button>
+      <button block [disabled]="redrawDisabled" ion-button (click)="redraw()"> Submit </button>
     </ion-item>
   </ion-list>
 </ion-card>

@@ -4,6 +4,7 @@ import { MapSettingsComponent } from './map-settings/map-settings';
 import { AcResultComponent } from './ac-result/ac-result';
 import { CasteBreakupComponent } from './caste-breakup/caste-breakup';
 import { LegendComponent } from './legend/legend';
+import { AcListComponent } from './ac-list/ac-list';
 import { ColorProvider } from '../providers/color';
 import { DataProvider } from '../providers/data';
 
@@ -12,7 +13,8 @@ import { DataProvider } from '../providers/data';
     MapSettingsComponent,
     AcResultComponent,
     CasteBreakupComponent,
-    LegendComponent
+    LegendComponent,
+    AcListComponent
   ],
   imports: [
     IonicPageModule,
@@ -21,7 +23,8 @@ import { DataProvider } from '../providers/data';
     MapSettingsComponent,
     AcResultComponent,
     CasteBreakupComponent,
-    LegendComponent
+    LegendComponent,
+    AcListComponent
   ],
   providers: [
     DataProvider,
