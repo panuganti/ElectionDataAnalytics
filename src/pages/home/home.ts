@@ -4,6 +4,7 @@ import { DataProvider } from '../../providers/data';
 import { ColorProvider } from '../../providers/color';
 //import { Result } from '../../models/result';
 import * as Enumerable from 'linq';
+import { Http } from '@angular/http';
 
 declare var d3;
 declare var google;
@@ -23,27 +24,40 @@ export class HomePage {
   years: string[];
   loading: Loading;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
+test: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http,
     public data: DataProvider, public color: ColorProvider, public loadingCtrl: LoadingController, public zone: NgZone) {
   }
 
-  async ionViewDidLoad() {
-    this.boothGeoJson = await this.data.getBoothJson();
-    this.geoJson = await this.data.getGeoJson();
-    var results = await this.data.getResults('2014', 'ac');
-    this.results = this.GenerateStyleMaps(results);
+  ionViewDidLoad() {
+    this.loadMap();
+    //this.boothGeoJson = await this.data.getBoothJson();
     this.redraw();
   }
 
+
+  loadMap() {
+    this.showLoading();
+    let latLng = new google.maps.LatLng(12.96, 77.59);
+    let mapOptions = { center: latLng, zoom: 7 };
+    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+    this.map.setMapTypeId('terrain');
+    google.maps.event.addListenerOnce(this.map, 'idle', () => {
+      this.dismissLoading();
+    });
+  }
 
   async showResultsOnMap(year: number) {
     //var results: Result[] = await this.data.getResults(year.toString(), 'ac');
     //var styleMaps = this.color.GenerateStyleMaps(results);
   }
 
-  redraw() {
-    this.showLoading();
-    this.setDefaultMap();
+  async redraw() {
+      this.geoJson = await this.data.getGeoJson();
+      var results = await this.data.getResults('2014', 'ac');
+      this.results = this.GenerateStyleMaps(results);
+      this.setDefaultMap();
   }
 
   /*
@@ -111,16 +125,9 @@ export class HomePage {
   }
 
   async setDefaultMap() {
-    let latLng = new google.maps.LatLng(12.96, 77.59);
-    let mapOptions = { center: latLng, zoom: 7 };
-    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-    google.maps.event.addListenerOnce(this.map, 'idle', () => {
-      this.dismissLoading();
-    });
     this.map.data.addGeoJson(this.geoJson);
     this.map.data.addListener('click', (event) => { this.zone.run(() => this.clicked(event)) })
     let styleMaps: any = Enumerable.from(this.results);
-    this.map.setMapTypeId('terrain');
     this.map.data.setStyle((feature) => {
       let id = feature.getProperty('ac');
       if (styleMaps.any(t => t.Id == id)) {
