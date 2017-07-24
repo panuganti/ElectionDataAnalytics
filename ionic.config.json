@@ -1,11 +1,5 @@
 {
   "name": "ElectionDataAnalytics",
   "app_id": "",
-  "type": "ionic-angular",
-  "proxies": [
-    {
-      "path": "/assets/",
-      "proxyUrl": "http://www.archishainnovators.com/ElectionDataAnalytics/"
-    }
-  ]
+  "type": "ionic-angular"
 }

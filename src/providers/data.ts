@@ -2,18 +2,16 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
-import { Result } from '../models/result';
 
 @Injectable()
 export class DataProvider {
-  _url_base = "assets/";
+  _url_base = "assets/data/";
   constructor(public http: Http) {
   }
-  //3ff3a0dd66fe6378bcc2dc6ba7a17d8f
+ 
   //#geoJsons
   async getGeoJson() {
-    var url = 'assets/karnataka.assembly.geo.json';
-    var data = await this.http.get(url).map(res => res.json()).toPromise();
+    var data = await this.http.get(this._url_base + 'karnataka.assembly.geo.json').map(res => res.json()).toPromise();
     return data;
   }
 
@@ -30,12 +28,12 @@ export class DataProvider {
   }
   //#geoJsons
 
-  getAcName(id: number): string {
-    return "Dharwad";
-  }
-
   getWards(id: number): string[] {
     return ["ward1", "ward2"];
+  }
+
+  async getSampleConstituencies(): Promise<any[]> {
+    return await this.http.get(this._url_base + 'sample_constituencies.json').map(res => res.json()).toPromise();
   }
 
   async getResults(year: string, type: string) {

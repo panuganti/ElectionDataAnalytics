@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { DataProvider } from '../../providers/data';
+import * as Enumerable from 'linq';
 
 @Component({
   selector: 'map-settings',
@@ -14,7 +15,7 @@ export class MapSettingsComponent {
   minYear: number = 1999;
   maxYear: number = 2014;
   mapTypes: string[] = ["pc", "ac", "booth"];
-  mapType: string;
+  mapType: string = 'ac';
   margins: boolean = true;
   acBreakdown: boolean = true;
   acs: number[] = [0, 44, 71, 203, 208];
@@ -46,9 +47,12 @@ export class MapSettingsComponent {
 
   wardSelectionChanged() {}
 
-  getAcName(id: number): string {
-    if (id == 0) { return 'All'; }
-    return this.data.getAcName(id);
+  async getAcName(id: number): Promise<string> {
+    var sample_constituencies = await this.data.getSampleConstituencies();
+    var constituenciesEn = Enumerable.from(sample_constituencies);
+    if (id == 0 || !constituenciesEn.any(c => c.id == id)) 
+    { return 'All'; }
+    return constituenciesEn.first(c => c.id == id).name;
   }
 
   mapTypeChanged() {

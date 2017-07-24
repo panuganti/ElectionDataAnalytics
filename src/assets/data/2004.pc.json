@@ -1,0 +1,1374 @@
+[
+  {
+    "Id": 1,
+    "Name": null,
+    "Votes": [
+      {
+        "Votes": 312838,
+        "VotePercent": 38.4,
+        "Position": 1,
+        "Name": "Ramchandra Veerappa",
+        "Party": "Bharatiya Janta Party"
+      },
+      {
+        "Votes": 289217,
+        "VotePercent": 35.5,
+        "Position": 2,
+        "Name": "Narsingrao Hulla Suryawanshi",
+        "Party": "Indian National Congress"
+      },
+      {
+        "Votes": 173291,
+        "VotePercent": 21.3,
+        "Position": 3,
+        "Name": "Motiram Chowdhary",
+        "Party": "Janata Dal (Secular)"
+      },
+      {
+        "Votes": 25908,
+        "VotePercent": 3.2,
+        "Position": 4,
+        "Name": "Surendra Narendra Dande",
+        "Party": "Kannada Nadu Party"
+      },
+      {
+        "Votes": 14538,
+        "VotePercent": 1.8,
+        "Position": 5,
+        "Name": "Dhanaji Bhima Lamani",
+        "Party": "Rashtriya Samaj Paksha"
+      }
+    ]
+  },
+  {
+    "Id": 10,
+    "Name": null,
+    "Votes": [
+      {
+        "Votes": 385582,
+        "VotePercent": 42.5,
+        "Position": 1,
+        "Name": "K.H. Muniyappa",
+        "Party": "Indian National Congress"
+      },
+      {
+        "Votes": 373947,
+        "VotePercent": 41.2,
+        "Position": 2,
+        "Name": "Veeraiah D S",
+        "Party": "Bharatiya Janta Party"
+      },
+      {
+        "Votes": 83433,
+        "VotePercent": 9.2,
+        "Position": 3,
+        "Name": "Gangadharappa S L",
+        "Party": "Janata Dal (Secular)"
+      },
+      {
+        "Votes": 27704,
+        "VotePercent": 3.1,
+        "Position": 4,
+        "Name": "Balaji Channaiah",
+        "Party": "Jharkhand Party"
+      },
+      {
+        "Votes": 22047,
+        "VotePercent": 2.4,
+        "Position": 5,
+        "Name": "Sreenivasappa B N",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 7202,
+        "VotePercent": 0.8,
+        "Position": 6,
+        "Name": "Srinivasa",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 4693,
+        "VotePercent": 0.5,
+        "Position": 7,
+        "Name": "Ravi Kumar M",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 4656,
+        "VotePercent": 0.5,
+        "Position": 8,
+        "Name": "Suresha N",
+        "Party": "Kannada Nadu Party"
+      }
+    ]
+  },
+  {
+    "Id": 11,
+    "Name": null,
+    "Votes": [
+      {
+        "Votes": 584238,
+        "VotePercent": 37.7,
+        "Position": 1,
+        "Name": "Tejashwini See Ramesh",
+        "Party": "Indian National Congress"
+      },
+      {
+        "Votes": 467575,
+        "VotePercent": 30.1,
+        "Position": 2,
+        "Name": "Ramachandra Gowda",
+        "Party": "Bharatiya Janta Party"
+      },
+      {
+        "Votes": 462320,
+        "VotePercent": 29.8,
+        "Position": 3,
+        "Name": "H D Devegowda",
+        "Party": "Janata Dal (Secular)"
+      },
+      {
+        "Votes": 23350,
+        "VotePercent": 1.5,
+        "Position": 4,
+        "Name": "Muniramaiah",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 14933,
+        "VotePercent": 1.0,
+        "Position": 5,
+        "Name": "Kumar G S",
+        "Party": "Independent"
+      }
+    ]
+  },
+  {
+    "Id": 12,
+    "Name": null,
+    "Votes": [
+      {
+        "Votes": 473502,
+        "VotePercent": 40.9,
+        "Position": 1,
+        "Name": "Dr. H.T. Sangliana",
+        "Party": "Bharatiya Janta Party"
+      },
+      {
+        "Votes": 443144,
+        "VotePercent": 38.3,
+        "Position": 2,
+        "Name": "Jaffer Sharief C K",
+        "Party": "Indian National Congress"
+      },
+      {
+        "Votes": 208588,
+        "VotePercent": 18.0,
+        "Position": 3,
+        "Name": "Ibrahim C M",
+        "Party": "Janata Dal (Secular)"
+      },
+      {
+        "Votes": 11347,
+        "VotePercent": 1.0,
+        "Position": 4,
+        "Name": "Venkatesh M",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 7079,
+        "VotePercent": 0.6,
+        "Position": 5,
+        "Name": "Joe Simon",
+        "Party": "Kannada Nadu Party"
+      },
+      {
+        "Votes": 6878,
+        "VotePercent": 0.6,
+        "Position": 6,
+        "Name": "Mohamad Ibrahim",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 3604,
+        "VotePercent": 0.3,
+        "Position": 7,
+        "Name": "Meer Layaq Hussain",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 2703,
+        "VotePercent": 0.2,
+        "Position": 8,
+        "Name": "Uma K",
+        "Party": "Independent"
+      }
+    ]
+  },
+  {
+    "Id": 13,
+    "Name": null,
+    "Votes": [
+      {
+        "Votes": 386682,
+        "VotePercent": 48.3,
+        "Position": 1,
+        "Name": "Ananth Kumar",
+        "Party": "Bharatiya Janta Party"
+      },
+      {
+        "Votes": 324411,
+        "VotePercent": 40.5,
+        "Position": 2,
+        "Name": "Krishnappa M",
+        "Party": "Indian National Congress"
+      },
+      {
+        "Votes": 77551,
+        "VotePercent": 9.7,
+        "Position": 3,
+        "Name": "Jayanthi",
+        "Party": "Janata Dal (Secular)"
+      },
+      {
+        "Votes": 5012,
+        "VotePercent": 0.6,
+        "Position": 4,
+        "Name": "Srinivasa  Rao S V",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 3304,
+        "VotePercent": 0.4,
+        "Position": 5,
+        "Name": "Guinness Hotte Paksha Rangaswamy",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 1934,
+        "VotePercent": 0.2,
+        "Position": 6,
+        "Name": "Dr Manjunath B R",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 1755,
+        "VotePercent": 0.2,
+        "Position": 7,
+        "Name": "Bhadrappa",
+        "Party": "Independent"
+      }
+    ]
+  },
+  {
+    "Id": 14,
+    "Name": null,
+    "Votes": [
+      {
+        "Votes": 459451,
+        "VotePercent": 53.0,
+        "Position": 1,
+        "Name": "Gaddigoudar Parvatagouda Chandanagouda",
+        "Party": "Bharatiya Janta Party"
+      },
+      {
+        "Votes": 292068,
+        "VotePercent": 33.7,
+        "Position": 2,
+        "Name": "Patil R S",
+        "Party": "Indian National Congress"
+      },
+      {
+        "Votes": 64075,
+        "VotePercent": 7.4,
+        "Position": 3,
+        "Name": "Sanglikar Dharappa Siddappa",
+        "Party": "Janata Dal (Secular)"
+      },
+      {
+        "Votes": 28009,
+        "VotePercent": 3.2,
+        "Position": 4,
+        "Name": "Aari Noormohd Kasimsahab",
+        "Party": "Bahujan Samaj Party"
+      },
+      {
+        "Votes": 24869,
+        "VotePercent": 2.9,
+        "Position": 5,
+        "Name": "Basavaraj Devaru",
+        "Party": "Kannada Nadu Party"
+      }
+    ]
+  },
+  {
+    "Id": 15,
+    "Name": null,
+    "Votes": [
+      {
+        "Votes": 344905,
+        "VotePercent": 43.7,
+        "Position": 1,
+        "Name": "Basanagouda R Patil(YATNAL)",
+        "Party": "Bharatiya Janta Party"
+      },
+      {
+        "Votes": 307372,
+        "VotePercent": 39.0,
+        "Position": 2,
+        "Name": "Basanagouda Somanagouda Patil (MANAGULI)",
+        "Party": "Indian National Congress"
+      },
+      {
+        "Votes": 137457,
+        "VotePercent": 17.4,
+        "Position": 3,
+        "Name": "Khed Ningappa Siddappa",
+        "Party": "Janata Dal (Secular)"
+      }
+    ]
+  },
+  {
+    "Id": 16,
+    "Name": null,
+    "Votes": [
+      {
+        "Votes": 411116,
+        "VotePercent": 48.0,
+        "Position": 1,
+        "Name": "Ambareesh M. H.",
+        "Party": "Indian National Congress"
+      },
+      {
+        "Votes": 286678,
+        "VotePercent": 33.5,
+        "Position": 2,
+        "Name": "Dr. S Ramegowda",
+        "Party": "Janata Dal (Secular)"
+      },
+      {
+        "Votes": 98260,
+        "VotePercent": 11.5,
+        "Position": 3,
+        "Name": "Dr. K S Jayaram",
+        "Party": "Janata Dal (United)"
+      },
+      {
+        "Votes": 33014,
+        "VotePercent": 3.9,
+        "Position": 4,
+        "Name": "B T Srinivasagowda",
+        "Party": "Kannada Nadu Party"
+      },
+      {
+        "Votes": 28496,
+        "VotePercent": 3.3,
+        "Position": 5,
+        "Name": "Ravikeerti C",
+        "Party": "Bahujan Samaj Party"
+      }
+    ]
+  },
+  {
+    "Id": 17,
+    "Name": null,
+    "Votes": [
+      {
+        "Votes": 316661,
+        "VotePercent": 37.1,
+        "Position": 1,
+        "Name": "M. Shivanna",
+        "Party": "Janata Dal (Secular)"
+      },
+      {
+        "Votes": 272672,
+        "VotePercent": 32.0,
+        "Position": 2,
+        "Name": "A Siddaraju",
+        "Party": "Indian National Congress"
+      },
+      {
+        "Votes": 91716,
+        "VotePercent": 10.8,
+        "Position": 3,
+        "Name": "N Chamaraju",
+        "Party": "Janata Dal (United)"
+      },
+      {
+        "Votes": 78855,
+        "VotePercent": 9.2,
+        "Position": 4,
+        "Name": "N Shivamallu",
+        "Party": "Bahujan Samaj Party"
+      },
+      {
+        "Votes": 35337,
+        "VotePercent": 4.1,
+        "Position": 5,
+        "Name": "Mk Kempasiddaiah",
+        "Party": "Jharkhand Party"
+      },
+      {
+        "Votes": 24466,
+        "VotePercent": 2.9,
+        "Position": 6,
+        "Name": "S Puttanna",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 18901,
+        "VotePercent": 2.2,
+        "Position": 7,
+        "Name": "N Rangaswamy",
+        "Party": "Urs Samyuktha Paksha"
+      },
+      {
+        "Votes": 14606,
+        "VotePercent": 1.7,
+        "Position": 8,
+        "Name": "Mulluru Nagaraju",
+        "Party": "Kannada Nadu Party"
+      }
+    ]
+  },
+  {
+    "Id": 18,
+    "Name": null,
+    "Votes": [
+      {
+        "Votes": 316442,
+        "VotePercent": 33.1,
+        "Position": 1,
+        "Name": "C. H. Vijayashankar",
+        "Party": "Bharatiya Janta Party"
+      },
+      {
+        "Votes": 306292,
+        "VotePercent": 32.0,
+        "Position": 2,
+        "Name": "A S Guruswamy",
+        "Party": "Janata Dal (Secular)"
+      },
+      {
+        "Votes": 299227,
+        "VotePercent": 31.3,
+        "Position": 3,
+        "Name": "Srikantadatta Narasimharaja Wadiyar",
+        "Party": "Indian National Congress"
+      },
+      {
+        "Votes": 18957,
+        "VotePercent": 2.0,
+        "Position": 4,
+        "Name": "P N Srinath",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 16349,
+        "VotePercent": 1.7,
+        "Position": 5,
+        "Name": "Kalimulla Khan",
+        "Party": "Kannada Nadu Party"
+      }
+    ]
+  },
+  {
+    "Id": 19,
+    "Name": null,
+    "Votes": [
+      {
+        "Votes": 384760,
+        "VotePercent": 48.7,
+        "Position": 1,
+        "Name": "D. V. Sadananda Gowda",
+        "Party": "Bharatiya Janta Party"
+      },
+      {
+        "Votes": 351345,
+        "VotePercent": 44.5,
+        "Position": 2,
+        "Name": "M Veerappa Moily",
+        "Party": "Indian National Congress"
+      },
+      {
+        "Votes": 39774,
+        "VotePercent": 5.0,
+        "Position": 3,
+        "Name": "A K Subbaiah",
+        "Party": "Janata Dal (Secular)"
+      },
+      {
+        "Votes": 15693,
+        "VotePercent": 2.0,
+        "Position": 4,
+        "Name": "Rohit Kumar Joshi",
+        "Party": "Kannada Nadu Party"
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "Name": null,
+    "Votes": [
+      {
+        "Votes": 312601,
+        "VotePercent": 37.8,
+        "Position": 1,
+        "Name": "Iqbal Ahmed Saradgi",
+        "Party": "Indian National Congress"
+      },
+      {
+        "Votes": 255130,
+        "VotePercent": 30.8,
+        "Position": 2,
+        "Name": "Basawaraj Patil Sedam",
+        "Party": "Bharatiya Janta Party"
+      },
+      {
+        "Votes": 189100,
+        "VotePercent": 22.9,
+        "Position": 3,
+        "Name": "Vithal Heroor",
+        "Party": "Janata Dal (Secular)"
+      },
+      {
+        "Votes": 26724,
+        "VotePercent": 3.2,
+        "Position": 4,
+        "Name": "Suryakant Nimbalkar",
+        "Party": "Bahujan Samaj Party"
+      },
+      {
+        "Votes": 15212,
+        "VotePercent": 1.8,
+        "Position": 5,
+        "Name": "Sanganna",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 7157,
+        "VotePercent": 0.9,
+        "Position": 6,
+        "Name": "Arun Kumar Chandrashekara Patil",
+        "Party": "Kannada Nadu Party"
+      },
+      {
+        "Votes": 6749,
+        "VotePercent": 0.8,
+        "Position": 7,
+        "Name": "Bhagavanreddy B",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 4268,
+        "VotePercent": 0.5,
+        "Position": 8,
+        "Name": "Hamid Pasha Sarmast",
+        "Party": "Muslim League Kerala State Committee"
+      },
+      {
+        "Votes": 3900,
+        "VotePercent": 0.5,
+        "Position": 9,
+        "Name": "Basawanth Rao Revansiddappa Sheelwanth",
+        "Party": "All India Forward Bloc"
+      },
+      {
+        "Votes": 3671,
+        "VotePercent": 0.4,
+        "Position": 10,
+        "Name": "Sandesh C Bandak",
+        "Party": "Urs Samyuktha Paksha"
+      },
+      {
+        "Votes": 3382,
+        "VotePercent": 0.4,
+        "Position": 11,
+        "Name": "Umesh Havanoor",
+        "Party": "Samajwadi Party"
+      }
+    ]
+  },
+  {
+    "Id": 20,
+    "Name": null,
+    "Votes": [
+      {
+        "Votes": 369627,
+        "VotePercent": 47.5,
+        "Position": 1,
+        "Name": "Manorama Madhwaraj",
+        "Party": "Bharatiya Janta Party"
+      },
+      {
+        "Votes": 340624,
+        "VotePercent": 43.8,
+        "Position": 2,
+        "Name": "Vinaya Kumar Sorake",
+        "Party": "Indian National Congress"
+      },
+      {
+        "Votes": 45574,
+        "VotePercent": 5.9,
+        "Position": 3,
+        "Name": "Taranatha Shetty Kodavoor",
+        "Party": "Janata Dal (Secular)"
+      },
+      {
+        "Votes": 24531,
+        "VotePercent": 3.2,
+        "Position": 4,
+        "Name": "Oswald Fernandis",
+        "Party": "Kannada Nadu Party"
+      }
+    ]
+  },
+  {
+    "Id": 21,
+    "Name": null,
+    "Votes": [
+      {
+        "Votes": 462625,
+        "VotePercent": 50.8,
+        "Position": 1,
+        "Name": "H D Devegowda",
+        "Party": "Janata Dal (Secular)"
+      },
+      {
+        "Votes": 272320,
+        "VotePercent": 29.9,
+        "Position": 2,
+        "Name": "H C Srikantaiah  Alias Annaiah",
+        "Party": "Indian National Congress"
+      },
+      {
+        "Votes": 86940,
+        "VotePercent": 9.6,
+        "Position": 3,
+        "Name": "H N Nanjegowda",
+        "Party": "Janata Dal (United)"
+      },
+      {
+        "Votes": 52922,
+        "VotePercent": 5.8,
+        "Position": 4,
+        "Name": "Aijaz Ahmed Farooqui",
+        "Party": "Bahujan Samaj Party"
+      },
+      {
+        "Votes": 22795,
+        "VotePercent": 2.5,
+        "Position": 5,
+        "Name": "Kovibabanna",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 14593,
+        "VotePercent": 1.6,
+        "Position": 6,
+        "Name": "Siddesh Gowda",
+        "Party": "Kannada Nadu Party"
+      }
+    ]
+  },
+  {
+    "Id": 22,
+    "Name": null,
+    "Votes": [
+      {
+        "Votes": 341391,
+        "VotePercent": 41.8,
+        "Position": 1,
+        "Name": "D. C. Srikantappa",
+        "Party": "Bharatiya Janta Party"
+      },
+      {
+        "Votes": 267719,
+        "VotePercent": 32.8,
+        "Position": 2,
+        "Name": "B L Shankar",
+        "Party": "Indian National Congress"
+      },
+      {
+        "Votes": 172427,
+        "VotePercent": 21.1,
+        "Position": 3,
+        "Name": "D K Tharadevi Siddhartha",
+        "Party": "Janata Dal (Secular)"
+      },
+      {
+        "Votes": 16035,
+        "VotePercent": 2.0,
+        "Position": 4,
+        "Name": "H B Srikanta Murthy",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 10414,
+        "VotePercent": 1.3,
+        "Position": 5,
+        "Name": "S Umeshkumar",
+        "Party": "Kannada Nadu Party"
+      },
+      {
+        "Votes": 5875,
+        "VotePercent": 0.7,
+        "Position": 6,
+        "Name": "B Rudraiah",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 5393,
+        "VotePercent": 0.7,
+        "Position": 7,
+        "Name": "U Babu Mogera",
+        "Party": "Independent"
+      }
+    ]
+  },
+  {
+    "Id": 23,
+    "Name": null,
+    "Votes": [
+      {
+        "Votes": 450097,
+        "VotePercent": 50.8,
+        "Position": 1,
+        "Name": "S. Bangarappa",
+        "Party": "Bharatiya Janta Party"
+      },
+      {
+        "Votes": 373952,
+        "VotePercent": 42.2,
+        "Position": 2,
+        "Name": "Ayanur Manjunath",
+        "Party": "Indian National Congress"
+      },
+      {
+        "Votes": 21422,
+        "VotePercent": 2.4,
+        "Position": 3,
+        "Name": "G Madappa",
+        "Party": "Janata Dal (Secular)"
+      },
+      {
+        "Votes": 18768,
+        "VotePercent": 2.1,
+        "Position": 4,
+        "Name": "Sachidevi",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 16282,
+        "VotePercent": 1.8,
+        "Position": 5,
+        "Name": "S Doddanna",
+        "Party": "Jharkhand Party"
+      },
+      {
+        "Votes": 6769,
+        "VotePercent": 0.8,
+        "Position": 6,
+        "Name": "D M Chandrappa",
+        "Party": "Kannada Nadu Party"
+      }
+    ]
+  },
+  {
+    "Id": 24,
+    "Name": null,
+    "Votes": [
+      {
+        "Votes": 433174,
+        "VotePercent": 52.1,
+        "Position": 1,
+        "Name": "Ananthkumar Hegde",
+        "Party": "Bharatiya Janta Party"
+      },
+      {
+        "Votes": 260948,
+        "VotePercent": 31.4,
+        "Position": 2,
+        "Name": "Margaret Alva",
+        "Party": "Indian National Congress"
+      },
+      {
+        "Votes": 69487,
+        "VotePercent": 8.4,
+        "Position": 3,
+        "Name": "Devaraya Naik G",
+        "Party": "Janata Dal (Secular)"
+      },
+      {
+        "Votes": 24213,
+        "VotePercent": 2.9,
+        "Position": 4,
+        "Name": "Neernalli Ramakrishn",
+        "Party": "Jharkhand Party"
+      },
+      {
+        "Votes": 19840,
+        "VotePercent": 2.4,
+        "Position": 5,
+        "Name": "Jayant Mukund Tinaikar",
+        "Party": "Kannada Nadu Party"
+      },
+      {
+        "Votes": 17513,
+        "VotePercent": 2.1,
+        "Position": 6,
+        "Name": "Mutaguppi Laxmesh Putta",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 8757,
+        "VotePercent": 1.1,
+        "Position": 7,
+        "Name": "Ajeya Madhav Shanbhag",
+        "Party": "Independent"
+      }
+    ]
+  },
+  {
+    "Id": 25,
+    "Name": null,
+    "Votes": [
+      {
+        "Votes": 442759,
+        "VotePercent": 51.2,
+        "Position": 1,
+        "Name": "Kunnur Manjunath Channappa",
+        "Party": "Bharatiya Janta Party"
+      },
+      {
+        "Votes": 297647,
+        "VotePercent": 34.4,
+        "Position": 2,
+        "Name": "Prof. I G Sanadi",
+        "Party": "Indian National Congress"
+      },
+      {
+        "Votes": 76555,
+        "VotePercent": 8.9,
+        "Position": 3,
+        "Name": "Prema Sanganabasanagouda Patil",
+        "Party": "Janata Dal (Secular)"
+      },
+      {
+        "Votes": 23620,
+        "VotePercent": 2.7,
+        "Position": 4,
+        "Name": "Hosamani Mohamed Haneef Meerasab",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 12339,
+        "VotePercent": 1.4,
+        "Position": 5,
+        "Name": "Patil Shiddanagouda Siddalingappa Gouda",
+        "Party": "Kannada Nadu Party"
+      },
+      {
+        "Votes": 11890,
+        "VotePercent": 1.4,
+        "Position": 6,
+        "Name": "Dr. Syed Roshan Mulla",
+        "Party": "Bahujan Samaj Party"
+      }
+    ]
+  },
+  {
+    "Id": 26,
+    "Name": null,
+    "Votes": [
+      {
+        "Votes": 385084,
+        "VotePercent": 47.6,
+        "Position": 1,
+        "Name": "Pralhad Joshi",
+        "Party": "Bharatiya Janta Party"
+      },
+      {
+        "Votes": 302006,
+        "VotePercent": 37.3,
+        "Position": 2,
+        "Name": "B S Patil",
+        "Party": "Indian National Congress"
+      },
+      {
+        "Votes": 52572,
+        "VotePercent": 6.5,
+        "Position": 3,
+        "Name": "Shagoti Chikkappa Ningappa",
+        "Party": "Janata Dal (Secular)"
+      },
+      {
+        "Votes": 27616,
+        "VotePercent": 3.4,
+        "Position": 4,
+        "Name": "Jagadguru Mate Mahadevi",
+        "Party": "Kannada Nadu Party"
+      },
+      {
+        "Votes": 16301,
+        "VotePercent": 2.0,
+        "Position": 5,
+        "Name": "Badni Hemaraj Adiveppa",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 12987,
+        "VotePercent": 1.6,
+        "Position": 6,
+        "Name": "Bakkai Laxman Chandrappa",
+        "Party": "Bahujan Samaj Party"
+      },
+      {
+        "Votes": 8582,
+        "VotePercent": 1.1,
+        "Position": 7,
+        "Name": "Kusugal Channa Basappa Shiddabasappa",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 5404,
+        "VotePercent": 0.7,
+        "Position": 8,
+        "Name": "Prof. Ashok Badiger",
+        "Party": "Samajwadi Party"
+      }
+    ]
+  },
+  {
+    "Id": 27,
+    "Name": null,
+    "Votes": [
+      {
+        "Votes": 410843,
+        "VotePercent": 46.0,
+        "Position": 1,
+        "Name": "Angadi Suresh Chanabasappa",
+        "Party": "Bharatiya Janta Party"
+      },
+      {
+        "Votes": 326090,
+        "VotePercent": 36.5,
+        "Position": 2,
+        "Name": "Amarsinh Vasantrao Patil",
+        "Party": "Indian National Congress"
+      },
+      {
+        "Votes": 66831,
+        "VotePercent": 7.5,
+        "Position": 3,
+        "Name": "Jameelahamed Reza",
+        "Party": "Janata Dal (Secular)"
+      },
+      {
+        "Votes": 38989,
+        "VotePercent": 4.4,
+        "Position": 4,
+        "Name": "Jadhav Dattatreya Narayan",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 27853,
+        "VotePercent": 3.1,
+        "Position": 5,
+        "Name": "Balasaheb Patil",
+        "Party": "Shiv Sena"
+      },
+      {
+        "Votes": 12740,
+        "VotePercent": 1.4,
+        "Position": 6,
+        "Name": "Sidnal Shashikant Shanmukhappa",
+        "Party": "Kannada Nadu Party"
+      },
+      {
+        "Votes": 10556,
+        "VotePercent": 1.2,
+        "Position": 7,
+        "Name": "V S Shamasundar Gaekwad",
+        "Party": "Urs Samyuktha Paksha"
+      }
+    ]
+  },
+  {
+    "Id": 28,
+    "Name": null,
+    "Votes": [
+      {
+        "Votes": 379580,
+        "VotePercent": 45.4,
+        "Position": 1,
+        "Name": "Jigajinagi Ramesh Chandappa",
+        "Party": "Bharatiya Janta Party"
+      },
+      {
+        "Votes": 336088,
+        "VotePercent": 40.2,
+        "Position": 2,
+        "Name": "Ghatage S B",
+        "Party": "Indian National Congress"
+      },
+      {
+        "Votes": 66671,
+        "VotePercent": 8.0,
+        "Position": 3,
+        "Name": "Khokate Shivabal Ramachandra",
+        "Party": "Janata Dal (Secular)"
+      },
+      {
+        "Votes": 29275,
+        "VotePercent": 3.5,
+        "Position": 4,
+        "Name": "M Gopinath",
+        "Party": "Bahujan Samaj Party"
+      },
+      {
+        "Votes": 15528,
+        "VotePercent": 1.9,
+        "Position": 5,
+        "Name": "Avinash Datta Katti",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 10863,
+        "VotePercent": 1.3,
+        "Position": 6,
+        "Name": "Chandrakant Ranoji Vinayak",
+        "Party": "Kannada Nadu Party"
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "Name": null,
+    "Votes": [
+      {
+        "Votes": 289424,
+        "VotePercent": 35.1,
+        "Position": 1,
+        "Name": "A.Venkatesh Naik",
+        "Party": "Indian National Congress"
+      },
+      {
+        "Votes": 288916,
+        "VotePercent": 35.0,
+        "Position": 2,
+        "Name": "Raja Madangopal Nayak",
+        "Party": "Janata Dal (Secular)"
+      },
+      {
+        "Votes": 198804,
+        "VotePercent": 24.1,
+        "Position": 3,
+        "Name": "Kallur Sureshreddy",
+        "Party": "Bharatiya Janta Party"
+      },
+      {
+        "Votes": 47952,
+        "VotePercent": 5.8,
+        "Position": 4,
+        "Name": "Basavalingappa B",
+        "Party": "Independent"
+      }
+    ]
+  },
+  {
+    "Id": 4,
+    "Name": null,
+    "Votes": [
+      {
+        "Votes": 356158,
+        "VotePercent": 39.9,
+        "Position": 1,
+        "Name": "K. Virupaxappa",
+        "Party": "Indian National Congress"
+      },
+      {
+        "Votes": 312535,
+        "VotePercent": 35.0,
+        "Position": 2,
+        "Name": "Nagappa Bheemappa Saloni",
+        "Party": "Bharatiya Janta Party"
+      },
+      {
+        "Votes": 158552,
+        "VotePercent": 17.8,
+        "Position": 3,
+        "Name": "Agadi Virupaxappa Sanganna",
+        "Party": "Janata Dal (Secular)"
+      },
+      {
+        "Votes": 24669,
+        "VotePercent": 2.8,
+        "Position": 4,
+        "Name": "Abeed Hussain",
+        "Party": "Kannada Nadu Party"
+      },
+      {
+        "Votes": 23651,
+        "VotePercent": 2.6,
+        "Position": 5,
+        "Name": "Pujar D H",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 18517,
+        "VotePercent": 2.1,
+        "Position": 6,
+        "Name": "Girija Shankara Patil",
+        "Party": "Jharkhand Party"
+      }
+    ]
+  },
+  {
+    "Id": 5,
+    "Name": null,
+    "Votes": [
+      {
+        "Votes": 318978,
+        "VotePercent": 33.6,
+        "Position": 1,
+        "Name": "G. Karunakara Reddy",
+        "Party": "Bharatiya Janta Party"
+      },
+      {
+        "Votes": 287299,
+        "VotePercent": 30.3,
+        "Position": 2,
+        "Name": "Kondaiah K C",
+        "Party": "Indian National Congress"
+      },
+      {
+        "Votes": 247842,
+        "VotePercent": 26.1,
+        "Position": 3,
+        "Name": "Gulagi Nagaraj B",
+        "Party": "Janata Dal (Secular)"
+      },
+      {
+        "Votes": 36277,
+        "VotePercent": 3.8,
+        "Position": 4,
+        "Name": "Kamala Nabhan B",
+        "Party": "Bahujan Samaj Party"
+      },
+      {
+        "Votes": 19642,
+        "VotePercent": 2.1,
+        "Position": 5,
+        "Name": "Somashekara K",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 17571,
+        "VotePercent": 1.9,
+        "Position": 6,
+        "Name": "Narayana Moorthy P",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 12413,
+        "VotePercent": 1.3,
+        "Position": 7,
+        "Name": "Idli Ramappa",
+        "Party": "Communist Party Of India (MARXIST-LENINIST) (LIBERATION)"
+      },
+      {
+        "Votes": 10306,
+        "VotePercent": 1.1,
+        "Position": 8,
+        "Name": "Ghousia Begum",
+        "Party": "Independent"
+      }
+    ]
+  },
+  {
+    "Id": 6,
+    "Name": null,
+    "Votes": [
+      {
+        "Votes": 370499,
+        "VotePercent": 40.8,
+        "Position": 1,
+        "Name": "G.M. Siddeswara",
+        "Party": "Bharatiya Janta Party"
+      },
+      {
+        "Votes": 337823,
+        "VotePercent": 37.2,
+        "Position": 2,
+        "Name": "Ss Mallikarjun",
+        "Party": "Indian National Congress"
+      },
+      {
+        "Votes": 158515,
+        "VotePercent": 17.4,
+        "Position": 3,
+        "Name": "Channaiah Odeyar",
+        "Party": "Janata Dal (Secular)"
+      },
+      {
+        "Votes": 16582,
+        "VotePercent": 1.8,
+        "Position": 4,
+        "Name": "Dr Sridhara Udupa",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 14646,
+        "VotePercent": 1.6,
+        "Position": 5,
+        "Name": "Madappa R",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 12333,
+        "VotePercent": 1.4,
+        "Position": 6,
+        "Name": "Mallikarjuna Swamy T M",
+        "Party": "Independent"
+      }
+    ]
+  },
+  {
+    "Id": 7,
+    "Name": null,
+    "Votes": [
+      {
+        "Votes": 322609,
+        "VotePercent": 35.2,
+        "Position": 1,
+        "Name": "N.Y. Hanumanthappa",
+        "Party": "Indian National Congress"
+      },
+      {
+        "Votes": 285149,
+        "VotePercent": 31.1,
+        "Position": 2,
+        "Name": "Kodandaramaiah P",
+        "Party": "Janata Dal (Secular)"
+      },
+      {
+        "Votes": 241164,
+        "VotePercent": 26.3,
+        "Position": 3,
+        "Name": "Mudalagiriyappa C P",
+        "Party": "Bharatiya Janta Party"
+      },
+      {
+        "Votes": 36081,
+        "VotePercent": 3.9,
+        "Position": 4,
+        "Name": "Parameswarappa S",
+        "Party": "Jharkhand Party"
+      },
+      {
+        "Votes": 19514,
+        "VotePercent": 2.1,
+        "Position": 5,
+        "Name": "Venkatesha C",
+        "Party": "Kannada Nadu Party"
+      },
+      {
+        "Votes": 14388,
+        "VotePercent": 1.6,
+        "Position": 6,
+        "Name": "Krishnappa",
+        "Party": "Rashtriya Janata Dal"
+      }
+    ]
+  },
+  {
+    "Id": 8,
+    "Name": null,
+    "Votes": [
+      {
+        "Votes": 303016,
+        "VotePercent": 35.1,
+        "Position": 1,
+        "Name": "S. Mallikarjunaiah",
+        "Party": "Bharatiya Janta Party"
+      },
+      {
+        "Votes": 300665,
+        "VotePercent": 34.9,
+        "Position": 2,
+        "Name": "Jagadeesh D L",
+        "Party": "Janata Dal (Secular)"
+      },
+      {
+        "Votes": 227701,
+        "VotePercent": 26.4,
+        "Position": 3,
+        "Name": "Basavaraj G S",
+        "Party": "Indian National Congress"
+      },
+      {
+        "Votes": 22120,
+        "VotePercent": 2.6,
+        "Position": 4,
+        "Name": "Pavagada Sreeram",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 10241,
+        "VotePercent": 1.2,
+        "Position": 5,
+        "Name": "Choudhari Veer Singh",
+        "Party": "Samajwadi Party"
+      }
+    ]
+  },
+  {
+    "Id": 9,
+    "Name": null,
+    "Votes": [
+      {
+        "Votes": 376204,
+        "VotePercent": 40.5,
+        "Position": 1,
+        "Name": "R.L. Jalappa",
+        "Party": "Indian National Congress"
+      },
+      {
+        "Votes": 316182,
+        "VotePercent": 34.0,
+        "Position": 2,
+        "Name": "Shashi Kumar",
+        "Party": "Janata Dal (Secular)"
+      },
+      {
+        "Votes": 191766,
+        "VotePercent": 20.6,
+        "Position": 3,
+        "Name": "Ashok Krishnappa",
+        "Party": "Janata Dal (United)"
+      },
+      {
+        "Votes": 21432,
+        "VotePercent": 2.3,
+        "Position": 4,
+        "Name": "Suresh D R",
+        "Party": "Independent"
+      },
+      {
+        "Votes": 15964,
+        "VotePercent": 1.7,
+        "Position": 5,
+        "Name": "Narayana Swamy D N ( KWALITY)",
+        "Party": "Kannada Nadu Party"
+      },
+      {
+        "Votes": 9580,
+        "VotePercent": 1.0,
+        "Position": 6,
+        "Name": "Veerappa",
+        "Party": "Independent"
+      }
+    ]
+  }
+]

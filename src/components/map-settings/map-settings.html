@@ -6,12 +6,14 @@
         <ion-icon range-right name="sunny"></ion-icon>
       </ion-range>
     </ion-item>
+    <!--
     <ion-item *ngIf="showMapTypes">
-      <ion-label color="dark"> Map Types </ion-label>
+      <ion-label color="dark"> PC/AC/Booth Map </ion-label>
       <ion-select [(ngModel)]="mapType" (ionChange)="mapTypeChanged()">
         <ion-option *ngFor="let type of mapTypes" value="{{type}}"> {{type}} </ion-option>
       </ion-select>
     </ion-item>
+    -->
     <ion-item text-right *ngIf="showYearRange">
       <span style="float:left"> Election Year</span>
       <ion-badge> {{electionYear}}</ion-badge>
@@ -27,8 +29,8 @@
       <ion-checkbox [(ngModel)]="margins" color="dark" (ionChange)="marginsOptionChanged()"> </ion-checkbox>
     </ion-item>
     <ion-item *ngIf="showAcBreakdownOption">
-      <ion-label text-left> Show AC breakdown </ion-label>
-      <ion-checkbox [(ngModel)]="acBreakdown" color="dark" (ionChange)="acBreakdownOptionChanged()"> </ion-checkbox>
+      <ion-label text-left small> Show AC breakdown </ion-label>
+      <ion-checkbox small [(ngModel)]="acBreakdown" color="dark" (ionChange)="acBreakdownOptionChanged()"> </ion-checkbox>
     </ion-item>
     <ion-item *ngIf="showSelectedConstituenciesOptions">
       <ion-label color="dark"> Constituency </ion-label>
