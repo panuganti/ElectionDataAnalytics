@@ -6,13 +6,15 @@ import { CasteBreakupComponent } from './caste-breakup/caste-breakup';
 import { LegendComponent } from './legend/legend';
 import { ColorProvider } from '../providers/color';
 import { DataProvider } from '../providers/data';
+import { AcListComponent } from './ac-list/ac-list';
 
 @NgModule({
   declarations: [
     MapSettingsComponent,
     AcResultComponent,
     CasteBreakupComponent,
-    LegendComponent
+    LegendComponent,
+    AcListComponent
   ],
   imports: [
     IonicPageModule,
@@ -21,7 +23,8 @@ import { DataProvider } from '../providers/data';
     MapSettingsComponent,
     AcResultComponent,
     CasteBreakupComponent,
-    LegendComponent
+    LegendComponent,
+    AcListComponent
   ],
   providers: [
     DataProvider,

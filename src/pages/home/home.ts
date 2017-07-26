@@ -28,22 +28,80 @@ export class HomePage {
   }
 
   async ionViewDidLoad() {
-    this.boothGeoJson = await this.data.getBoothJson();
-    this.geoJson = await this.data.getGeoJson();
-    var results = await this.data.getResults('2014', 'ac');
-    this.results = this.GenerateStyleMaps(results);
-    this.redraw();
+    await this.loadMap();
   }
 
+  async loadMap() {
+    this.showLoading();
+    let latLng = new google.maps.LatLng(12.96, 77.59);
+    let mapOptions = { center: latLng, zoom: 7 };
+    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+    this.map.setMapTypeId('terrain');
+    google.maps.event.addListenerOnce(this.map, 'idle', () => {
+      this.dismissLoading();
+    });
+  }
+
+  async loadGeoJson() {
+    //this.boothGeoJson = await this.data.getBoothJson();
+    if (this.electionYear < 2008) {
+      this.geoJson = await this.data.getPreDelimGeoJson();
+    }
+    else {
+      this.geoJson = await this.data.getGeoJson();
+    }
+    this.map.data.addGeoJson(this.geoJson);
+    this.map.data.addListener('click', (event) => { this.zone.run(() => this.clicked(event)) })
+  }
+
+  async loadResults() {
+    var results = await this.data.getResults(this.electionYear.toString(), 'ac');
+    this.results = this.GenerateStyleMaps(results);
+    let styleMaps: any = Enumerable.from(this.results);
+    this.map.data.setStyle((feature) => {
+      let id = feature.getProperty('ac');
+      if (styleMaps.any(t => t.Id == id)) {
+        var style = styleMaps.first(t => t.Id == id).Style;
+        style.fillOpacity = this.transparency / 100;
+        return style;
+      }
+      return {
+        strokeWeight: 0.5,
+        fillOpacity: this.transparency / 100,
+        strokeOpacity: 0.5,
+        fillColor: this.color.getColor("black", Math.floor(Math.random() * (100 - 25 + 1)) + 25, 0, 100, 9),
+        title: id
+      };
+    })
+  }
 
   async showResultsOnMap(year: number) {
     //var results: Result[] = await this.data.getResults(year.toString(), 'ac');
     //var styleMaps = this.color.GenerateStyleMaps(results);
   }
 
-  redraw() {
-    this.showLoading();
-    this.setDefaultMap();
+  async redraw() {
+    this.loadMap();
+    await this.loadGeoJson();
+    await this.loadResults();
+  }
+
+  electionYear: any = 2014;
+  mapType: string = 'ac';
+  margins: boolean = true;
+  selectedAC: number;
+  selectedWard: string;
+  acBreakdown: boolean = true;
+
+  async changeSettingsAndRedraw(ev: any) {
+    this.transparency = ev.transparency;
+    this.electionYear = ev.electionYear;
+    this.mapType = ev.mapType;
+    this.margins = ev.margins;
+    this.selectedAC = ev.selectedAC;
+    this.selectedWard = ev.selectedWard;
+    this.acBreakdown = ev.acBreakdown;
+    await this.redraw();
   }
 
   /*
@@ -110,39 +168,8 @@ export class HomePage {
     this.acName = event.feature.getProperty('ac_name');
   }
 
-  async setDefaultMap() {
-    let latLng = new google.maps.LatLng(12.96, 77.59);
-    let mapOptions = { center: latLng, zoom: 7 };
-    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-    google.maps.event.addListenerOnce(this.map, 'idle', () => {
-      this.dismissLoading();
-    });
-    this.map.data.addGeoJson(this.geoJson);
-    this.map.data.addListener('click', (event) => { this.zone.run(() => this.clicked(event)) })
-    let styleMaps: any = Enumerable.from(this.results);
-    this.map.setMapTypeId('terrain');
-    this.map.data.setStyle((feature) => {
-      let id = feature.getProperty('ac');
-      if (styleMaps.any(t => t.Id == id)) {
-        var style = styleMaps.first(t => t.Id == id).Style;
-        style.fillOpacity = this.transparency / 100;
-        return style;
-      }
-      return {
-        strokeWeight: 0.5,
-        fillOpacity: this.transparency / 100,
-        strokeOpacity: 0.5,
-        fillColor: this.color.getColor("black", Math.floor(Math.random() * (100 - 25 + 1)) + 25, 0, 100, 9),
-        title: id
-      };
-    })
-  }
-
   transparency: number = 70;
   visibility: boolean = true;
-  changeTransparency() {
-    this.setDefaultMap();
-  }
 
   public GenerateStyleMaps(acResults: Result[]): any[] {
     let en = Enumerable.from(acResults);

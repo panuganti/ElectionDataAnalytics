@@ -4,7 +4,7 @@ import { DataProvider } from '../../providers/data';
 @Component({
   selector: 'ac-result',
   templateUrl: 'ac-result.html',
-  providers: []
+  providers: [DataProvider]
 })
 export class AcResultComponent {
 

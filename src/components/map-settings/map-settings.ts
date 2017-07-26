@@ -1,22 +1,57 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { DataProvider } from '../../providers/data';
 
 @Component({
   selector: 'map-settings',
   templateUrl: 'map-settings.html'
 })
 export class MapSettingsComponent {
-@Output() settings: EventEmitter<any> = new EventEmitter<any>();
+  @Output() settings: EventEmitter<any> = new EventEmitter<any>();
 
 
   electionYear: any = 2014;
   electionRangeValue: any = 2014;
   minYear: number = 1999;
   maxYear: number = 2014;
-  showYearRange: boolean = false;
   mapTypes: string[] = ["pc", "ac", "booth"];
-  mapType: string;
+  mapType: string = 'ac';
+  margins: boolean = true;
+  acBreakdown: boolean = true;
+  acs: number[] = [0, 44, 71, 203, 208];
 
-  constructor() {
+  showYearRange: boolean = true;
+  showTransparency: boolean = true;
+  showMapTypes: boolean = true;
+  showMarginsOption: boolean = true;
+  showAcBreakdownOption: boolean = true;
+  showSelectedConstituenciesOptions: boolean = true;
+  redrawDisabled: boolean = false;
+  showSelectedWardsOptions: boolean = false;
+  wards: string[];
+  selectedAC: number;
+
+
+  constructor(public data: DataProvider) {
+  }
+
+  marginsOptionChanged() { }
+
+  electionYearChanged() {  this.changeYear() }
+
+  acBreakdownOptionChanged() { }
+
+  acSelectionChanged() {
+    this.wards = this.getWards(this.selectedAC);
+  }
+
+  wardSelectionChanged() { }
+
+  getAcName(id: number): string {
+    if (id == 0) { return 'All'; }
+    return "Dharwad";
+  }
+  getWards(id: number): string[] {
+    return ["ward1", "ward2"];
   }
 
   mapTypeChanged() {
@@ -31,8 +66,23 @@ export class MapSettingsComponent {
     this.showYearRange = true;
   }
 
+  transparency: number = 50;
+  selectedWard: string;
+
+  redraw() {
+    this.settings.emit({
+      "transparency": this.transparency,
+      "electionYear": this.electionYear,
+      "mapType": this.mapType,
+      "margins": this.margins,
+      "selectedAC": this.selectedAC,
+      "selectedWard": this.selectedWard,
+      "acBreakdown": this.acBreakdown
+    });
+  }
+
   changeYear() {
-    if (this.mapType == 'booth') {
+    if (this.mapType == 'booth' || this.mapType == 'ac') {
       if (this.electionRangeValue < 2009) {
         this.electionYear = 2008;
       }
@@ -87,5 +137,4 @@ export class MapSettingsComponent {
   }
 */
 
-
-  }
+}

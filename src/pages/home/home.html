@@ -1,7 +1,7 @@
 <ion-content>
     <div id="left" #map> </div>
     <div id="right">
-        <map-settings> </map-settings>
+        <map-settings (settings)="changeSettingsAndRedraw($event)"> </map-settings>
         <ion-card>
             <ion-item>
                 {{acName}}

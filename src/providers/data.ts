@@ -11,7 +11,7 @@ export class DataProvider {
   }
 
   async getGeoJson() {
-    return await this.http.get('assets/data/geojsons/karnataka.assembly.geo.json').map(res => res.json()).toPromise();
+    return await this.http.get('assets/data/karnataka.assembly.small.geo.json').map(res => res.json()).toPromise();
   }
 
   async getBoothJson() {
@@ -19,7 +19,7 @@ export class DataProvider {
   }
 
   async getPreDelimGeoJson() {
-    return await this.http.get('assets/data/geojsons/predelimitation.karnataka.geo.json').map(res => res.json()).toPromise();
+    return await this.http.get('assets/data/predelimitation.karnataka.small.geo.json').map(res => res.json()).toPromise();
   }
 
   async getResults(year: string, type: string) {
