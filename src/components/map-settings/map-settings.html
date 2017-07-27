@@ -44,6 +44,12 @@
         <ion-option *ngFor="let ward of wards"> {{ward}}</ion-option>
       </ion-select>
     </ion-item>
+    <ion-item *ngIf="showReportsOptions">
+      <ion-label color="dark"> Reports </ion-label>
+      <ion-select [(ngModel)]="reportType" (ionChange)="reportTypeChanged()">
+        <ion-option *ngFor="let reportType of reportTypes"> {{reportType}}</ion-option>
+      </ion-select>
+    </ion-item>
     <ion-item tappable>
       <button block [disabled]="redrawDisabled" ion-button (click)="redraw()"> Submit </button>
     </ion-item>

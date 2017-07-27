@@ -2,7 +2,6 @@ import { Component, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, Loading } from 'ionic-angular';
 import { DataProvider } from '../../providers/data';
 import { ColorProvider } from '../../providers/color';
-//import { Result } from '../../models/result';
 import * as Enumerable from 'linq';
 
 declare var d3;
@@ -51,7 +50,7 @@ export class HomePage {
       this.geoJson = await this.data.getGeoJson();
     }
     this.map.data.addGeoJson(this.geoJson);
-    this.map.data.addListener('click', (event) => { this.zone.run(() => this.clicked(event)) })
+    this.map.data.addListener('click', (event) => { this.zone.run(() => this.acClicked(event)) })
   }
 
   async loadResults() {
@@ -114,21 +113,9 @@ export class HomePage {
         let id = feature.getProperty('ac');
         return styleMapsEn.first(t => t.Id == id).Style;
       });
-    }
-  
-    async showResultsOnMap(year: number) {
-      var results: Result[] = await this.data.getResults(year);
-      var styleMaps = this.color.GenerateStyleMaps(results);
-  
-      let styleMapsEn = Enumerable.from(styleMaps);
-      this.map.setStyle(function (feature) {
-        let id = feature.getProperty('ac');
-        return styleMapsEn.first(t => t.Id == id).Style;
-      });
-    }
+    }  
   */
   booths: any[];
-
 
   showLoading() {
     this.loading = this.loadingCtrl.create({
@@ -164,8 +151,9 @@ export class HomePage {
   }
 
   acName: string = '';
-  clicked(event: any) {
+  acClicked(event: any) {
     this.acName = event.feature.getProperty('ac_name');
+    
   }
 
   transparency: number = 70;
@@ -184,7 +172,13 @@ export class HomePage {
       styleMap.Id = element.Id;
       let totalVotes = votes.select(t => t.Votes).toArray().reduce((a, b) => a + b);
       let margin = votes.first(t => t.Position == 1).Votes - votes.first(t => t.Position == 2).Votes;
-      let marginPercent = Math.ceil((margin) * 100 / totalVotes);
+      var marginPercent;
+      if (this.margins) {
+        marginPercent = Math.ceil((margin) * 100 / totalVotes);
+      }
+      else {
+        marginPercent = 10;
+      }
       let color = self.color.getColor(partyColor, marginPercent + 5, 0, 25);
       styleMap.Style = {
         strokeWeight: self.defaultStyle.strokeWeight,

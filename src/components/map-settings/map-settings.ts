@@ -10,7 +10,6 @@ import * as Enumerable from 'linq';
 export class MapSettingsComponent {
   @Output() settings: EventEmitter<any> = new EventEmitter<any>();
 
-
   electionYear: any = 2014;
   electionRangeValue: any = 2014;
   minYear: number = 1999;
@@ -32,9 +31,15 @@ export class MapSettingsComponent {
   wards: string[];
   selectedAC: number;
 
+  reportType: string;
+  showReportsOptions: boolean = true;
+  reportTypes: string[] = ["Close Contests", "Safe Seats", "Anti-Incumbency Seats", "Change Seats"];
+
 
   constructor(public data: DataProvider) {
   }
+
+  reportTypeChanged() {}
 
   marginsOptionChanged() { }
 
@@ -84,7 +89,8 @@ export class MapSettingsComponent {
       "margins": this.margins,
       "selectedAC": this.selectedAC,
       "selectedWard": this.selectedWard,
-      "acBreakdown": this.acBreakdown
+      "acBreakdown": this.acBreakdown,
+      "reportType": this.reportType
     });
   }
 
