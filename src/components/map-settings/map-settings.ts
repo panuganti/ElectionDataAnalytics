@@ -1,9 +1,11 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { DataProvider } from '../../providers/data';
+import * as Enumerable from 'linq';
 
 @Component({
   selector: 'map-settings',
-  templateUrl: 'map-settings.html'
+  templateUrl: 'map-settings.html',
+  providers: [DataProvider]
 })
 export class MapSettingsComponent {
   @Output() settings: EventEmitter<any> = new EventEmitter<any>();
@@ -36,7 +38,7 @@ export class MapSettingsComponent {
 
   marginsOptionChanged() { }
 
-  electionYearChanged() {  this.changeYear() }
+  electionYearChanged() { this.changeYear() }
 
   acBreakdownOptionChanged() { }
 
@@ -46,12 +48,15 @@ export class MapSettingsComponent {
 
   wardSelectionChanged() { }
 
-  getAcName(id: number): string {
-    if (id == 0) { return 'All'; }
-    return "Dharwad";
+  getAcName(id: number) {
+    var sample_constituencies = this.data.getSampleConstituencies();
+    var constituenciesEn = Enumerable.from(sample_constituencies);
+    if (id == 0 || !constituenciesEn.any(c => c.id == id))
+    { return 'All'; }
+    return constituenciesEn.first(c => c.id == id).name;
   }
 
-  
+
   getWards(id: number): string[] {
     return ["ward1", "ward2"];
   }

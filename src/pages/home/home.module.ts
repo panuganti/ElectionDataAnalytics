@@ -3,7 +3,6 @@ import { IonicPageModule } from 'ionic-angular';
 import { HomePage } from './home';
 import { DataProvider } from '../../providers/data';
 import { ColorProvider } from '../../providers/color';
-//import { Result, CandidateVote } from '../../models/result';
 import { HttpModule } from '@angular/http';
 import { ComponentsModule } from '../../components/components.module';
 

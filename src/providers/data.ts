@@ -6,7 +6,24 @@ import { Result } from '../models/result';
 
 @Injectable()
 export class DataProvider {
-
+ sample_constituencies = [
+      {
+        "id": 44,
+        "name": "Gulbarga South"
+      },
+      {
+        "id": 71,
+        "name": "Dharwad"
+      },
+      {
+        "id": 203,
+        "name": "Mangalore City South"
+      },
+      {
+        "id": 208,
+        "name": "Madikeri"
+      }
+    ];
   constructor(public http: Http) {
   }
 
@@ -22,8 +39,8 @@ export class DataProvider {
     return await this.http.get('assets/data/geojsons/predelimitation.karnataka.small.geo.json').map(res => res.json()).toPromise();
   }
 
-  async getSampleConstituencies(): Promise<any[]> {
-    return await this.http.get('assets/data/sample_constituencies.json').map(res => res.json()).toPromise();
+  getSampleConstituencies() {
+    return this.sample_constituencies;
   }
 
   async getResults(year: string, type: string) {
