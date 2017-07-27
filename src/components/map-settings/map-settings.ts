@@ -50,6 +50,8 @@ export class MapSettingsComponent {
     if (id == 0) { return 'All'; }
     return "Dharwad";
   }
+
+  
   getWards(id: number): string[] {
     return ["ward1", "ward2"];
   }

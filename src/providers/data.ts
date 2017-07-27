@@ -11,20 +11,24 @@ export class DataProvider {
   }
 
   async getGeoJson() {
-    return await this.http.get('assets/data/karnataka.assembly.small.geo.json').map(res => res.json()).toPromise();
+    return await this.http.get('assets/data/geojsons/karnataka.assembly.small.geo.json').map(res => res.json()).toPromise();
   }
 
   async getBoothJson() {
-    return await this.http.get('assets/data/karnataka.booth.geojson.json').map(res => res.json()).toPromise();
+    return await this.http.get('assets/data/geojsons/karnataka.booth.geojson.json').map(res => res.json()).toPromise();
   }
 
   async getPreDelimGeoJson() {
-    return await this.http.get('assets/data/predelimitation.karnataka.small.geo.json').map(res => res.json()).toPromise();
+    return await this.http.get('assets/data/geojsons/predelimitation.karnataka.small.geo.json').map(res => res.json()).toPromise();
+  }
+
+  async getSampleConstituencies(): Promise<any[]> {
+    return await this.http.get('assets/data/sample_constituencies.json').map(res => res.json()).toPromise();
   }
 
   async getResults(year: string, type: string) {
-    switch(year) {
-      case '2014':  
+    switch (year) {
+      case '2014':
         return await this.http.get('assets/data/results/2014.pcac.json').map(res => res.json()).toPromise();
       case '2013':
         return await this.http.get('assets/data/results/2013.json').map(res => res.json()).toPromise();
@@ -36,7 +40,7 @@ export class DataProvider {
         return await this.http.get('assets/data/results/2004.json').map(res => res.json()).toPromise();
       case '1999':
         return await this.http.get('assets/data/results/1999.json').map(res => res.json()).toPromise();
-      default: 
+      default:
         throw new DOMException();
     }
   }
@@ -59,7 +63,7 @@ export class DataProvider {
   }
 
   getAllParties(): string[] {
-    return ["BJP","INC","JDS","OTH","IND"];
+    return ["BJP", "INC", "JDS", "OTH", "IND"];
   }
 
 }
