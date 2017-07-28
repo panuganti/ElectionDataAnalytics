@@ -6,6 +6,7 @@ import { Input, Component } from '@angular/core';
 })
 export class AcResultComponent {
   @Input() results: any[];
+  @Input() name: any;
   result: any;
   constructor() {
   }

@@ -39,7 +39,7 @@ export class MapSettingsComponent {
   constructor(public data: DataProvider) {
   }
 
-  reportTypeChanged() {}
+  reportTypeChanged() { }
 
   marginsOptionChanged() { }
 
@@ -49,6 +49,11 @@ export class MapSettingsComponent {
 
   acSelectionChanged() {
     this.wards = this.getWards(this.selectedAC);
+  }
+
+  hidden: boolean = false;
+  toggle() {
+    this.hidden = !this.hidden;
   }
 
   wardSelectionChanged() { }
@@ -92,6 +97,7 @@ export class MapSettingsComponent {
       "acBreakdown": this.acBreakdown,
       "reportType": this.reportType
     });
+    this.toggle();
   }
 
   changeYear() {

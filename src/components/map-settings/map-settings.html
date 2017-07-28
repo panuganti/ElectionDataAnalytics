@@ -1,5 +1,15 @@
 <ion-card>
-  <ion-list>
+  <ion-item>
+    <ion-buttons end>
+      <button clear small *ngIf="!hidden" ion-button (click)="toggle()" end> 
+      Hide
+    </button>
+      <button clear small *ngIf="hidden" ion-button (click)="toggle()" end> 
+        <ion-icon name="settings"> </ion-icon>
+    </button>
+    </ion-buttons>
+  </ion-item>
+  <ion-list *ngIf="!hidden">
     <ion-item *ngIf="showTransparency">
       <ion-range min="0" max="100" step="20" [(ngModel)]="transparency">
         <ion-icon small range-left name="sunny"></ion-icon>

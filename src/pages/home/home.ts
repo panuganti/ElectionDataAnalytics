@@ -26,10 +26,10 @@ export class HomePage {
 
   showLegend: boolean = true;
   showAcResults: boolean = false;
-  showCasteBreakup: boolean = true;
-  showAcName: boolean = true;
+  showCasteBreakup: boolean = false;
+  showAcName: boolean = false;
   showMapSettings: boolean = true;
-  showSummary: boolean = true;
+  showSummary: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public data: DataProvider, public color: ColorProvider, public loadingCtrl: LoadingController,
@@ -73,6 +73,7 @@ export class HomePage {
   }
 
   async loadResults() {
+    this.showSummary = true;
     this.results = await this.data.getResults(this.electionYear.toString(), 'ac');
     this.styleMaps = this.GenerateStyleMaps(this.results);
     let styleMaps: any = Enumerable.from(this.styleMaps);
@@ -166,6 +167,7 @@ export class HomePage {
 
   acName: string = '';
   acClicked(event: any) {
+    this.showAcName = true;
     this.acName = event.feature.getProperty('ac_name');
     this.showResults(event.feature.getProperty('ac'));
   }
