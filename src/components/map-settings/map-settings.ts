@@ -23,8 +23,6 @@ export class MapSettingsComponent {
   showYearRange: boolean = true;
   showTransparency: boolean = true;
   showMapTypes: boolean = true;
-  showMarginsOption: boolean = true;
-  showAcBreakdownOption: boolean = true;
   showSelectedConstituenciesOptions: boolean = true;
   redrawDisabled: boolean = false;
   showSelectedWardsOptions: boolean = false;
@@ -33,7 +31,7 @@ export class MapSettingsComponent {
 
   reportType: string;
   showReportsOptions: boolean = true;
-  reportTypes: string[] = ["Close Contests", "Safe Seats", "Anti-Incumbency Seats", "Change Seats"];
+  reportTypes: string[] = ["Predictions", "Results", "Safe Seats", "Anti-Incumbency Seats", "Change Seats"];
 
 
   constructor(public data: DataProvider) {
@@ -151,20 +149,5 @@ export class MapSettingsComponent {
       }
     }
   }
-
-  /*
-    mapTypeChangead() {
-    switch (this.mapType) {
-      case 'pc':
-        this.years = ["2014", "2009", "2004", "1999"];
-      case 'ac':
-        this.years = ["2014", "2013", "2009", "2008", "2004", "2003", "1999"];
-      case 'booth':
-        this.years = ["2014", "2013", "2009", "2008", "2004", "2003", "1999"];
-      default:
-        this.years = ["2014", "2013", "2009", "2008", "2004", "2003", "1999"];
-    }
-  }
-*/
-
+  
 }

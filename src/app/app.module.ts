@@ -11,7 +11,7 @@ enableProdMode();
 @NgModule({
   declarations: [
     MyApp
-  ],
+    ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp)

@@ -8,6 +8,7 @@ import { ColorProvider } from '../providers/color';
 import { DataProvider } from '../providers/data';
 import { AcListComponent } from './ac-list/ac-list';
 import { SummaryComponent } from './summary/summary';
+import { PredictionSettingsComponent } from './prediction-settings/prediction-settings';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SummaryComponent } from './summary/summary';
     CasteBreakupComponent,
     LegendComponent,
     AcListComponent,
-    SummaryComponent
+    SummaryComponent,
+    PredictionSettingsComponent
   ],
   imports: [
     IonicPageModule,
@@ -27,7 +29,8 @@ import { SummaryComponent } from './summary/summary';
     CasteBreakupComponent,
     LegendComponent,
     AcListComponent,
-    SummaryComponent
+    SummaryComponent,
+    PredictionSettingsComponent
   ],
   providers: [
     DataProvider,
