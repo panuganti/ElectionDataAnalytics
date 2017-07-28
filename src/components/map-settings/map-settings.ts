@@ -115,6 +115,17 @@ export class MapSettingsComponent {
         this.electionYear = 2014;
       }
     }
+    if (this.mapType == 'ac') {
+      if (this.electionRangeValue < 2003) {
+        this.electionYear = 1999;
+      }
+      else if (this.electionRangeValue < 2004) {
+        this.electionYear = 2003;
+      }
+      else if (this.electionRangeValue < 2009) {
+        this.electionYear = 2004;
+      }
+    }
 
     if (this.mapType == 'pc') {
       if (this.electionRangeValue < 2003) {

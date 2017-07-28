@@ -78,7 +78,13 @@ export class HomePage {
     this.styleMaps = this.GenerateStyleMaps(this.results);
     let styleMaps: any = Enumerable.from(this.styleMaps);
     this.map.data.setStyle((feature) => {
-      let id = feature.getProperty('ac');
+      var id;
+      if (this.electionYear > 2008) {
+        id = feature.getProperty('ac');
+      }
+      else {
+        id = feature.getProperty('AC_NO');
+      }
       if (styleMaps.any(t => t.Id == id)) {
         var style = styleMaps.first(t => t.Id == id).Style;
         style.fillOpacity = this.transparency / 100;
