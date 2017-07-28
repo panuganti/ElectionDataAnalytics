@@ -7,6 +7,7 @@ import { LegendComponent } from './legend/legend';
 import { ColorProvider } from '../providers/color';
 import { DataProvider } from '../providers/data';
 import { AcListComponent } from './ac-list/ac-list';
+import { SummaryComponent } from './summary/summary';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { AcListComponent } from './ac-list/ac-list';
     AcResultComponent,
     CasteBreakupComponent,
     LegendComponent,
-    AcListComponent
+    AcListComponent,
+    SummaryComponent
   ],
   imports: [
     IonicPageModule,
@@ -24,7 +26,8 @@ import { AcListComponent } from './ac-list/ac-list';
     AcResultComponent,
     CasteBreakupComponent,
     LegendComponent,
-    AcListComponent
+    AcListComponent,
+    SummaryComponent
   ],
   providers: [
     DataProvider,

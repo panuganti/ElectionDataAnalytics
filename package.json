@@ -38,6 +38,7 @@
     "@types/request": "0.0.30",
     "colorbrewer": "^1.0.0",
     "d3": "^4.9.1",
+    "ionic": "3.6.0",
     "linq": "~3.0.8",
     "typescript": "2.3.3"
   },

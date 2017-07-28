@@ -6,7 +6,6 @@ import { ColorProvider } from '../../providers/color';
 import { HttpModule } from '@angular/http';
 import { ComponentsModule } from '../../components/components.module';
 
-
 @NgModule({
   declarations: [
     HomePage

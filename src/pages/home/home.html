@@ -1,14 +1,15 @@
 <ion-content>
     <div id="left" #map> </div>
     <div id="right">
-        <map-settings (settings)="changeSettingsAndRedraw($event)"> </map-settings>
+        <map-settings *ngIf="showMapSettings" (settings)="changeSettingsAndRedraw($event)"> </map-settings>
         <ion-card>
-            <ion-item>
+            <ion-item *ngIf="showAcName">
                 {{acName}}
             </ion-item>
         </ion-card>
-        <ac-result> </ac-result>
-        <caste-breakup> </caste-breakup>
+        <summary *ngIf="showSummary" [results]="results"> </summary>
+        <ac-result *ngIf="showAcResults" [results]="acResults"> </ac-result>
+        <caste-breakup *ngIf="showCasteBreakup"> </caste-breakup>
     </div>
-    <div id="legend"> <legend> </legend> </div>
+    <div id="legend"> <legend *ngIf="showLegend"> </legend> </div>
 </ion-content>

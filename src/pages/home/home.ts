@@ -18,12 +18,31 @@ export class HomePage {
   map: any;
   geoJson: any;
   boothGeoJson: any;
-  results: any;
+  styleMaps: any;
+  results: any[];
   years: string[];
   loading: Loading;
+  acResults: CandidateVote[];
+
+  showLegend: boolean = true;
+  showAcResults: boolean = false;
+  showCasteBreakup: boolean = true;
+  showAcName: boolean = true;
+  showMapSettings: boolean = true;
+  showSummary: boolean = true;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public data: DataProvider, public color: ColorProvider, public loadingCtrl: LoadingController, public zone: NgZone) {
+    public data: DataProvider, public color: ColorProvider, public loadingCtrl: LoadingController,
+    public zone: NgZone) {
+  }
+
+
+  showResults(id: string) {
+    if (Enumerable.from(this.results).any(r => r.Id == id)) {
+      let acResult = Enumerable.from(this.results).first(r => r.Id == id);
+      this.acResults = acResult.Votes;
+      this.showAcResults = true;
+    }
   }
 
   async ionViewDidLoad() {
@@ -54,9 +73,9 @@ export class HomePage {
   }
 
   async loadResults() {
-    var results = await this.data.getResults(this.electionYear.toString(), 'ac');
-    this.results = this.GenerateStyleMaps(results);
-    let styleMaps: any = Enumerable.from(this.results);
+    this.results = await this.data.getResults(this.electionYear.toString(), 'ac');
+    this.styleMaps = this.GenerateStyleMaps(this.results);
+    let styleMaps: any = Enumerable.from(this.styleMaps);
     this.map.data.setStyle((feature) => {
       let id = feature.getProperty('ac');
       if (styleMaps.any(t => t.Id == id)) {
@@ -72,11 +91,6 @@ export class HomePage {
         title: id
       };
     })
-  }
-
-  async showResultsOnMap(year: number) {
-    //var results: Result[] = await this.data.getResults(year.toString(), 'ac');
-    //var styleMaps = this.color.GenerateStyleMaps(results);
   }
 
   async redraw() {
@@ -153,8 +167,9 @@ export class HomePage {
   acName: string = '';
   acClicked(event: any) {
     this.acName = event.feature.getProperty('ac_name');
-    
+    this.showResults(event.feature.getProperty('ac'));
   }
+
 
   transparency: number = 70;
   visibility: boolean = true;
@@ -235,10 +250,6 @@ export class Result {
     return en.first(t => t.Position == 1).Name;
   }
 
-  GetWinningParty(): string {
-    var en = Enumerable.from(this.Votes);
-    return en.first(t => t.Position == 1).Party;
-  }
 }
 
 export class CandidateVote {
