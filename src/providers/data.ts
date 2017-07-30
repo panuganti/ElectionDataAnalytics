@@ -58,7 +58,7 @@ export class DataProvider {
       case '1999':
         return await this.http.get('assets/data/results/1999.json').map(res => res.json()).toPromise();
       default:
-        throw new DOMException();
+        return;
     }
   }
 

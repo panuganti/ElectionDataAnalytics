@@ -1,5 +1,9 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
 import { ResultsSettings } from '../../models/results-settings';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/throttleTime';
+import 'rxjs/add/observable/fromEvent';
 
 @Component({
   selector: 'results-settings',
@@ -8,86 +12,51 @@ import { ResultsSettings } from '../../models/results-settings';
 export class ResultsSettingsComponent {
   @Input() settings: ResultsSettings;
   @Output() ionChange: EventEmitter<any> = new EventEmitter<any>();
+  debouncer: Subject<any> = new Subject<any>();
 
-  mapTypes: string[] = ["pc", "ac", "booth"];
-  mapType: string = 'ac';
-  electionYear: any = 2014;
   electionRangeValue: any = 2014;
   minYear: number = 1999;
   maxYear: number = 2014;
-  margins: boolean = true;
-
-
+  currentElectionYear: number;
 
   constructor() {
   }
 
-  emit() {
-    this.ionChange.emit();
+  ngOnInit() {
+    this.currentElectionYear = this.settings.electionYear;
+    this.debouncer.debounceTime(100)
+           .subscribe(() => this.ionChange.emit());
   }
 
-
-  mapTypeChanged() {
-    if (this.mapType == 'booth') {
-      this.minYear = 2008;
-      this.maxYear = 2014;
-    }
-    else if (this.mapType == 'pc' || this.mapType == 'ac') {
-      this.minYear = 1999;
-      this.maxYear = 2014;
-    }
+  changed() {
+    this.debouncer.next();    
   }
 
-  changeYear() {
-    if (this.mapType == 'booth' || this.mapType == 'ac') {
-      if (this.electionRangeValue < 2009) {
-        this.electionYear = 2008;
-      }
-      else if (this.electionRangeValue < 2013) {
-        this.electionYear = 2009;
-      }
-      else if (this.electionRangeValue < 2014) {
-        this.electionYear = 2013;
-      }
-      else {
-        this.electionYear = 2014;
-      }
+  setElectionYear() {
+    if (this.electionRangeValue < 2003) {
+      this.settings.electionYear = 1999;
     }
-    if (this.mapType == 'ac') {
-      if (this.electionRangeValue < 2003) {
-        this.electionYear = 1999;
-      }
-      else if (this.electionRangeValue < 2004) {
-        this.electionYear = 2003;
-      }
-      else if (this.electionRangeValue < 2009) {
-        this.electionYear = 2004;
-      }
+    else if (this.electionRangeValue < 2004) {
+      this.settings.electionYear = 2003;
     }
-
-    if (this.mapType == 'pc') {
-      if (this.electionRangeValue < 2003) {
-        this.electionYear = this.minYear;
-      }
-      else if (this.electionRangeValue < 2004) {
-        this.electionYear = 2003;
-      }
-      else if (this.electionRangeValue < 2008) {
-        this.electionYear = 2004;
-      }
-      else if (this.electionRangeValue < 2009) {
-        this.electionYear = 2008;
-      }
-      else if (this.electionRangeValue < 2013) {
-        this.electionYear = 2009;
-      }
-      else if (this.electionRangeValue < 2014) {
-        this.electionYear = 2013;
-      }
-      else {
-        this.electionYear = 2014;
-      }
+    else if (this.electionRangeValue < 2008) {
+      this.settings.electionYear = 2004;
+    }
+    else if (this.electionRangeValue < 2009) {
+      this.settings.electionYear = 2008;
+    }
+    else if (this.electionRangeValue < 2013) {
+      this.settings.electionYear = 2009;
+    }
+    else if (this.electionRangeValue < 2014) {
+      this.settings.electionYear = 2013;
+    }
+    else {
+      this.settings.electionYear = 2014;
+    }
+    if (this.settings.electionYear != this.currentElectionYear) {
+      this.currentElectionYear = this.settings.electionYear;
+      this.changed();
     }
   }
-
 }

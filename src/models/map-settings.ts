@@ -1,10 +1,7 @@
 export class MapSettings {
     transparency: number;
     electionYear: number;
-    mapType: string;
-    margins: boolean;
-    selectedAC: number;
-    selectedWard: string;
-    acBreakdown: boolean;
+    marginLimit: number;
+    showMargins: boolean;
     reportType: string;
 }

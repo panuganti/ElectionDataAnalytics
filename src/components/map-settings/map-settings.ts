@@ -3,6 +3,7 @@ import { DataProvider } from '../../providers/data';
 import { Survey } from '../../models/survey';
 import * as Enumerable from 'linq';
 import { MapSettings } from '../../models/map-settings';
+import { ResultsSettings } from '../../models/results-settings';
 
 @Component({
   selector: 'map-settings',
@@ -13,24 +14,27 @@ export class MapSettingsComponent {
   @Output() ionChange: EventEmitter<any> = new EventEmitter<any>();
   @Input() settings: MapSettings;
 
-  acBreakdown: boolean = true;
   acs: number[] = [0, 44, 71, 203, 208];
 
-  showYearRange: boolean = true;
-  showTransparency: boolean = true;
-  showMapTypes: boolean = true;
-  showSelectedConstituenciesOptions: boolean = true;
-  redrawDisabled: boolean = false;
-  showSelectedWardsOptions: boolean = false;
-  wards: string[];
-  selectedAC: number;
-
-  reportType: string = "Predictions";
+    reportType: string = "Results";
   showReportsOptions: boolean = true;
   reportTypes: string[] = ["Results", "Predictions", "Across Elections"];
-
+  resultsSettings: ResultsSettings = {
+    "transparency": 100,
+    "electionYear": 2014,
+    "marginLimit": 0,
+    "showMargins": true
+  };
 
   constructor(public data: DataProvider) {
+  }
+
+  updateResults() {
+    this.settings.transparency = this.resultsSettings.transparency;
+    this.settings.electionYear = this.resultsSettings.electionYear;
+    this.settings.marginLimit = this.resultsSettings.marginLimit;
+    this.settings.showMargins = this.resultsSettings.showMargins;
+    this.ionChange.emit();
   }
 
   reportTypeChanged() { 
@@ -38,21 +42,12 @@ export class MapSettingsComponent {
 
   marginsOptionChanged() { }
 
-//  electionYearChanged() { this.changeYear() }
-
   acBreakdownOptionChanged() { }
-
-
-  acSelectionChanged() {
-  //  this.wards = this.getWards(this.selectedAC);
-  }
 
   hidden: boolean = false;
   toggle() {
     this.hidden = !this.hidden;
   }
-
-  wardSelectionChanged() { }
 
   getAcName(id: number) {
     var sample_constituencies = this.data.getSampleConstituencies();
@@ -61,12 +56,6 @@ export class MapSettingsComponent {
     { return 'All'; }
     return constituenciesEn.first(c => c.id == id).name;
   }
-
-/*
-  getWards(id: number): string[] {
-    return ["ward1", "ward2"];
-  }
-*/
 
   transparency: number = 50;
   selectedWard: string;
@@ -77,10 +66,10 @@ export class MapSettingsComponent {
     this.settings.electionYear = this.electionYear;
     this.settings.mapType = this.mapType;
     this.settings.margins = this.margins;
-    */
     this.settings.selectedAC = this.selectedAC;
     this.settings.selectedWard = this.selectedWard;
     this.settings.acBreakdown = this.acBreakdown;
+    */
     this.settings.reportType = this.reportType;
     this.ionChange.emit();
     this.toggle();

@@ -17,11 +17,13 @@
       </ion-item>
     </ion-list>
     <hr/>
-    <results-settings *ngIf="reportType=='Results'" [settings]="_resultsSettings" (ionChange)="updateResults()"> </results-settings>
+    <results-settings *ngIf="reportType=='Results'" [settings]="resultsSettings" (ionChange)="updateResults()"> </results-settings>
     <prediction-settings *ngIf="reportType=='Predictions'" [survey]="survey" (ionChange)="changePrediction()"> </prediction-settings>
     <analysis-settings *ngIf="reportType=='Across Elections'" [settings]="settings" (ionChange)="reloadAnalysis()"> </analysis-settings>
+    <!--
     <ion-item tappable>
       <button block [disabled]="redrawDisabled" ion-button (click)="redraw()"> Submit </button>
     </ion-item>
+    -->
   </div>
 </ion-card>
