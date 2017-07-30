@@ -38,7 +38,7 @@ export class HomePage {
     public zone: NgZone, public afAuth: AngularFireAuth) {
     let email = window.localStorage.getItem('email');
     if (!email) {
-      this.navCtrl.setRoot(LoginPage);
+      this.navCtrl.setRoot('LoginPage');
     }
   }
 
