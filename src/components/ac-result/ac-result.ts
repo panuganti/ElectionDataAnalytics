@@ -1,28 +1,17 @@
-import { Component } from '@angular/core';
-import { DataProvider } from '../../providers/data';
+import { Input, Component } from '@angular/core';
 
 @Component({
   selector: 'ac-result',
-  templateUrl: 'ac-result.html',
-  providers: [DataProvider]
+  templateUrl: 'ac-result.html'
 })
 export class AcResultComponent {
-
-  constructor(public data: DataProvider) {
+  @Input() results: any[];
+  @Input() name: any;
+  result: any;
+  constructor() {
   }
 
   getBkgndColor(i: number) {
-    return (i & 1) ? "white" : "orange";
+    return (i & 1) ? "grey" : "lightblue";
   }
-
-  getParties() {
-    return this.data.getAllParties();
-  }
-
-  getVotePercent(party: string) { 
-    return 10;
-  }
-
-  getVotes(party: string) {  return 10000; }
-
 }

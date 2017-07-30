@@ -1,51 +1,27 @@
 <ion-card>
-  <ion-list>
-    <ion-item *ngIf="showTransparency">
-      <ion-range min="0" max="100" step="20" [(ngModel)]="transparency">
-        <ion-icon small range-left name="sunny"></ion-icon>
-        <ion-icon range-right name="sunny"></ion-icon>
-      </ion-range>
-    </ion-item>
-    <!--
-    <ion-item *ngIf="showMapTypes">
-      <ion-label color="dark"> PC/AC/Booth Map </ion-label>
-      <ion-select [(ngModel)]="mapType" (ionChange)="mapTypeChanged()">
-        <ion-option *ngFor="let type of mapTypes" value="{{type}}"> {{type}} </ion-option>
-      </ion-select>
-    </ion-item>
-    -->
-    <ion-item text-right *ngIf="showYearRange">
-      <span style="float:left"> Election Year</span>
-      <ion-badge> {{electionYear}}</ion-badge>
-    </ion-item>
-    <ion-item *ngIf="showYearRange">
-      <ion-range min="{{minYear}}" max="{{maxYear}}" snaps="true" [(ngModel)]="electionRangeValue" color="secondary" (ionChange)="electionYearChanged()">
-        <ion-label range-left>1999</ion-label>
-        <ion-label range-right>2014</ion-label>
-      </ion-range>
-    </ion-item>
-    <ion-item *ngIf="showMarginsOption">
-      <ion-label text-left> Show Margins </ion-label>
-      <ion-checkbox [(ngModel)]="margins" color="dark" (ionChange)="marginsOptionChanged()"> </ion-checkbox>
-    </ion-item>
-    <ion-item *ngIf="showAcBreakdownOption">
-      <ion-label text-left small> Show AC breakdown </ion-label>
-      <ion-checkbox small [(ngModel)]="acBreakdown" color="dark" (ionChange)="acBreakdownOptionChanged()"> </ion-checkbox>
-    </ion-item>
-    <ion-item *ngIf="showSelectedConstituenciesOptions">
-      <ion-label color="dark"> Constituency </ion-label>
-      <ion-select [(ngModel)]="selectedAC" (ionChange)="acSelectionChanged()">
-        <ion-option *ngFor="let ac of acs" value="{{ac}}"> {{getAcName(ac)}}</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item *ngIf="showSelectedWardsOptions">
-      <ion-label color="dark"> Ward </ion-label>
-      <ion-select [(ngModel)]="selectedWard" (ionChange)="wardSelectionChanged()">
-        <ion-option *ngFor="let ward of wards"> {{ward}}</ion-option>
-      </ion-select>
-    </ion-item>
+  <ion-buttons end>
+    <button clear small *ngIf="!hidden" ion-button (click)="toggle()" end> 
+      Hide
+    </button>
+    <button clear small *ngIf="hidden" ion-button (click)="toggle()" end> 
+        <ion-icon name="settings"> </ion-icon>
+    </button>
+  </ion-buttons>
+  <div *ngIf="!hidden">
+    <ion-list>
+      <ion-item *ngIf="showReportsOptions">
+        <ion-label color="dark"> Map Type </ion-label>
+        <ion-select [(ngModel)]="reportType" (ionChange)="reportTypeChanged()">
+          <ion-option *ngFor="let report of reportTypes" [selected]="report==reportType" value="{{report}}"> {{report}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <hr/>
+    <results-settings *ngIf="reportType=='Results'" [settings]="_resultsSettings" (ionChange)="updateResults()"> </results-settings>
+    <prediction-settings *ngIf="reportType=='Predictions'" [survey]="survey" (ionChange)="changePrediction()"> </prediction-settings>
+    <analysis-settings *ngIf="reportType=='Across Elections'" [settings]="settings" (ionChange)="reloadAnalysis()"> </analysis-settings>
     <ion-item tappable>
       <button block [disabled]="redrawDisabled" ion-button (click)="redraw()"> Submit </button>
     </ion-item>
-  </ion-list>
+  </div>
 </ion-card>

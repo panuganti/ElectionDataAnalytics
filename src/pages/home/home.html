@@ -1,10 +1,17 @@
 <ion-content>
     <div id="left" #map> </div>
     <div id="right">
-        <map-settings> </map-settings>
-        <ac-list> </ac-list>
-        <ac-result> </ac-result>
-        <caste-breakup> </caste-breakup>
+        <ion-buttons end>
+            <button ion-button icon-only clear (click)="signOut()">
+            <ion-icon name="power"></ion-icon>
+        </button>
+        </ion-buttons>  
+        <map-settings *ngIf="showMapSettings" [settings]="settings" (ionChange)="changeSettingsAndRedraw()"> </map-settings>
+        <summary *ngIf="showSummary" [results]="results"> </summary>
+        <ac-result *ngIf="showAcResults" [name]="acName" [results]="acResults"> </ac-result>
+        <caste-breakup *ngIf="showCasteBreakup"> </caste-breakup>
     </div>
-    <div id="legend"> <legend> </legend> </div>
+    <div id="legend">
+        <legend *ngIf="showLegend"> </legend>
+    </div>
 </ion-content>

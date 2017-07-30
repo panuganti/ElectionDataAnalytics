@@ -1,127 +1,120 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { DataProvider } from '../../providers/data';
+import { Survey } from '../../models/survey';
 import * as Enumerable from 'linq';
+import { MapSettings } from '../../models/map-settings';
 
 @Component({
   selector: 'map-settings',
-  templateUrl: 'map-settings.html'
+  templateUrl: 'map-settings.html',
+  providers: [DataProvider]
 })
 export class MapSettingsComponent {
-  @Output() settings: EventEmitter<any> = new EventEmitter<any>();
+  @Output() ionChange: EventEmitter<any> = new EventEmitter<any>();
+  @Input() settings: MapSettings;
 
-
-  electionYear: any = 2014;
-  electionRangeValue: any = 2014;
-  minYear: number = 1999;
-  maxYear: number = 2014;
-  mapTypes: string[] = ["pc", "ac", "booth"];
-  mapType: string = 'ac';
-  margins: boolean = true;
   acBreakdown: boolean = true;
   acs: number[] = [0, 44, 71, 203, 208];
 
-  showYearRange: boolean = false;
+  showYearRange: boolean = true;
   showTransparency: boolean = true;
   showMapTypes: boolean = true;
-  showMarginsOption: boolean = true;
-  showAcBreakdownOption: boolean = true;
   showSelectedConstituenciesOptions: boolean = true;
   redrawDisabled: boolean = false;
   showSelectedWardsOptions: boolean = false;
   wards: string[];
   selectedAC: number;
-  
+
+  reportType: string = "Predictions";
+  showReportsOptions: boolean = true;
+  reportTypes: string[] = ["Results", "Predictions", "Across Elections"];
+
 
   constructor(public data: DataProvider) {
   }
 
+  reportTypeChanged() { 
+  }
+
   marginsOptionChanged() { }
 
-  electionYearChanged() { }
+//  electionYearChanged() { this.changeYear() }
 
   acBreakdownOptionChanged() { }
 
+
   acSelectionChanged() {
-    this.wards = this.data.getWards(this.selectedAC);
+  //  this.wards = this.getWards(this.selectedAC);
   }
 
-  wardSelectionChanged() {}
+  hidden: boolean = false;
+  toggle() {
+    this.hidden = !this.hidden;
+  }
 
-  async getAcName(id: number): Promise<string> {
-    var sample_constituencies = await this.data.getSampleConstituencies();
+  wardSelectionChanged() { }
+
+  getAcName(id: number) {
+    var sample_constituencies = this.data.getSampleConstituencies();
     var constituenciesEn = Enumerable.from(sample_constituencies);
-    if (id == 0 || !constituenciesEn.any(c => c.id == id)) 
+    if (id == 0 || !constituenciesEn.any(c => c.id == id))
     { return 'All'; }
     return constituenciesEn.first(c => c.id == id).name;
   }
 
-  mapTypeChanged() {
-    if (this.mapType == 'booth') {
-      this.minYear = 2008;
-      this.maxYear = 2014;
-    }
-    else if (this.mapType == 'pc' || this.mapType == 'ac') {
-      this.minYear = 1999;
-      this.maxYear = 2014;
-    }
-    this.showYearRange = true;
-  }
-
-  changeYear() {
-    if (this.mapType == 'booth') {
-      if (this.electionRangeValue < 2009) {
-        this.electionYear = 2008;
-      }
-      else if (this.electionRangeValue < 2013) {
-        this.electionYear = 2009;
-      }
-      else if (this.electionRangeValue < 2014) {
-        this.electionYear = 2013;
-      }
-      else {
-        this.electionYear = 2014;
-      }
-    }
-
-    if (this.mapType == 'pc') {
-      if (this.electionRangeValue < 2003) {
-        this.electionYear = this.minYear;
-      }
-      else if (this.electionRangeValue < 2004) {
-        this.electionYear = 2003;
-      }
-      else if (this.electionRangeValue < 2008) {
-        this.electionYear = 2004;
-      }
-      else if (this.electionRangeValue < 2009) {
-        this.electionYear = 2008;
-      }
-      else if (this.electionRangeValue < 2013) {
-        this.electionYear = 2009;
-      }
-      else if (this.electionRangeValue < 2014) {
-        this.electionYear = 2013;
-      }
-      else {
-        this.electionYear = 2014;
-      }
-    }
-  }
-
-  /*
-    mapTypeChangead() {
-    switch (this.mapType) {
-      case 'pc':
-        this.years = ["2014", "2009", "2004", "1999"];
-      case 'ac':
-        this.years = ["2014", "2013", "2009", "2008", "2004", "2003", "1999"];
-      case 'booth':
-        this.years = ["2014", "2013", "2009", "2008", "2004", "2003", "1999"];
-      default:
-        this.years = ["2014", "2013", "2009", "2008", "2004", "2003", "1999"];
-    }
+/*
+  getWards(id: number): string[] {
+    return ["ward1", "ward2"];
   }
 */
 
+  transparency: number = 50;
+  selectedWard: string;
+
+  redraw() {
+    this.settings.transparency = this.transparency;
+    /*
+    this.settings.electionYear = this.electionYear;
+    this.settings.mapType = this.mapType;
+    this.settings.margins = this.margins;
+    */
+    this.settings.selectedAC = this.selectedAC;
+    this.settings.selectedWard = this.selectedWard;
+    this.settings.acBreakdown = this.acBreakdown;
+    this.settings.reportType = this.reportType;
+    this.ionChange.emit();
+    this.toggle();
+  }
+
+  changePrediction() {
+  }
+
+  survey: Survey = {
+    men: 10,
+    women: 10,
+
+    lingayat: 10,
+    vokkaliga: 10,
+    kuruba: 10,
+    h: 10,
+    brahmin: 10,
+    dalit: 10,
+    uc: 10,
+    obc: 10,
+    muslim: 10,
+    christian: 10,
+
+    _18To24: 10,
+    _25To34: 10,
+    _35To44: 10,
+    _45To60: 10,
+    _gt60: 10,
+
+    _lt10k: 10,
+    _10kTo20k: 10,
+    _20kTo40k: 10,
+    _40kTo1Lac: 10,
+    _gt1Lac: 10,
+  }
 
 }

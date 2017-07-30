@@ -1,14 +1,15 @@
 <ion-card>
+  <h2 text-center> <b> {{name}} </b> </h2>
   <ion-grid>
     <ion-row style="color:white; background: black">
-      <ion-col> Party </ion-col>
-      <ion-col> %age </ion-col>
-      <ion-col> Votes </ion-col>
+      <ion-col col-6> Party </ion-col>
+      <ion-col col-2> %age </ion-col>
+      <ion-col col-2> Votes </ion-col>
     </ion-row>
-    <ion-row *ngFor="let party of getParties(); let i = index" [style.backgroundColor]="getBkgndColor(i)">
-      <ion-col> {{party}} </ion-col>
-      <ion-col> {{getVotePercent(party)}}% </ion-col>
-      <ion-col> {{getVotes(party)}} </ion-col>
+    <ion-row *ngFor="let result of results; let i = index" [style.backgroundColor]="getBkgndColor(i)" [hidden]="i>5">          
+        <ion-col col-6> {{result.Party}} </ion-col>
+        <ion-col col-2> {{result.VotePercent}}% </ion-col>
+        <ion-col col-2> {{result.Votes}} </ion-col>
     </ion-row>
   </ion-grid>
 </ion-card>

@@ -1,0 +1,203 @@
+<ion-item *ngIf="reportType=='Predictions'">
+  <ion-label color="dark"> Constituency </ion-label>
+  <ion-select [(ngModel)]="selectedAC" (ionChange)="acSelectionChanged()">
+    <ion-option *ngFor="let ac of acs" value="{{ac}}"> {{getAcName(ac)}}</ion-option>
+  </ion-select>
+</ion-item>
+
+
+<ion-list>
+  <ion-item-group>
+    <ion-item>
+      <div style="float:left" color="dark"> <button ion-button clear> Gender</button> </div>
+      <div style="float:right">
+        <button ion-button clear *ngIf="showGender" (click)="toggleGender()">Hide</button>
+        <button ion-button clear *ngIf="!showGender" (click)="toggleGender()">Show</button>
+      </div>
+    </ion-item>
+    <ion-item *ngIf="showGender">
+      <ion-label class="title"> Men </ion-label>
+      <ion-range min="0" max="100" pin="true" [(ngModel)]="survey.men" (ionChange)="genderChange()">
+        <ion-label range-left>0</ion-label>
+        <ion-label range-right>100</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item *ngIf="showGender">
+      <ion-label class="title"> Women </ion-label>
+      <ion-range min="0" max="100" pin="true" [(ngModel)]="survey.women" (ionChange)="genderChange()">
+        <ion-label range-left>0</ion-label>
+        <ion-label range-right>100</ion-label>
+      </ion-range>
+    </ion-item>
+  </ion-item-group>
+  <ion-item-group>
+    <ion-item>
+      <div style="float:left" color="dark"> <button ion-button clear> Caste/Community</button> </div>
+      <div style="float:right">
+        <button ion-button clear *ngIf="showCaste" (click)="toggleCaste()">Hide</button>
+        <button ion-button clear *ngIf="!showCaste" (click)="toggleCaste()">Show</button>
+      </div>
+    </ion-item>
+    <ion-item *ngIf="showCaste">
+      <ion-label> Lingayat </ion-label>
+      <ion-range min="0" max="100" pin="true" [(ngModel)]="survey.lingayat" (ionChange)="communityChange()">
+        <ion-label range-left>0</ion-label>
+        <ion-label range-right>100</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item *ngIf="showCaste">
+      <ion-label> Vokkaliga </ion-label>
+      <ion-range min="0" max="100" pin="true" [(ngModel)]="survey.vokkaliga" (ionChange)="communityChange()">
+        <ion-label range-left>0</ion-label>
+        <ion-label range-right>100</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item *ngIf="showCaste">
+      <ion-label> Kuruba </ion-label>
+      <ion-range min="0" max="100" pin="true" [(ngModel)]="survey.kuruba" (ionChange)="communityChange()">
+        <ion-label range-left>0</ion-label>
+        <ion-label range-right>100</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item *ngIf="showCaste">
+      <ion-label> H </ion-label>
+      <ion-range min="0" max="100" pin="true" [(ngModel)]="survey.h" (ionChange)="communityChange()">
+        <ion-label range-left>0</ion-label>
+        <ion-label range-right>100</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item *ngIf="showCaste">
+      <ion-label> Brahmin </ion-label>
+      <ion-range min="0" max="100" pin="true" [(ngModel)]="survey.brahmin" (ionChange)="communityChange()">
+        <ion-label range-left>0</ion-label>
+        <ion-label range-right>100</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item *ngIf="showCaste">
+      <ion-label> Dalit </ion-label>
+      <ion-range min="0" max="100" pin="true" [(ngModel)]="survey.dalit" (ionChange)="communityChange()">
+        <ion-label range-left>0</ion-label>
+        <ion-label range-right>100</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item *ngIf="showCaste">
+      <ion-label> Other Upper Caste </ion-label>
+      <ion-range min="0" max="100" pin="true" [(ngModel)]="survey.uc" (ionChange)="communityChange()">
+        <ion-label range-left>0</ion-label>
+        <ion-label range-right>100</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item *ngIf="showCaste">
+      <ion-label> OBC </ion-label>
+      <ion-range min="0" max="100" pin="true" [(ngModel)]="survey.obc" (ionChange)="communityChange()">
+        <ion-label range-left>0</ion-label>
+        <ion-label range-right>100</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item *ngIf="showCaste">
+      <ion-label> Muslim </ion-label>
+      <ion-range min="0" max="100" pin="true" [(ngModel)]="survey.muslim" (ionChange)="communityChange()">
+        <ion-label range-left>0</ion-label>
+        <ion-label range-right>100</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item *ngIf="showCaste">
+      <ion-label> Christian </ion-label>
+      <ion-range min="0" max="100" pin="true" [(ngModel)]="survey.christian" (ionChange)="communityChange()">
+        <ion-label range-left>0</ion-label>
+        <ion-label range-right>100</ion-label>
+      </ion-range>
+    </ion-item>
+  </ion-item-group>
+
+  <ion-item-group>
+    <ion-item>
+      <div style="float:left" color="dark"> <button ion-button clear> Age Group</button> </div>
+      <div style="float:right">
+        <button ion-button clear *ngIf="showAge" (click)="toggleAge()">Hide</button>
+        <button ion-button clear *ngIf="!showAge" (click)="toggleAge()">Show</button>
+      </div>
+    </ion-item>
+    <ion-item *ngIf="showAge">
+      <ion-label> 18-24 </ion-label>
+      <ion-range min="0" max="100" pin="true" [(ngModel)]="survey._18To24" (ionChange)="ageChange()">
+        <ion-label range-left>0</ion-label>
+        <ion-label range-right>100</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item *ngIf="showAge">
+      <ion-label> 25-34 </ion-label>
+      <ion-range min="0" max="100" pin="true" [(ngModel)]="survey._25To34" (ionChange)="ageChange()">
+        <ion-label range-left>0</ion-label>
+        <ion-label range-right>100</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item *ngIf="showAge">
+      <ion-label> 35-44 </ion-label>
+      <ion-range min="0" max="100" pin="true" [(ngModel)]="survey._35To44" (ionChange)="ageChange()">
+        <ion-label range-left>0</ion-label>
+        <ion-label range-right>100</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item *ngIf="showAge">
+      <ion-label> 45-60 </ion-label>
+      <ion-range min="0" max="100" pin="true" [(ngModel)]="survey._45To60" (ionChange)="ageChange()">
+        <ion-label range-left>0</ion-label>
+        <ion-label range-right>100</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item *ngIf="showAge">
+      <ion-label> Greater than 60 </ion-label>
+      <ion-range min="0" max="100" pin="true" [(ngModel)]="survey._gt60" (ionChange)="ageChange()">
+        <ion-label range-left>0</ion-label>
+        <ion-label range-right>100</ion-label>
+      </ion-range>
+    </ion-item>
+  </ion-item-group>
+
+  <ion-item-group>
+    <ion-item>
+      <div style="float:left" color="dark"> <button ion-button clear>Income </button> </div>
+      <div style="float:right">
+        <button ion-button clear *ngIf="showIncome" (click)="toggleIncome()">Hide</button>
+        <button ion-button clear *ngIf="!showIncome" (click)="toggleIncome()">Show</button>
+      </div>
+    </ion-item>
+    <ion-item *ngIf="showIncome">
+      <ion-label> Less than 10K </ion-label>
+      <ion-range min="0" max="100" pin="true" [(ngModel)]="survey._lt10k" (ionChange)="ageChange()">
+        <ion-label range-left>0</ion-label>
+        <ion-label range-right>100</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item *ngIf="showIncome">
+      <ion-label> Rs. 10K to Rs. 20K </ion-label>
+      <ion-range min="0" max="100" pin="true" [(ngModel)]="survey._10kTo20k" (ionChange)="ageChange()">
+        <ion-label range-left>0</ion-label>
+        <ion-label range-right>100</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item *ngIf="showIncome">
+      <ion-label> Rs. 20K to Rs. 40K </ion-label>
+      <ion-range min="0" max="100" pin="true" [(ngModel)]="survey._20kTo40k" (ionChange)="ageChange()">
+        <ion-label range-left>0</ion-label>
+        <ion-label range-right>100</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item *ngIf="showIncome">
+      <ion-label> Rs. 40K to Rs. 1 Lac </ion-label>
+      <ion-range min="0" max="100" pin="true" [(ngModel)]="survey._40kTo1Lac" (ionChange)="ageChange()">
+        <ion-label range-left>0</ion-label>
+        <ion-label range-right>100</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item *ngIf="showIncome">
+      <ion-label> Greater than 1 Lac </ion-label>
+      <ion-range min="0" max="100" pin="true" [(ngModel)]="survey._gt1Lac" (ionChange)="ageChange()">
+        <ion-label range-left>0</ion-label>
+        <ion-label range-right>100</ion-label>
+      </ion-range>
+    </ion-item>
+  </ion-item-group>
+
+</ion-list>
