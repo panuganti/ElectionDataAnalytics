@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController, Loading } from 
 import { DataProvider } from '../../providers/data';
 import { ColorProvider } from '../../providers/color';
 import * as Enumerable from 'linq';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 declare var d3;
 declare var google;
@@ -33,7 +34,7 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public data: DataProvider, public color: ColorProvider, public loadingCtrl: LoadingController,
-    public zone: NgZone) {
+    public zone: NgZone, public afAuth: AngularFireAuth) {
   }
 
 
@@ -47,6 +48,10 @@ export class HomePage {
 
   async ionViewDidLoad() {
     await this.loadMap();
+  }
+
+  signOut() {
+    this.afAuth.auth.signOut();
   }
 
   async loadMap() {

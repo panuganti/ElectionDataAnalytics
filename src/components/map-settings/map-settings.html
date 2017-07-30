@@ -1,27 +1,24 @@
 <ion-card>
-  <ion-item>
-    <ion-buttons end>
-      <button clear small *ngIf="!hidden" ion-button (click)="toggle()" end> 
+  <ion-buttons end>
+    <button clear small *ngIf="!hidden" ion-button (click)="toggle()" end> 
       Hide
     </button>
-      <button clear small *ngIf="hidden" ion-button (click)="toggle()" end> 
+    <button clear small *ngIf="hidden" ion-button (click)="toggle()" end> 
         <ion-icon name="settings"> </ion-icon>
     </button>
-    </ion-buttons>
+  </ion-buttons>
+
+  <ion-item *ngIf="showReportsOptions">
+    <ion-label color="dark"> Map Type </ion-label>
+    <ion-select [(ngModel)]="reportType" (ionChange)="reportTypeChanged()">
+      <ion-option *ngFor="let report of reportTypes" [selected]="report==reportType"> {{report}}</ion-option>
+    </ion-select>
   </ion-item>
   <ion-list *ngIf="!hidden">
-    <ion-item *ngIf="showTransparency">
-      <ion-range min="0" max="100" step="20" [(ngModel)]="transparency">
-        <ion-icon small range-left name="sunny"></ion-icon>
-        <ion-icon range-right name="sunny"></ion-icon>
-      </ion-range>
-    </ion-item>
-    <ion-item *ngIf="showReportsOptions">
-      <ion-label color="dark"> Reports </ion-label>
-      <ion-select [(ngModel)]="reportType" (ionChange)="reportTypeChanged()">
-        <ion-option *ngFor="let reportType of reportTypes"> {{reportType}}</ion-option>
-      </ion-select>
-    </ion-item>
+    <ion-range min="0" max="100" step="20" pin="true" [(ngModel)]="transparency" >
+      <ion-icon small range-left name="sunny"></ion-icon>
+      <ion-icon range-right name="sunny"></ion-icon>
+    </ion-range>
     <!-- 
     <ion-item *ngIf="showMapTypes">
       <ion-label color="dark"> Map Types </ion-label>
@@ -35,7 +32,7 @@
       <ion-badge> {{electionYear}}</ion-badge>
     </ion-item>
     <ion-item *ngIf="showYearRange">
-      <ion-range min="{{minYear}}" max="{{maxYear}}" snaps="true" [(ngModel)]="electionRangeValue" color="secondary" (ionChange)="electionYearChanged()">
+      <ion-range min="{{minYear}}" max="{{maxYear}}" pin="true" [(ngModel)]="electionRangeValue" color="secondary" (ionChange)="electionYearChanged()">
         <ion-label range-left>1999</ion-label>
         <ion-label range-right>2014</ion-label>
       </ion-range>
@@ -53,7 +50,8 @@
       </ion-select>
     </ion-item>
   </ion-list>
-  <prediction-settings (changed)="setPredictionSettings()"> </prediction-settings>
+  <hr/>
+  <prediction-settings *ngIf="showPredictions" [survey]="survey"> </prediction-settings>
   <ion-item tappable>
     <button block [disabled]="redrawDisabled" ion-button (click)="redraw()"> Submit </button>
   </ion-item>

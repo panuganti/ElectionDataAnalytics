@@ -9,6 +9,7 @@ import { DataProvider } from '../providers/data';
 import { AcListComponent } from './ac-list/ac-list';
 import { SummaryComponent } from './summary/summary';
 import { PredictionSettingsComponent } from './prediction-settings/prediction-settings';
+import { ResultsSettingsComponent } from './results-settings/results-settings';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PredictionSettingsComponent } from './prediction-settings/prediction-se
     LegendComponent,
     AcListComponent,
     SummaryComponent,
-    PredictionSettingsComponent
+    PredictionSettingsComponent,
+    ResultsSettingsComponent
   ],
   imports: [
     IonicPageModule,
@@ -30,7 +32,8 @@ import { PredictionSettingsComponent } from './prediction-settings/prediction-se
     LegendComponent,
     AcListComponent,
     SummaryComponent,
-    PredictionSettingsComponent
+    PredictionSettingsComponent,
+    ResultsSettingsComponent
   ],
   providers: [
     DataProvider,

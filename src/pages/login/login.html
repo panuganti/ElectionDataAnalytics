@@ -1,0 +1,26 @@
+<video autoplay poster="assets/resources/modi.jpg" id="bgvid" loop>
+<!--  <source src="assets/resources/polina.webm" type="video/webm"> -->
+  <source src="assets/resources/modi.mp4" type="video/mp4">
+</video>
+
+<!-- Look for better solution than using a spacer -->
+<div class="spacer" style="width: auto; height: 450px;"></div>
+
+<div id="polina">
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="text" [(ngModel)]="email" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" [(ngModel)]="password" required></ion-input>
+    </ion-item>
+    <ion-item *ngIf="showError">
+      <span ion-text color="danger">{{error}}</span>
+    </ion-item>
+    <button ion-button (click)="login()" primary block> Sign In
+      <ion-spinner *ngIf="showSpinnie" name="ios"></ion-spinner>
+    </button>
+  </ion-list>
+</div>

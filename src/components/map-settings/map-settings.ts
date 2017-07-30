@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { DataProvider } from '../../providers/data';
+import { Survey } from '../../models/survey';
 import * as Enumerable from 'linq';
 
 @Component({
@@ -31,7 +32,7 @@ export class MapSettingsComponent {
 
   reportType: string;
   showReportsOptions: boolean = true;
-  reportTypes: string[] = ["Predictions", "Results", "Safe Seats", "Anti-Incumbency Seats", "Change Seats"];
+  reportTypes: string[] = ["Results", "Predictions", "Across Elections"];
 
 
   constructor(public data: DataProvider) {
@@ -149,5 +150,39 @@ export class MapSettingsComponent {
       }
     }
   }
-  
+
+  showPredictions: boolean = true;
+  setPredictionSettings(event) {
+    console.log(this.survey);
+    console.log(event);
+  }
+
+  survey: Survey = {
+    men: 10,
+    women: 10,
+
+    lingayat: 10,
+    vokkaliga: 10,
+    kuruba: 10,
+    h: 10,
+    brahmin: 10,
+    dalit: 10,
+    uc: 10,
+    obc: 10,
+    muslim: 10,
+    christian: 10,
+
+    _18To24: 10,
+    _25To34: 10,
+    _35To44: 10,
+    _45To60: 10,
+    _gt60: 10,
+
+    _lt10k: 10,
+    _10kTo20k: 10,
+    _20kTo40k: 10,
+    _40kTo1Lac: 10,
+    _gt1Lac: 10,
+  }
+
 }
