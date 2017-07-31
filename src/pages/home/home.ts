@@ -105,16 +105,21 @@ export class HomePage {
   }
 
   async showAnalysis() {
+    this.showSummary = false;
     var results = [];
-    this.results.push(await this.data.getResults('2014', 'ac'));
+    var acResult = await this.data.getResults('2014', 'ac');
+    results.push(Enumerable.from(acResult));
     if (this.settings.electionsNo > 0) {
-      results.push(await this.data.getResults('2013', 'ac'));
+      var acResult = await this.data.getResults('2013', 'ac');
+      results.push(Enumerable.from(acResult));
     }
     if (this.settings.electionsNo > 1) {
-      results.push(await this.data.getResults('2009', 'ac'));
+      var acResult = await this.data.getResults('2009', 'ac');
+      results.push(Enumerable.from(acResult));
     }
     if (this.settings.electionsNo > 2) {
-      results.push(await this.data.getResults('2008', 'ac'));
+      var acResult = await this.data.getResults('2008', 'ac');
+      results.push(Enumerable.from(acResult));
     }
     if (this.settings.analysisType == 'safeSeats') {
       await this.showSafeSeatsAnalysis(results);
@@ -125,12 +130,142 @@ export class HomePage {
   }
 
   async showSafeSeatsAnalysis(results: any[]) {
-
+    let styleMaps = this.GenerateSafeSeatsStyleMaps(results);
+    this.showLoading();
+    this.removeGeoJson();
+    await this.loadGeoJson();
+    this.dismissLoading();
+    this.displayStyleMaps(styleMaps);
   }
 
   async showChangeSeatsAnalysis(results: any[]) {
-
+    let styleMaps = this.GenerateChangeSeatsStyleMaps(results);
+    this.showLoading();
+    this.removeGeoJson();
+    await this.loadGeoJson();
+    this.dismissLoading();
+    this.displayStyleMaps(styleMaps);
   }
+
+  GenerateChangeSeatsStyleMaps(acResults: Result[][]): any[] {
+    let acStyleMaps: any[] = [];
+    let self = this;
+    let en2014 = Enumerable.from(acResults[0]);
+    en2014.forEach(element => {
+      let styleMap: AcStyleMap = { Id: -1, Style: {} };
+      styleMap.Style = self.defaultStyle;
+      if (element.Id < 0) {
+        acStyleMaps.push(styleMap); return;
+      }
+      let votes = Enumerable.from(en2014.where(t => t.Id == element.Id).first().Votes);
+      let winner2014 = votes.first(t => t.Position == 1).Party;
+      let isChangeSeat: boolean = false;
+      if (self.settings.electionsNo > 0) {
+        let results1En = Enumerable.from(acResults[1]).where(t => t.Id == element.Id);
+        if (!results1En.any()) {
+          acStyleMaps.push(styleMap); return;
+        }
+        let v1 = Enumerable.from(results1En.first().Votes)
+        if (winner2014 != v1.first(t => t.Position == 1).Party) {
+          isChangeSeat = true;
+        }
+      }
+      if (self.settings.electionsNo > 1) {
+        let results2En = Enumerable.from(acResults[2]).where(t => t.Id == element.Id);
+        if (!results2En.any()) {
+          acStyleMaps.push(styleMap); return;          
+        }
+        let v2 = Enumerable.from(results2En.first().Votes)
+        if (winner2014 != v2.first(t => t.Position == 1).Party) {
+          isChangeSeat = true;
+        }
+      }
+      if (self.settings.electionsNo > 2) {
+        let results3En = Enumerable.from(acResults[3]).where(t => t.Id == element.Id);
+        if (!results3En.any()) {
+          acStyleMaps.push(styleMap); return;          
+        }
+        let v3 = Enumerable.from(results3En.first().Votes)
+        if (winner2014 != v3.first(t => t.Position == 1).Party) {
+          isChangeSeat = true;
+        }
+      }
+      styleMap.Id = element.Id;
+      if (isChangeSeat) {
+        let partyColor = self.getColor(winner2014);
+        let color = self.color.getColor(partyColor, 15, 0, 25);
+        styleMap.Style = {
+          strokeWeight: self.defaultStyle.strokeWeight,
+          fillOpacity: self.defaultStyle.fillOpacity,
+          strokeOpacity: self.defaultStyle.strokeOpacity,
+          fillColor: color
+        }
+      }
+      acStyleMaps.push(styleMap);
+    });
+    return acStyleMaps;
+  }
+
+
+  GenerateSafeSeatsStyleMaps(acResults: Result[][]): any[] {
+    let acStyleMaps: any[] = [];
+    let self = this;
+    let en2014 = Enumerable.from(acResults[0]);
+    en2014.forEach(element => {
+      let styleMap: AcStyleMap = { Id: -1, Style: {} };
+      styleMap.Style = self.defaultStyle;
+      if (element.Id < 0) {
+        acStyleMaps.push(styleMap); return;
+      }
+      let votes = Enumerable.from(en2014.where(t => t.Id == element.Id).first().Votes);
+      let winner2014 = votes.first(t => t.Position == 1).Party;
+      let isSafeSeat: boolean = true;
+      if (self.settings.electionsNo > 0) {
+        let results1En = Enumerable.from(acResults[1]).where(t => t.Id == element.Id);
+        if (!results1En.any()) {
+          acStyleMaps.push(styleMap); return;
+        }
+        let v1 = Enumerable.from(results1En.first().Votes)
+        if (winner2014 != v1.first(t => t.Position == 1).Party) {
+          isSafeSeat = false;
+        }
+      }
+      if (self.settings.electionsNo > 1) {
+        let results2En = Enumerable.from(acResults[2]).where(t => t.Id == element.Id);
+        if (!results2En.any()) {
+          acStyleMaps.push(styleMap); return;          
+        }
+        let v2 = Enumerable.from(results2En.first().Votes)
+        if (winner2014 != v2.first(t => t.Position == 1).Party) {
+          isSafeSeat = false;
+        }
+      }
+      if (self.settings.electionsNo > 2) {
+        let results3En = Enumerable.from(acResults[3]).where(t => t.Id == element.Id);
+        if (!results3En.any()) {
+          acStyleMaps.push(styleMap); return;          
+        }
+        let v3 = Enumerable.from(results3En.first().Votes)
+        if (winner2014 != v3.first(t => t.Position == 1).Party) {
+          isSafeSeat = false;
+        }
+      }
+      styleMap.Id = element.Id;
+      if (isSafeSeat) {
+        let partyColor = self.getColor(winner2014);
+        let color = self.color.getColor(partyColor, 15, 0, 25);
+        styleMap.Style = {
+          strokeWeight: self.defaultStyle.strokeWeight,
+          fillOpacity: self.defaultStyle.fillOpacity,
+          strokeOpacity: self.defaultStyle.strokeOpacity,
+          fillColor: color
+        }
+      }
+      acStyleMaps.push(styleMap);
+    });
+    return acStyleMaps;
+  }
+
 
   showLoading() {
     if (!this.loading) {
@@ -173,7 +308,6 @@ export class HomePage {
   }
 
   addGeoJsonEventHandlers() {
-    //this.map.data.addListener('click', (event) => { this.zone.run(() => this.acClicked(event)) });
     this.map.data.addListener('mouseover', (event) => { this.zone.run(() => this.acClicked(event)) });
   }
 
@@ -181,7 +315,11 @@ export class HomePage {
     this.showSummary = true;
     this.results = await this.data.getResults(this.electionYear.toString(), 'ac');
     this.styleMaps = this.GenerateStyleMaps(this.results);
-    let styleMaps: any = Enumerable.from(this.styleMaps);
+    this.displayStyleMaps(this.styleMaps);
+  }
+
+  displayStyleMaps(styleMaps: any[]) {
+    let styleMapsEn: any = Enumerable.from(styleMaps);
     this.map.data.setStyle((feature) => {
       var id;
       if (this.electionYear > 2008) {
@@ -190,8 +328,8 @@ export class HomePage {
       else {
         id = feature.getProperty('AC_NO');
       }
-      if (styleMaps.any(t => t.Id == id)) {
-        var style = styleMaps.first(t => t.Id == id).Style;
+      if (styleMapsEn.any(t => t.Id == id)) {
+        var style = styleMapsEn.first(t => t.Id == id).Style;
         return style;
       }
       return {
@@ -202,6 +340,7 @@ export class HomePage {
         title: id
       };
     })
+
   }
 
   GenerateStyleMaps(acResults: Result[]): any[] {
@@ -262,10 +401,10 @@ export class HomePage {
 
 
   defaultStyle: any = {
-    strokeWeight: 1,
-    fillOpacity: 0.9,
+    strokeWeight: 0.5,
+    fillOpacity: 0.7,
     strokeOpacity: 0.3,
-    strokeColor: "white"
+    fillColor: "white"
   };
 
 

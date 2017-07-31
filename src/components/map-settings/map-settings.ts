@@ -17,9 +17,8 @@ export class MapSettingsComponent {
 
   acs: number[] = [0, 44, 71, 203, 208];
 
-    reportType: string = "Results";
   showReportsOptions: boolean = true;
-  reportTypes: string[] = ["Results", "Predictions", "Across Elections"];
+  reportTypes: string[] = ["Results", "Predictions", "Analysis"];
   resultsSettings: ResultsSettings = {
     "transparency": 100,
     "electionYear": 2014,
@@ -40,14 +39,12 @@ export class MapSettingsComponent {
     this.settings.electionYear = this.resultsSettings.electionYear;
     this.settings.marginLimit = this.resultsSettings.marginLimit;
     this.settings.showMargins = this.resultsSettings.showMargins;
-    this.settings.reportType = this.reportType;
     this.ionChange.emit();
   }
 
   reloadAnalysis() {
     this.settings.electionsNo = this.analysisSettings.electionsNo;
     this.settings.analysisType = this.analysisSettings.analysisType;
-    this.settings.reportType = this.reportType;
     this.ionChange.emit();    
   }
   reportTypeChanged() {   }

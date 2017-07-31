@@ -25,8 +25,9 @@ export class AnalysisSettingsComponent {
 
   analysisTypeChanged() {
     this.settings.analysisType = this.analysisType;
+    this.changed();
   }
-  
+
   changed() {
     this.debouncer.next();
   }

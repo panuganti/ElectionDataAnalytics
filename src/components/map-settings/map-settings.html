@@ -17,8 +17,8 @@
       </ion-item>
     </ion-list>
     <hr/>
-    <results-settings *ngIf="reportType=='Results'" [settings]="resultsSettings" (ionChange)="updateResults()"> </results-settings>
-    <prediction-settings *ngIf="reportType=='Predictions'" [survey]="survey" (ionChange)="changePrediction()"> </prediction-settings>
-    <analysis-settings *ngIf="reportType=='Across Elections'" [settings]="analysisSettings" (ionChange)="reloadAnalysis()"> </analysis-settings>
+    <results-settings *ngIf="settings.reportType=='Results'" [settings]="resultsSettings" (ionChange)="updateResults()"> </results-settings>
+    <prediction-settings *ngIf="settings.reportType=='Predictions'" [survey]="survey" (ionChange)="changePrediction()"> </prediction-settings>
+    <analysis-settings *ngIf="settings.reportType=='Analysis'" [settings]="analysisSettings" (ionChange)="reloadAnalysis()"> </analysis-settings>
   </div>
 </ion-card>
