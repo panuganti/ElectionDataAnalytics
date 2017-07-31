@@ -4,6 +4,7 @@ import { Survey } from '../../models/survey';
 import * as Enumerable from 'linq';
 import { MapSettings } from '../../models/map-settings';
 import { ResultsSettings } from '../../models/results-settings';
+import { AnalysisSettings } from '../../models/analysis-settings';
 
 @Component({
   selector: 'map-settings',
@@ -26,6 +27,11 @@ export class MapSettingsComponent {
     "showMargins": true
   };
 
+  analysisSettings: AnalysisSettings = {
+    "electionsNo": 1 ,
+    "analysisType": 'safeSeats'
+  }
+
   constructor(public data: DataProvider) {
   }
 
@@ -34,15 +40,17 @@ export class MapSettingsComponent {
     this.settings.electionYear = this.resultsSettings.electionYear;
     this.settings.marginLimit = this.resultsSettings.marginLimit;
     this.settings.showMargins = this.resultsSettings.showMargins;
+    this.settings.reportType = this.reportType;
     this.ionChange.emit();
   }
 
-  reportTypeChanged() { 
+  reloadAnalysis() {
+    this.settings.electionsNo = this.analysisSettings.electionsNo;
+    this.settings.analysisType = this.analysisSettings.analysisType;
+    this.settings.reportType = this.reportType;
+    this.ionChange.emit();    
   }
-
-  marginsOptionChanged() { }
-
-  acBreakdownOptionChanged() { }
+  reportTypeChanged() {   }
 
   hidden: boolean = false;
   toggle() {
@@ -55,24 +63,6 @@ export class MapSettingsComponent {
     if (id == 0 || !constituenciesEn.any(c => c.id == id))
     { return 'All'; }
     return constituenciesEn.first(c => c.id == id).name;
-  }
-
-  transparency: number = 50;
-  selectedWard: string;
-
-  redraw() {
-    this.settings.transparency = this.transparency;
-    /*
-    this.settings.electionYear = this.electionYear;
-    this.settings.mapType = this.mapType;
-    this.settings.margins = this.margins;
-    this.settings.selectedAC = this.selectedAC;
-    this.settings.selectedWard = this.selectedWard;
-    this.settings.acBreakdown = this.acBreakdown;
-    */
-    this.settings.reportType = this.reportType;
-    this.ionChange.emit();
-    this.toggle();
   }
 
   changePrediction() {

@@ -10,8 +10,8 @@
   <div *ngIf="!hidden">
     <ion-list>
       <ion-item *ngIf="showReportsOptions">
-        <ion-label color="dark"> Map Type </ion-label>
-        <ion-select [(ngModel)]="reportType" (ionChange)="reportTypeChanged()">
+        <ion-label color="dark" > Map Type </ion-label>
+        <ion-select [(ngModel)]="settings.reportType" (ionChange)="reportTypeChanged()">
           <ion-option *ngFor="let report of reportTypes" [selected]="report==reportType" value="{{report}}"> {{report}}</ion-option>
         </ion-select>
       </ion-item>
@@ -19,11 +19,6 @@
     <hr/>
     <results-settings *ngIf="reportType=='Results'" [settings]="resultsSettings" (ionChange)="updateResults()"> </results-settings>
     <prediction-settings *ngIf="reportType=='Predictions'" [survey]="survey" (ionChange)="changePrediction()"> </prediction-settings>
-    <analysis-settings *ngIf="reportType=='Across Elections'" [settings]="settings" (ionChange)="reloadAnalysis()"> </analysis-settings>
-    <!--
-    <ion-item tappable>
-      <button block [disabled]="redrawDisabled" ion-button (click)="redraw()"> Submit </button>
-    </ion-item>
-    -->
+    <analysis-settings *ngIf="reportType=='Across Elections'" [settings]="analysisSettings" (ionChange)="reloadAnalysis()"> </analysis-settings>
   </div>
 </ion-card>

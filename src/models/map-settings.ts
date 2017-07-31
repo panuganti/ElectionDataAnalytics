@@ -4,4 +4,6 @@ export class MapSettings {
     marginLimit: number;
     showMargins: boolean;
     reportType: string;
+    electionsNo: number;
+    analysisType: string;
 }

@@ -33,11 +33,8 @@ export class ResultsSettingsComponent {
   }
 
   setElectionYear() {
-    if (this.electionRangeValue < 2003) {
+    if (this.electionRangeValue < 2004) {
       this.settings.electionYear = 1999;
-    }
-    else if (this.electionRangeValue < 2004) {
-      this.settings.electionYear = 2003;
     }
     else if (this.electionRangeValue < 2008) {
       this.settings.electionYear = 2004;

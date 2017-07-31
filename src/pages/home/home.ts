@@ -26,13 +26,15 @@ export class HomePage {
   showMargins: boolean = true;
   reportType: string = "Results";
   electionYear: any = 2014;
-  transparency: number = 70;
+  transparency: number = 100;
   settings: MapSettings = {
     "transparency": 100,
     "electionYear": 2014,
     "marginLimit": 0,
     "showMargins": true,
     "reportType": "Results",
+    "electionsNo": 1,
+    "analysisType": 'safeSeats'
   }
 
   boothGeoJson: any;
@@ -82,14 +84,52 @@ export class HomePage {
   }
 
   async redraw() {
-    this.transparency = this.settings.transparency;
-    this.electionYear = this.settings.electionYear;
-    this.marginLimit = this.settings.marginLimit;
-    this.showMargins = this.settings.showMargins;
-    this.reportType = this.settings.reportType;
-    this.loadMap();
-    await this.loadGeoJson();
-    await this.loadResults();
+    if (this.settings.reportType == 'Results') {
+      this.transparency = this.settings.transparency;
+      this.electionYear = this.settings.electionYear;
+      this.marginLimit = this.settings.marginLimit;
+      this.showMargins = this.settings.showMargins;
+      this.reportType = this.settings.reportType;
+      this.showLoading();
+      this.removeGeoJson();
+      await this.loadGeoJson();
+      await this.loadResults();
+      this.dismissLoading();
+    }
+    else if (this.settings.reportType == 'Analysis') {
+      this.loadMap();
+      this.electionYear = '2014';
+      this.loadGeoJson();
+      await this.showAnalysis();
+    }
+  }
+
+  async showAnalysis() {
+    var results = [];
+    this.results.push(await this.data.getResults('2014', 'ac'));
+    if (this.settings.electionsNo > 0) {
+      results.push(await this.data.getResults('2013', 'ac'));
+    }
+    if (this.settings.electionsNo > 1) {
+      results.push(await this.data.getResults('2009', 'ac'));
+    }
+    if (this.settings.electionsNo > 2) {
+      results.push(await this.data.getResults('2008', 'ac'));
+    }
+    if (this.settings.analysisType == 'safeSeats') {
+      await this.showSafeSeatsAnalysis(results);
+    }
+    else if (this.settings.analysisType == 'changeSeats') {
+      await this.showChangeSeatsAnalysis(results);
+    }
+  }
+
+  async showSafeSeatsAnalysis(results: any[]) {
+
+  }
+
+  async showChangeSeatsAnalysis(results: any[]) {
+
   }
 
   showLoading() {
@@ -116,6 +156,11 @@ export class HomePage {
     }
   }
 
+  removeGeoJson() {
+    this.geoJsonFeatures.forEach((val) => { this.map.data.remove(val) });
+  }
+
+  geoJsonFeatures: any[];
   async loadGeoJson() {
     if (this.electionYear < 2008) {
       this.geoJson = await this.data.getPreDelimGeoJson();
@@ -123,8 +168,13 @@ export class HomePage {
     else {
       this.geoJson = await this.data.getGeoJson();
     }
-    this.map.data.addGeoJson(this.geoJson);
-    this.map.data.addListener('click', (event) => { this.zone.run(() => this.acClicked(event)) })
+    this.geoJsonFeatures = this.map.data.addGeoJson(this.geoJson);
+    this.addGeoJsonEventHandlers();
+  }
+
+  addGeoJsonEventHandlers() {
+    //this.map.data.addListener('click', (event) => { this.zone.run(() => this.acClicked(event)) });
+    this.map.data.addListener('mouseover', (event) => { this.zone.run(() => this.acClicked(event)) });
   }
 
   async loadResults() {
@@ -176,7 +226,7 @@ export class HomePage {
       }
       let color = self.color.getColor(partyColor, marginPercent + 5, 0, 25);
       var fillOpacity;
-      if (this.settings.marginLimit != 0  && this.settings.marginLimit != 50000 && margin > this.settings.marginLimit) {
+      if (this.settings.marginLimit != 0 && this.settings.marginLimit != 50000 && margin > this.settings.marginLimit) {
         fillOpacity = 0 * this.transparency / 100;
       }
       else {
@@ -224,8 +274,14 @@ export class HomePage {
   acName: string = '';
   acClicked(event: any) {
     this.showAcName = true;
-    this.acName = event.feature.getProperty('ac_name');
-    this.showResults(event.feature.getProperty('ac'));
+    if (this.electionYear < 2008) {
+      this.acName = event.feature.getProperty('AC_NAME');
+      this.showResults(event.feature.getProperty('AC_NO'));
+    }
+    else {
+      this.acName = event.feature.getProperty('ac_name');
+      this.showResults(event.feature.getProperty('ac'));
+    }
   }
 
 

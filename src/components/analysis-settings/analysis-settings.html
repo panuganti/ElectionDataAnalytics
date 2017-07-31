@@ -1,0 +1,19 @@
+<ion-item>
+    <ion-label color="dark" style="font-size: 14px;">Analysis</ion-label>
+    <ion-select [(ngModel)]="analysisType" (ionChange)="analysisTypeChanged()">
+        <ion-option value="safeSeats">Safe Seats</ion-option>
+        <ion-option value="changeSeats"> Change Seats </ion-option>
+    </ion-select>
+</ion-item>
+<ion-item *ngIf="analysisType=='safeSeats'">
+    <ion-range min="0" max="3" pin="true" [(ngModel)]="settings.electionsNo" (ionChange)="changed()">
+        <ion-label range-left>0</ion-label>
+        <ion-label range-right>3</ion-label>
+    </ion-range>
+</ion-item>
+<ion-item *ngIf="analysisType=='changeSeats'">
+    <ion-range min="0" max="3" pin="true" [(ngModel)]="settings.electionsNo" (ionChange)="changed()">
+        <ion-label range-left>0</ion-label>
+        <ion-label range-right>3</ion-label>
+    </ion-range>
+</ion-item>
