@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Input, Component } from '@angular/core';
+import { AC } from '../../models/ac';
 
 @Component({
   selector: 'ac-list',
   templateUrl: 'ac-list.html'
 })
 export class AcListComponent {
+  @Input() results: any[];
+  acs: AC[];
 
   constructor() {
   }
@@ -12,5 +15,6 @@ export class AcListComponent {
   getBkgndColor(i: number) {
     return (i & 1) ? "white" : "orange";
   }
+
 
 }
