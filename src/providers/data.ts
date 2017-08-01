@@ -79,7 +79,7 @@ export class DataProvider {
   }
 
   getAllParties(): string[] {
-    return ["BJP", "INC", "JDS", "OTH", "IND"];
+    return ["BJP", "INC", "JDS", "OTH"];
   }
 
 }

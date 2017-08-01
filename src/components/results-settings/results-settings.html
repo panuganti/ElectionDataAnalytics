@@ -6,19 +6,16 @@
   <span style="float:left"> Election Year</span>
   <ion-badge> {{settings.electionYear}}</ion-badge>
 </ion-item>
-<ion-item class="tight-item">
-  <ion-range class="tight-range" min="{{minYear}}" max="{{maxYear}}" pin="true" [(ngModel)]="electionRangeValue" color="secondary"
-    (ionChange)="setElectionYear()">
-    <ion-label range-left>{{minYear}}</ion-label>
-    <ion-label range-right>{{maxYear}}</ion-label>
-  </ion-range>
-</ion-item>
+<ion-range class="tight-range" min="{{minYear}}" max="{{maxYear}}" pin="true" snaps="true" [(ngModel)]="electionRangeValue"
+  color="secondary" (ionChange)="setElectionYear()">
+  <ion-label range-left>{{minYear}}</ion-label>
+  <ion-label range-right>{{maxYear}}</ion-label>
+</ion-range>
 <ion-item>
   <ion-label>Show Margins</ion-label>
   <ion-checkbox [(ngModel)]="settings.showMargins" (ionChange)="changed()"></ion-checkbox>
 </ion-item>
-<ion-range min="0" step="1000" max="50000" pin="true" [(ngModel)]="settings.marginLimit" color="secondary" 
-    (ionChange)="changed()">
+<ion-range min="0" step="1000" max="50000" pin="true" [(ngModel)]="settings.marginLimit" color="secondary" (ionChange)="changed()">
   <ion-label range-left>0</ion-label>
   <ion-label range-right>50000</ion-label>
 </ion-range>
