@@ -9,6 +9,7 @@
         <map-settings *ngIf="showMapSettings" [settings]="settings" (ionChange)="redraw()"> </map-settings>
         <summary *ngIf="showSummary" [results]="results"> </summary>
         <ac-result *ngIf="showAcResults" [name]="acName" [results]="acResults"> </ac-result>
+        <ac-list *ngIf="showSummary" [acs]="acs"> </ac-list>
         <caste-breakup *ngIf="showCasteBreakup"> </caste-breakup>
     </div>
     <div id="legend">

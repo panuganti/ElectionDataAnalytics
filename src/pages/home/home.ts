@@ -51,6 +51,8 @@ export class HomePage {
   showMapSettings: boolean = true;
   showSummary: boolean = false;
 
+  acs: string[];
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public data: DataProvider, public color: ColorProvider, public loadingCtrl: LoadingController,
     public zone: NgZone, public afAuth: AngularFireAuth) {
@@ -320,16 +322,23 @@ export class HomePage {
 
   displayStyleMaps(styleMaps: any[]) {
     let styleMapsEn: any = Enumerable.from(styleMaps);
+    this.acs = [];
     this.map.data.setStyle((feature) => {
       var id;
+      var name;
       if (this.electionYear > 2008) {
         id = feature.getProperty('ac');
+        name = feature.getProperty('ac_name');
       }
       else {
         id = feature.getProperty('AC_NO');
+        name = feature.getProperty('AC_NAME');
       }
       if (styleMapsEn.any(t => t.Id == id)) {
         var style = styleMapsEn.first(t => t.Id == id).Style;
+        if (style.fillOpacity != 0) {
+          this.acs.push(name);
+        }
         return style;
       }
       return {

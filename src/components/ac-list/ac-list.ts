@@ -1,19 +1,21 @@
 import { Input, Component } from '@angular/core';
-import { AC } from '../../models/ac';
 
 @Component({
   selector: 'ac-list',
   templateUrl: 'ac-list.html'
 })
 export class AcListComponent {
-  @Input() results: any[];
-  acs: AC[];
-
+  @Input() acs: string[];
+  show: boolean = false;
   constructor() {
   }
 
+  toggle() {
+    this.show = !this.show;
+  }
+
   getBkgndColor(i: number) {
-    return (i & 1) ? "white" : "orange";
+    return (i & 1) ? "white" : "lightgreen";
   }
 
 

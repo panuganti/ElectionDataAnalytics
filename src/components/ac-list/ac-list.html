@@ -1,11 +1,17 @@
 <ion-card>
+  {{results}}
   <ion-grid>
     <ion-row style="color:white; background: black">
-      <ion-col> AC </ion-col>
+      <ion-col>
+        <ion-buttons end>
+          Constituencies
+          <button *ngIf="show" ion-button clear (click)="toggle()">Hide</button>
+          <button *ngIf="!show" ion-button clear (click)="toggle()">Show</button>
+        </ion-buttons>
+      </ion-col>
     </ion-row>
     <ion-row *ngFor="let ac of acs; let i = index" [style.backgroundColor]="getBkgndColor(i)">
-      <ion-col> {{ac.name}} </ion-col>
-      <ion-col> {{ac.value}} </ion-col>
+      <ion-col *ngIf="show"> {{ac}} </ion-col>
     </ion-row>
   </ion-grid>
 </ion-card>
