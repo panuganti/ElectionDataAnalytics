@@ -3,8 +3,10 @@
   <ion-grid>
     <ion-row style="color:white; background: black">
       <ion-col>
+        <button ion-button clear danger> <span style="color: white !important"> Constituencies </span> </button>
+      </ion-col>
+      <ion-col>
         <ion-buttons end>
-          Constituencies
           <button *ngIf="show" ion-button clear (click)="toggle()">Hide</button>
           <button *ngIf="!show" ion-button clear (click)="toggle()">Show</button>
         </ion-buttons>

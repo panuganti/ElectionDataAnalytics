@@ -7,6 +7,8 @@ import * as Enumerable from 'linq';
 })
 export class SummaryComponent {
   @Input() results: any[];
+  @Input() acIds: any[];
+
   groups: any[];
   parties = ["Bharatiya Janta Party", "Indian National Congress", "Janata Dal (Secular)", "Independent"];
   constructor() {
@@ -14,7 +16,9 @@ export class SummaryComponent {
 
   getSummary() {
     if (!Enumerable.from(this.results).any()) { return; }
-    let winners = Enumerable.from(this.results).select(r => this.GetWinningParty(r.Votes));
+    let acsEn = Enumerable.from(this.acIds);
+    let winners = Enumerable.from(this.results).where(r => acsEn.any(ac => ac == r.Id))
+      .select(r => this.GetWinningParty(r.Votes));
     return Enumerable.from(this.parties).select(p => {
       return { "party": p, "count": winners.count(w => w == p) }
     }).toArray();

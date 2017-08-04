@@ -7,7 +7,7 @@
         </button>
         </ion-buttons>  
         <map-settings *ngIf="showMapSettings" [settings]="settings" (ionChange)="redraw()"> </map-settings>
-        <summary *ngIf="showSummary" [results]="results"> </summary>
+        <summary *ngIf="showSummary" [results]="results" [acIds]="acIds"> </summary>
         <ac-result *ngIf="showAcResults" [name]="acName" [results]="acResults"> </ac-result>
         <ac-list *ngIf="showSummary" [acs]="acs"> </ac-list>
         <caste-breakup *ngIf="showCasteBreakup"> </caste-breakup>

@@ -320,9 +320,11 @@ export class HomePage {
     this.displayStyleMaps(this.styleMaps);
   }
 
+  acIds: any[];
   displayStyleMaps(styleMaps: any[]) {
     let styleMapsEn: any = Enumerable.from(styleMaps);
     this.acs = [];
+    this.acIds = [];
     this.map.data.setStyle((feature) => {
       var id;
       var name;
@@ -338,6 +340,7 @@ export class HomePage {
         var style = styleMapsEn.first(t => t.Id == id).Style;
         if (style.fillOpacity != 0) {
           this.acs.push(name);
+          this.acIds.push(id);
         }
         return style;
       }
