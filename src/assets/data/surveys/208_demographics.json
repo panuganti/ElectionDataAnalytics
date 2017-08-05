@@ -1,0 +1,27 @@
+{
+    "men": 51,
+    "women": 49,
+
+    "lingayat": 20,
+    "vokkaliga": 10,
+    "kuruba": 10,
+    "h": 10,
+    "brahmin": 5,
+    "dalit": 10,
+    "uc": 8,
+    "obc": 10,
+    "muslim": 15,
+    "christian": 2,
+
+    "_18To24": 20,
+    "_25To34": 25,
+    "_35To44": 25,
+    "_45To60": 20,
+    "_gt60": 10,
+
+    "_lt10k": 50,
+    "_10kTo20k": 20,
+    "_20kTo40k": 10,
+    "_40kTo1Lac": 5,
+    "_gt1Lac": 5
+}

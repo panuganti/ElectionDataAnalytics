@@ -1,6 +1,6 @@
 {
-    "men": 10,
-    "women": 10,
+    "men": 51,
+    "women": 49,
 
     "lingayat": 10,
     "vokkaliga": 10,
@@ -23,5 +23,5 @@
     "_10kTo20k": 10,
     "_20kTo40k": 10,
     "_40kTo1Lac": 10,
-    "_gt1Lac": 10,
+    "_gt1Lac": 10
 }
