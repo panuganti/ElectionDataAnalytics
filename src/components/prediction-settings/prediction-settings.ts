@@ -25,6 +25,7 @@ export class PredictionSettingsComponent {
     constructor(public data: DataProvider, public surveyCollection: SurveyCollection) {
     }
 
+    showVotes: boolean = false;
     async acSelectionChanged() {
         this.surveyCollection.bjpSurvey = await this.data.getSurvey(this.selectedAC, 'bjp');
         this.surveyCollection.congSurvey = await this.data.getSurvey(this.selectedAC, 'cong');

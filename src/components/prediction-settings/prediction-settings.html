@@ -5,7 +5,7 @@
       <ion-option *ngFor="let ac of acs" value="{{ac}}"> {{getAcName(ac)}}</ion-option>
     </ion-select>
   </ion-item>
-  <ion-item>
+  <ion-item *ngIf="showControls">
     <ion-grid>
       <ion-row>
         <ion-col>
@@ -244,8 +244,4 @@
       </ion-range>
     </ion-item>
   </ion-item-group>
-
-  <ion-item>
-    {{winner}}
-  </ion-item>
 </ion-list>
