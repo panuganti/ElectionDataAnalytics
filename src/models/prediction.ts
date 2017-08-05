@@ -67,17 +67,13 @@ export class Prediction {
         return votes;
     }
 
-    computeChangedVotes(changedBjpVotes, bjpVotes, congVotes, jdsVotes) {
+    computeChangedVotes(changedBjpVotes, bjpVotes, congVotes, jdsVotes) : number {
         let othersVotes = 100 - (bjpVotes + congVotes + jdsVotes);
         let delta = changedBjpVotes - bjpVotes;   
         let changedCongVotes = congVotes - (delta * congVotes)/(congVotes + jdsVotes + othersVotes);
         let changedJdsVotes = jdsVotes - (delta * jdsVotes)/(congVotes + jdsVotes + othersVotes);
         let changedOthersVotes = othersVotes - (delta * othersVotes)/(congVotes + jdsVotes + othersVotes);
-
-        this.updateAgeVotes();
-        this.updateGenderVotes();
-        this.updateCommunityVotes();
-        this.updateIncomeVotes();
+        return delta;
     }
 
     genderVotesChanged() {
@@ -85,12 +81,11 @@ export class Prediction {
         let bjpVotes = this.calculateVotesBasedOnGender(this.bjpSurvey);
         let congVotes = this.calculateVotesBasedOnGender(this.congSurvey);
         let jdsVotes = this.calculateVotesBasedOnGender(this.jdsSurvey);
-        this.computeChangedVotes(changedBjpVotes, bjpVotes, congVotes, jdsVotes);
+        let delta = this.computeChangedVotes(changedBjpVotes, bjpVotes, congVotes, jdsVotes);
 
-        this.updateAgeVotes();
-        this.updateGenderVotes();
-        this.updateCommunityVotes();
-        this.updateIncomeVotes();
+        this.updateAgeVotes(delta);
+        this.updateCommunityVotes(delta);
+        this.updateIncomeVotes(delta);
     }
 
     ageVotesChanged() {
@@ -98,11 +93,11 @@ export class Prediction {
         let bjpVotes = this.calculateVotesBasedOnAge(this.bjpSurvey);
         let congVotes = this.calculateVotesBasedOnAge(this.congSurvey);
         let jdsVotes = this.calculateVotesBasedOnAge(this.jdsSurvey);
-        this.computeChangedVotes(changedBjpVotes, bjpVotes, congVotes, jdsVotes);
+        let delta = this.computeChangedVotes(changedBjpVotes, bjpVotes, congVotes, jdsVotes);
 
-        this.updateGenderVotes();
-        this.updateCommunityVotes();
-        this.updateIncomeVotes();
+        this.updateGenderVotes(delta);
+        this.updateCommunityVotes(delta);
+        this.updateIncomeVotes(delta);
     }
 
     communityVotesChanged() { 
@@ -110,11 +105,11 @@ export class Prediction {
         let bjpVotes = this.calculateVotesBasedOnCommunity(this.bjpSurvey);
         let congVotes = this.calculateVotesBasedOnCommunity(this.congSurvey);
         let jdsVotes = this.calculateVotesBasedOnCommunity(this.jdsSurvey);
-        this.computeChangedVotes(changedBjpVotes, bjpVotes, congVotes, jdsVotes);        
+        let delta = this.computeChangedVotes(changedBjpVotes, bjpVotes, congVotes, jdsVotes);        
 
-        this.updateAgeVotes();
-        this.updateGenderVotes();
-        this.updateIncomeVotes();
+        this.updateAgeVotes(delta);
+        this.updateGenderVotes(delta);
+        this.updateIncomeVotes(delta);
     }
 
     incomeVotesChanged() {
@@ -122,27 +117,27 @@ export class Prediction {
         let bjpVotes = this.calculateVotesBasedOnIncome(this.bjpSurvey);
         let congVotes = this.calculateVotesBasedOnIncome(this.congSurvey);
         let jdsVotes = this.calculateVotesBasedOnIncome(this.jdsSurvey);
-        this.computeChangedVotes(changedBjpVotes, bjpVotes, congVotes, jdsVotes);        
+        let delta = this.computeChangedVotes(changedBjpVotes, bjpVotes, congVotes, jdsVotes);        
 
-        this.updateAgeVotes();
-        this.updateGenderVotes();
-        this.updateCommunityVotes();
-        this.updateIncomeVotes();
+        this.updateAgeVotes(delta);
+        this.updateGenderVotes(delta);
+        this.updateCommunityVotes(delta);
     }
 
-     updateGenderVotes() {
+     updateGenderVotes(delta) {
+        this.bjpSurvey.men = this.bjpSurvey.men + delta * this.demographics.men;
+        this.bjpSurvey.men = this.bjpSurvey.women + delta * this.demographics.women;
+     }
+
+     updateCommunityVotes(delta) {
 
      }
 
-     updateCommunityVotes() {
+     updateAgeVotes(delta) {
 
      }
 
-     updateAgeVotes() {
-
-     }
-
-     updateIncomeVotes() {
+     updateIncomeVotes(delta) {
 
      }
 }
