@@ -15,8 +15,6 @@ export class MapSettingsComponent {
   @Output() ionChange: EventEmitter<any> = new EventEmitter<any>();
   @Input() settings: MapSettings;
 
-  acs: number[] = [0, 44, 71, 203, 208];
-
   showReportsOptions: boolean = true;
   reportTypes: string[] = ["Results", "Predictions", "Analysis"];
   resultsSettings: ResultsSettings = {
@@ -52,14 +50,6 @@ export class MapSettingsComponent {
   hidden: boolean = false;
   toggle() {
     this.hidden = !this.hidden;
-  }
-
-  getAcName(id: number) {
-    var sample_constituencies = this.data.getSampleConstituencies();
-    var constituenciesEn = Enumerable.from(sample_constituencies);
-    if (id == 0 || !constituenciesEn.any(c => c.id == id))
-    { return 'All'; }
-    return constituenciesEn.first(c => c.id == id).name;
   }
 
   changePrediction() {

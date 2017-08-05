@@ -43,6 +43,18 @@ export class DataProvider {
     return this.sample_constituencies;
   }
 
+  async  getSurvey(id: number, party: string) : Promise<any> {
+    switch(party) {
+      case 'bjp': return await this.http.get('assets/data/surveys/' + id  + '_bjp.json').map(res => res.json()).toPromise();
+      case 'cong': return await this.http.get('assets/data/surveys/' + id  + '_cong.json').map(res => res.json()).toPromise();
+      case 'jds': return await this.http.get('assets/data/surveys/' + id  + '_jds.json').map(res => res.json()).toPromise();
+    }
+  }
+
+  async getDemographics(id: number): Promise<any> {
+      return await this.http.get('assets/data/surveys/' + id  + '_demographics.json').map(res => res.json()).toPromise();
+  }
+
   async getResults(year: string, type: string) {
     switch (year) {
       case '2014':

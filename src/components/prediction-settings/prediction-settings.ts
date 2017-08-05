@@ -1,78 +1,66 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Survey } from '../../models/survey';
+import { DataProvider } from '../../providers/data';
+import * as Enumerable from 'linq';
 
 @Component({
   selector: 'prediction-settings',
-  templateUrl: 'prediction-settings.html'
+  templateUrl: 'prediction-settings.html',
+  providers: [DataProvider]
 })
 export class PredictionSettingsComponent {
-  @Input() survey: Survey;
+  bjpSurvey: Survey;
+  congSurvey: Survey;
+  jdsSurvey: Survey;
+  demographics: Survey;
+  selectedAC: number;
+  survey: Survey;
   @Output() ionChange: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor() {
+  selectedSurvey: Survey;
+
+  acs: number[] = [44, 71, 203, 208];
+
+  constructor(public data: DataProvider) {
   }
 
-  ngOnInit() {
-    if (!this.survey) { return; }
-    this.men = this.survey.men;
-    this.women = this.survey.women;
-
-    this.lingayat = this.survey.lingayat;
-    this.vokkaliga = this.survey.vokkaliga;
-    this.kuruba = this.survey.kuruba;
-    this.h = this.survey.h;
-    this.brahmin = this.survey.brahmin;
-    this.dalit = this.survey.dalit;
-    this.uc = this.survey.uc;
-    this.obc = this.survey.obc;
-    this.muslim = this.survey.muslim;
-    this.christian = this.survey.christian;
-
-    this._18To24 = this.survey._18To24;
-    this._25To34 = this.survey._25To34;
-    this._35To44 = this.survey._35To44;
-    this._45To60 = this.survey._45To60;
-    this._gt60 = this.survey._gt60;
-
-    this._lt10k = this.survey._lt10k;
-    this._10kTo20k = this.survey._10kTo20k;
-    this._20kTo40k = this.survey._20kTo40k;
-    this._40kTo1Lac = this.survey._40kTo1Lac;
-    this._gt1Lac = this.survey._gt1Lac;
+  async acSelectionChanged() {
+    this.bjpSurvey = await this.data.getSurvey(this.selectedAC, 'bjp');
+    this.congSurvey = await this.data.getSurvey(this.selectedAC, 'cong');
+    this.jdsSurvey = await this.data.getSurvey(this.selectedAC, 'jds');
+    this.demographics = await this.data.getDemographics(this.selectedAC);
+    this.survey = this.bjpSurvey;
+    this.showControls = true;
   }
 
-  men: number;
-  women: number;
+  votes: number[] = [0,0,0,0]; 
+  guessWinner() {
+    this.votes[0] = (this.bjpSurvey.men * this.demographics.men + this.bjpSurvey.women * this.demographics.women) / 100;
+    this.votes[1] = (this.congSurvey.men * this.demographics.men + this.congSurvey.women * this.demographics.women) / 100;
+    this.votes[2] = (this.jdsSurvey.men * this.demographics.men + this.jdsSurvey.women * this.demographics.women) / 100;
+    this.votes[3] = 100 - (this.votes[0] + this.votes[1] + this.votes[2]);
+  }
+
+
+  getAcName(id: number) {
+    var sample_constituencies = this.data.getSampleConstituencies();
+    var constituenciesEn = Enumerable.from(sample_constituencies);
+    if (id == 0 || !constituenciesEn.any(c => c.id == id))
+    { return 'All'; }
+    return constituenciesEn.first(c => c.id == id).name;
+  }
+
+  showControls: boolean = false;
   showGender: boolean = false;
   toggleGender() { this.showGender = !this.showGender; }
 
-  lingayat: number;
-  vokkaliga: number;
-  kuruba: number;
-  h: number;
-  brahmin: number;
-  dalit: number;
-  uc: number;
-  obc: number;
-  muslim: number;
-  christian: number;
   showCaste: boolean = false;
   toggleCaste() { this.showCaste = !this.showCaste; }
 
   showAge: boolean = false;
-  _18To24: number;
-  _25To34: number;
-  _35To44: number;
-  _45To60: number;
-  _gt60: number;
   toggleAge() { this.showAge = !this.showAge; }
 
   showIncome: boolean = false;
-  _lt10k: number;
-  _10kTo20k: number;
-  _20kTo40k: number;
-  _40kTo1Lac: number;
-  _gt1Lac: number;
   toggleIncome() { this.showIncome = !this.showIncome; }
 
   genderChange() {

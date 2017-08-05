@@ -18,7 +18,7 @@
     </ion-list>
     <hr/>
     <results-settings *ngIf="settings.reportType=='Results'" [settings]="resultsSettings" (ionChange)="updateResults()"> </results-settings>
-    <prediction-settings *ngIf="settings.reportType=='Predictions'" [survey]="survey" (ionChange)="changePrediction()"> </prediction-settings>
+    <prediction-settings *ngIf="settings.reportType=='Predictions'" (ionChange)="changePrediction()"> </prediction-settings>
     <analysis-settings *ngIf="settings.reportType=='Analysis'" [settings]="analysisSettings" (ionChange)="reloadAnalysis()"> </analysis-settings>
   </div>
 </ion-card>

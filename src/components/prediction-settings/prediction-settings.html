@@ -1,12 +1,57 @@
-<ion-item *ngIf="reportType=='Predictions'">
-  <ion-label color="dark"> Constituency </ion-label>
-  <ion-select [(ngModel)]="selectedAC" (ionChange)="acSelectionChanged()">
-    <ion-option *ngFor="let ac of acs" value="{{ac}}"> {{getAcName(ac)}}</ion-option>
-  </ion-select>
-</ion-item>
-
-
 <ion-list>
+  <ion-item>
+    <ion-label color="dark"> Constituency </ion-label>
+    <ion-select [(ngModel)]="selectedAC" (ionChange)="acSelectionChanged()">
+      <ion-option *ngFor="let ac of acs" value="{{ac}}"> {{getAcName(ac)}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          Party
+        </ion-col>
+        <ion-col>
+          Vote %
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          BJP
+        </ion-col>
+        <ion-col>
+          {{votes[0]}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          Congress
+        </ion-col>
+        <ion-col>
+          {{votes[1]}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          JD(S)
+        </ion-col>
+        <ion-col>
+          {{votes[2]}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          Others/Undecided
+        </ion-col>
+        <ion-col>
+          {{votes[3]}}
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+</ion-list>
+
+<ion-list *ngIf="showControls">
   <ion-item-group>
     <ion-item>
       <div style="float:left" color="dark"> <button ion-button clear> Gender</button> </div>
