@@ -6,8 +6,10 @@
       <ion-col col-2> Seats </ion-col>
     </ion-row>
     <ion-row *ngFor="let result of getSummary(); let i = index" [style.backgroundColor]="getBkgndColor(i)">
-      <ion-col> {{result.party}} </ion-col>
+      <ion-col (click)="showACs(result.party)"> {{result.party}} </ion-col>
       <ion-col> {{result.count}} </ion-col>
     </ion-row>
   </ion-grid>
 </ion-card>
+
+<ac-list *ngIf="showSummary" [acs]="acs"> </ac-list>

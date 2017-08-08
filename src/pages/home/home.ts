@@ -297,13 +297,23 @@ export class HomePage {
     this.geoJsonFeatures.forEach((val) => { this.map.data.remove(val) });
   }
 
+  nameIdMap: any[];
   geoJsonFeatures: any[];
   async loadGeoJson() {
+    let geojsonfornames: any[];
     if (this.electionYear < 2008) {
       this.geoJson = await this.data.getPreDelimGeoJson();
+      geojsonfornames = this.geoJson.features;
+      debugger;
+      this.nameIdMap = Enumerable.from(geojsonfornames).select(c => { return { "acId": c.properties.AC_ID, "name": c.properties.AC_NAME }}).toArray();
+      debugger;
     }
     else {
       this.geoJson = await this.data.getGeoJson();
+      geojsonfornames = this.geoJson.features;
+      debugger;
+      this.nameIdMap = Enumerable.from(geojsonfornames).select(c => { return { "acId": c.properties.ac, "name": c.properties.ac_name }}).toArray();
+      debugger;
     }
     this.geoJsonFeatures = this.map.data.addGeoJson(this.geoJson);
     this.addGeoJsonEventHandlers();
@@ -312,6 +322,7 @@ export class HomePage {
   addGeoJsonEventHandlers() {
     this.map.data.addListener('click', (event) => { this.zone.run(() => this.acClicked(event)) });
   }
+
 
   async loadResults() {
     this.showSummary = true;
