@@ -16,8 +16,8 @@ export class SummaryComponent {
 
   getSummary() {
     if (!Enumerable.from(this.results).any()) { return; }
-    let acsEn = Enumerable.from(this.acIds);
-    let winners = Enumerable.from(this.results).where(r => acsEn.any(ac => ac == r.Id))
+//    let acsEn = Enumerable.from(this.acIds);
+    let winners = Enumerable.from(this.results)
       .select(r => this.GetWinningParty(r.Votes));
     return Enumerable.from(this.parties).select(p => {
       return { "party": p, "count": winners.count(w => w == p) }
