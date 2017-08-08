@@ -8,7 +8,10 @@ import * as Enumerable from 'linq';
 export class SummaryComponent {
   @Input() results: any[];
   @Input() acIds: any[];
+  @Input() nameIdMap: any[];
 
+  acs: any[];
+  summaryACs: any[];
   groups: any[];
   parties = ["Bharatiya Janta Party", "Indian National Congress", "Janata Dal (Secular)", "Independent"];
   constructor() {
@@ -16,13 +19,20 @@ export class SummaryComponent {
 
   getSummary() {
     if (!Enumerable.from(this.results).any()) { return; }
-    let acsEn = Enumerable.from(this.acIds);
-    let winners = Enumerable.from(this.results).where(r => acsEn.any(ac => ac == r.Id))
+    let winners = Enumerable.from(this.results)
       .select(r => this.GetWinningParty(r.Votes));
-    return Enumerable.from(this.parties).select(p => {
+    this.summaryACs = Enumerable.from(this.parties).select(p => {
       return { "party": p, "count": winners.count(w => w == p) }
     }).toArray();
+    return this.summaryACs;
+  }
 
+  showACs(party: string) {
+    let nameIdMapEn = Enumerable.from(this.nameIdMap);
+    let winners = Enumerable.from(this.results)
+      .select(r => { return { "id": r.Id, "winner":  this.GetWinningParty(r.Votes) };} );
+    let acs = winners.where(w => w.winner == party);
+    this.acs = nameIdMapEn.where(ni => acs.any(ac => ac.id == ni.acId)).select(ni => ni.name).toArray();
   }
 
   GetWinningParty(votes: any[]): string {

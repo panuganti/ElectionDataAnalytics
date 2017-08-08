@@ -19,7 +19,7 @@ export class PredictionSettingsComponent {
 
     selectedSurvey: Survey;
 
-    acs: number[] = [44, 71, 203, 208];
+    acs: number[] = [44];
     votes: number[] = [0, 0, 0, 0];
 
     constructor(public data: DataProvider, public surveyCollection: SurveyCollection) {
