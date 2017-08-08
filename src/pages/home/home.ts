@@ -310,7 +310,7 @@ export class HomePage {
   }
 
   addGeoJsonEventHandlers() {
-    this.map.data.addListener('mouseover', (event) => { this.zone.run(() => this.acClicked(event)) });
+    this.map.data.addListener('click', (event) => { this.zone.run(() => this.acClicked(event)) });
   }
 
   async loadResults() {
