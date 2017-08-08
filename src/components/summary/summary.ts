@@ -10,7 +10,6 @@ export class SummaryComponent {
   @Input() acIds: any[];
   @Input() nameIdMap: any[];
 
-  showSummary: boolean = true;
   acs: any[];
   summaryACs: any[];
   groups: any[];
@@ -34,7 +33,6 @@ export class SummaryComponent {
       .select(r => { return { "id": r.Id, "winner":  this.GetWinningParty(r.Votes) };} );
     let acs = winners.where(w => w.winner == party);
     this.acs = nameIdMapEn.where(ni => acs.any(ac => ac.id == ni.acId)).select(ni => ni.name).toArray();
-    console.log(party);
   }
 
   GetWinningParty(votes: any[]): string {

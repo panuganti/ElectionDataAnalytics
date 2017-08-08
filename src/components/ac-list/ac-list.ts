@@ -6,7 +6,7 @@ import { Input, Component } from '@angular/core';
 })
 export class AcListComponent {
   @Input() acs: string[];
-  show: boolean = false;
+  show: boolean = true;
   constructor() {
   }
 
