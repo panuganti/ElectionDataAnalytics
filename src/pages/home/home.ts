@@ -328,7 +328,7 @@ export class HomePage {
     this.map.data.setStyle((feature) => {
       var id;
       var name;
-      if (this.electionYear > 2008) {
+      if (this.electionYear > 2007) {
         id = feature.getProperty('ac');
         name = feature.getProperty('ac_name');
       }
