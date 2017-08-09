@@ -37,13 +37,11 @@ export class MapSettingsComponent {
     this.settings.electionYear = this.resultsSettings.electionYear;
     this.settings.marginLimit = this.resultsSettings.marginLimit;
     this.settings.showMargins = this.resultsSettings.showMargins;
-    this.ionChange.emit();
   }
 
   reloadAnalysis() {
     this.settings.electionsNo = this.analysisSettings.electionsNo;
     this.settings.analysisType = this.analysisSettings.analysisType;
-    this.ionChange.emit();    
   }
   reportTypeChanged() {   }
 
@@ -53,6 +51,10 @@ export class MapSettingsComponent {
   }
 
   changePrediction() {
+  }
+
+  reloadMap() {
+    this.ionChange.emit();
   }
 
   survey: Survey = {

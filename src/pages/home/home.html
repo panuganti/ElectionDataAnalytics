@@ -1,12 +1,16 @@
+<ion-header>
+    <ion-buttons end>
+        <button ion-button icon-only clear (click)="openSettingsModal()">
+            <ion-icon name="settings"></ion-icon>
+        </button>
+        <button ion-button icon-only clear (click)="signOut()">
+            <ion-icon name="power"></ion-icon>
+        </button>
+    </ion-buttons>
+</ion-header>
 <ion-content>
     <div id="left" #map> </div>
     <div id="right">
-        <ion-buttons end>
-            <button ion-button icon-only clear (click)="signOut()">
-            <ion-icon name="power"></ion-icon>
-        </button>
-        </ion-buttons>  
-        <map-settings *ngIf="showMapSettings" [settings]="settings" (ionChange)="redraw()"> </map-settings>
         <summary *ngIf="showSummary" [nameIdMap]="nameIdMap" [results]="results" [acIds]="acIds"> </summary>
         <ac-result *ngIf="showAcResults" [name]="acName" [results]="acResults"> </ac-result>
         <caste-breakup *ngIf="showCasteBreakup"> </caste-breakup>

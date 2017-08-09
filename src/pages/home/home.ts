@@ -1,6 +1,6 @@
 //region Imports
 import { Component, ViewChild, ElementRef, NgZone } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, Loading } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, Loading, ModalController, Modal } from 'ionic-angular';
 import { DataProvider } from '../../providers/data';
 import { ColorProvider } from '../../providers/color';
 import * as Enumerable from 'linq';
@@ -44,7 +44,7 @@ export class HomePage {
   loading: Loading;
   acResults: CandidateVote[];
 
-  showLegend: boolean = true;
+  showLegend: boolean = false;
   showAcResults: boolean = false;
   showCasteBreakup: boolean = false;
   showAcName: boolean = false;
@@ -54,12 +54,22 @@ export class HomePage {
   acs: string[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
+    public modalCtrl: ModalController,
     public data: DataProvider, public color: ColorProvider, public loadingCtrl: LoadingController,
     public zone: NgZone, public afAuth: AngularFireAuth) {
     let email = window.localStorage.getItem('email');
     if (!email) {
       this.navCtrl.setRoot('LoginPage');
     }
+  }
+
+  openSettingsModal() {
+    let modal: Modal = this.modalCtrl.create('SettingsModalPage');
+    modal.present();
+    modal.onDidDismiss((data) => {
+      this.settings = data;
+      this.redraw();
+    })
   }
 
   signOut() {
