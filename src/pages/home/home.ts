@@ -304,16 +304,12 @@ export class HomePage {
     if (this.electionYear < 2008) {
       this.geoJson = await this.data.getPreDelimGeoJson();
       geojsonfornames = this.geoJson.features;
-      debugger;
-      this.nameIdMap = Enumerable.from(geojsonfornames).select(c => { return { "acId": c.properties.AC_ID, "name": c.properties.AC_NAME }}).toArray();
-      debugger;
+      this.nameIdMap = Enumerable.from(geojsonfornames).select(c => { return { "acId": c.properties.AC_NO, "name": c.properties.AC_NAME }}).toArray();
     }
     else {
       this.geoJson = await this.data.getGeoJson();
       geojsonfornames = this.geoJson.features;
-      debugger;
       this.nameIdMap = Enumerable.from(geojsonfornames).select(c => { return { "acId": c.properties.ac, "name": c.properties.ac_name }}).toArray();
-      debugger;
     }
     this.geoJsonFeatures = this.map.data.addGeoJson(this.geoJson);
     this.addGeoJsonEventHandlers();
