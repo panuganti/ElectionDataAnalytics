@@ -3,7 +3,7 @@
   <ion-grid>
     <ion-row style="color:white; background: black">
       <ion-col col-4> Party </ion-col>
-      <ion-col col-4>  %age </ion-col>
+      <ion-col col-4> %age </ion-col>
       <ion-col col-4> Votes </ion-col>
     </ion-row>
     <ion-row *ngFor="let result of results; let i = index" [style.backgroundColor]="getBkgndColor(i)" [hidden]="i>5">

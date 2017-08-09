@@ -11,7 +11,8 @@
 <ion-content>
     <div id="left" #map> </div>
     <div id="right">
-        <summary *ngIf="showSummary" [nameIdMap]="nameIdMap" [results]="results" [acIds]="acIds"> </summary>
+        <summary *ngIf="showSummary" [nameIdMap]="nameIdMap" [results]="results" [acIds]="acIds" (popover)="showAcResultsPopover($event)">
+        </summary>
         <ac-result *ngIf="showAcResults" [name]="acName" [results]="acResults"> </ac-result>
         <caste-breakup *ngIf="showCasteBreakup"> </caste-breakup>
     </div>

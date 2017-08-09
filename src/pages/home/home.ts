@@ -186,7 +186,7 @@ export class HomePage {
       if (self.settings.electionsNo > 1) {
         let results2En = Enumerable.from(acResults[2]).where(t => t.Id == element.Id);
         if (!results2En.any()) {
-          acStyleMaps.push(styleMap); return;          
+          acStyleMaps.push(styleMap); return;
         }
         let v2 = Enumerable.from(results2En.first().Votes)
         if (winner2014 != v2.first(t => t.Position == 1).Party) {
@@ -196,7 +196,7 @@ export class HomePage {
       if (self.settings.electionsNo > 2) {
         let results3En = Enumerable.from(acResults[3]).where(t => t.Id == element.Id);
         if (!results3En.any()) {
-          acStyleMaps.push(styleMap); return;          
+          acStyleMaps.push(styleMap); return;
         }
         let v3 = Enumerable.from(results3En.first().Votes)
         if (winner2014 != v3.first(t => t.Position == 1).Party) {
@@ -246,7 +246,7 @@ export class HomePage {
       if (self.settings.electionsNo > 1) {
         let results2En = Enumerable.from(acResults[2]).where(t => t.Id == element.Id);
         if (!results2En.any()) {
-          acStyleMaps.push(styleMap); return;          
+          acStyleMaps.push(styleMap); return;
         }
         let v2 = Enumerable.from(results2En.first().Votes)
         if (winner2014 != v2.first(t => t.Position == 1).Party) {
@@ -256,7 +256,7 @@ export class HomePage {
       if (self.settings.electionsNo > 2) {
         let results3En = Enumerable.from(acResults[3]).where(t => t.Id == element.Id);
         if (!results3En.any()) {
-          acStyleMaps.push(styleMap); return;          
+          acStyleMaps.push(styleMap); return;
         }
         let v3 = Enumerable.from(results3En.first().Votes)
         if (winner2014 != v3.first(t => t.Position == 1).Party) {
@@ -305,7 +305,7 @@ export class HomePage {
   }
 
   presentPopover() {
-    let popover: Popover = this.popoverCtrl.create('ResultsPopoverPage', {acName: this.acName, acResults: this.acResults});
+    let popover: Popover = this.popoverCtrl.create('ResultsPopoverPage', { acName: this.acName, acResults: this.acResults });
     popover.present();
   }
 
@@ -320,12 +320,12 @@ export class HomePage {
     if (this.electionYear < 2008) {
       this.geoJson = await this.data.getPreDelimGeoJson();
       geojsonfornames = this.geoJson.features;
-      this.nameIdMap = Enumerable.from(geojsonfornames).select(c => { return { "acId": c.properties.AC_NO, "name": c.properties.AC_NAME }}).toArray();
+      this.nameIdMap = Enumerable.from(geojsonfornames).select(c => { return { "acId": c.properties.AC_NO, "name": c.properties.AC_NAME } }).toArray();
     }
     else {
       this.geoJson = await this.data.getGeoJson();
       geojsonfornames = this.geoJson.features;
-      this.nameIdMap = Enumerable.from(geojsonfornames).select(c => { return { "acId": c.properties.ac, "name": c.properties.ac_name }}).toArray();
+      this.nameIdMap = Enumerable.from(geojsonfornames).select(c => { return { "acId": c.properties.ac, "name": c.properties.ac_name } }).toArray();
     }
     this.geoJsonFeatures = this.map.data.addGeoJson(this.geoJson);
     this.addGeoJsonEventHandlers();
@@ -376,6 +376,11 @@ export class HomePage {
       };
     })
 
+  }
+
+  showAcResultsPopover(event: string[]) {
+    let acPopover = this.popoverCtrl.create('ConstituenciesPopoverPage', { acs: event });
+    acPopover.present();
   }
 
   GenerateStyleMaps(acResults: Result[]): any[] {

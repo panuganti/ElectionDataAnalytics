@@ -2,18 +2,12 @@
   {{results}}
   <ion-grid>
     <ion-row style="color:white; background: black">
-      <ion-col>
-        <button ion-button clear danger> <span style="color: white !important"> Constituencies </span> </button>
-      </ion-col>
-      <ion-col>
-        <ion-buttons end>
-          <button *ngIf="show" ion-button clear (click)="toggle()">Hide</button>
-          <button *ngIf="!show" ion-button clear (click)="toggle()">Show</button>
-        </ion-buttons>
+      <ion-col text-center>
+        <span style="color: white !important"> Constituencies </span>
       </ion-col>
     </ion-row>
     <ion-row *ngFor="let ac of acs; let i = index" [style.backgroundColor]="getBkgndColor(i)">
-      <ion-col *ngIf="show"> {{ac}} </ion-col>
+      <ion-col text-center *ngIf="show"> {{ac}} </ion-col>
     </ion-row>
   </ion-grid>
 </ion-card>

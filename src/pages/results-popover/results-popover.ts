@@ -17,11 +17,7 @@ export class ResultsPopoverPage {
   ionViewDidLoad() {
     this.acName = this.navParams.get('acName');
     this.acResults = this.navParams.get('acResults');
-    console.log('ionViewDidLoad ResultsPopoverPage');
   }
 
-  dismiss() {
-    this.viewCtrl.dismiss();
-  }
 
 }

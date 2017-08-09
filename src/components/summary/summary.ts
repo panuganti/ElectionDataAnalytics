@@ -1,4 +1,4 @@
-import { Input, Component } from '@angular/core';
+import { Input, Component, Output, EventEmitter } from '@angular/core';
 import * as Enumerable from 'linq';
 
 @Component({
@@ -9,6 +9,7 @@ export class SummaryComponent {
   @Input() results: any[];
   @Input() acIds: any[];
   @Input() nameIdMap: any[];
+  @Output() popover: EventEmitter<string[]> = new EventEmitter<string[]>();
 
   acs: any[];
   summaryACs: any[];
@@ -33,6 +34,7 @@ export class SummaryComponent {
       .select(r => { return { "id": r.Id, "winner":  this.GetWinningParty(r.Votes) };} );
     let acs = winners.where(w => w.winner == party);
     this.acs = nameIdMapEn.where(ni => acs.any(ac => ac.id == ni.acId)).select(ni => ni.name).toArray();
+    this.popover.emit(this.acs);
   }
 
   GetWinningParty(votes: any[]): string {
