@@ -1,12 +1,13 @@
 //region Imports
 import { Component, ViewChild, ElementRef, NgZone } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, Loading, ModalController, Modal } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, Loading, ModalController, Modal, PopoverController, Popover } from 'ionic-angular';
 import { DataProvider } from '../../providers/data';
 import { ColorProvider } from '../../providers/color';
 import * as Enumerable from 'linq';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { LoginPage } from '../login/login';
 import { MapSettings } from '../../models/map-settings';
+import { CandidateVote } from '../../models/candidate-vote';
 //endregion Imports
 
 declare var d3;
@@ -54,7 +55,7 @@ export class HomePage {
   acs: string[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public modalCtrl: ModalController,
+    public modalCtrl: ModalController, public popoverCtrl: PopoverController,
     public data: DataProvider, public color: ColorProvider, public loadingCtrl: LoadingController,
     public zone: NgZone, public afAuth: AngularFireAuth) {
     let email = window.localStorage.getItem('email');
@@ -87,7 +88,7 @@ export class HomePage {
   async loadMap() {
     this.showLoading();
     let latLng = new google.maps.LatLng(12.96, 77.59);
-    let mapOptions = { center: latLng, zoom: 7 };
+    let mapOptions = { center: latLng, zoom: 6 };
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
     this.map.setMapTypeId('terrain');
     google.maps.event.addListenerOnce(this.map, 'idle', () => {
@@ -299,8 +300,13 @@ export class HomePage {
     if (Enumerable.from(this.results).any(r => r.Id == id)) {
       let acResult = Enumerable.from(this.results).first(r => r.Id == id);
       this.acResults = acResult.Votes;
-      this.showAcResults = true;
+      this.presentPopover();
     }
+  }
+
+  presentPopover() {
+    let popover: Popover = this.popoverCtrl.create('ResultsPopoverPage', {acName: this.acName, acResults: this.acResults});
+    popover.present();
   }
 
   removeGeoJson() {
@@ -475,13 +481,6 @@ export class Result {
     return en.first(t => t.Position == 1).Name;
   }
 
-}
-
-export class CandidateVote {
-  Votes: number;
-  Position: number;
-  Name: string;
-  Party: string;
 }
 
 export class Distribution {

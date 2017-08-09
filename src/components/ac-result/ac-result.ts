@@ -11,6 +11,21 @@ export class AcResultComponent {
   constructor() {
   }
 
+  getParty(party: string): string {
+    switch(party.trim()) {
+      case 'Bharatiya Janta Party':
+      return 'BJP';
+      case 'Indian National Congress': 
+        return 'INC';
+      case 'Janata Dal (Secular)':
+        return 'JD(S)';
+      case 'Independent':
+        return 'IND';
+      case 'Bahujan Samaj Party':
+        return 'BSP';
+    }
+  }
+
   getBkgndColor(i: number) {
     return (i & 1) ? "grey" : "lightblue";
   }

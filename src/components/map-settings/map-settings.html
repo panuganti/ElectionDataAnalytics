@@ -1,16 +1,8 @@
 <ion-card>
-  <ion-buttons end>
-    <button clear small *ngIf="!hidden" ion-button (click)="toggle()" end> 
-      Hide
-    </button>
-    <button clear small *ngIf="hidden" ion-button (click)="toggle()" end> 
-        <ion-icon name="settings"> </ion-icon>
-    </button>
-  </ion-buttons>
-  <div *ngIf="!hidden">
+  <div>
     <ion-list>
-      <ion-item *ngIf="showReportsOptions">
-        <ion-label color="dark" > Map Type </ion-label>
+      <ion-item>
+        <ion-label color="dark"> Map Type </ion-label>
         <ion-select [(ngModel)]="settings.reportType" (ionChange)="reportTypeChanged()">
           <ion-option *ngFor="let report of reportTypes" [selected]="report==reportType" value="{{report}}"> {{report}}</ion-option>
         </ion-select>
@@ -19,7 +11,8 @@
     <hr/>
     <results-settings *ngIf="settings.reportType=='Results'" [settings]="resultsSettings" (ionChange)="updateResults()"> </results-settings>
     <prediction-settings *ngIf="settings.reportType=='Predictions'" (ionChange)="changePrediction()"> </prediction-settings>
-    <analysis-settings *ngIf="settings.reportType=='Analysis'" [settings]="analysisSettings" (ionChange)="reloadAnalysis()"> </analysis-settings>
+    <analysis-settings *ngIf="settings.reportType=='Analysis'" [settings]="analysisSettings" (ionChange)="reloadAnalysis()">
+    </analysis-settings>
     <button ion-button block (click)="reloadMap()">Submit</button>
   </div>
 </ion-card>

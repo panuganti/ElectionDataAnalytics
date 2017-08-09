@@ -12,11 +12,6 @@ export class SettingsModalPage {
   constructor(public view: ViewController) {
   }
 
-  dismiss() {
-    console.log('dismiss');
-    this.view.dismiss();
-  }
-
   settings: MapSettings = {
     "transparency": 100,
     "electionYear": 2014,

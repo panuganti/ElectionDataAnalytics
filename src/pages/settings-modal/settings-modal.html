@@ -1,10 +1,3 @@
-<ion-header>
-  <ion-buttons end>
-    <button ion-button clear (click)="dismiss()"> Done</button>
-  </ion-buttons>
-</ion-header>
-
-
-<ion-content padding>
+<ion-content>
   <map-settings [settings]="settings" (ionChange)="redraw()"> </map-settings>
 </ion-content>
