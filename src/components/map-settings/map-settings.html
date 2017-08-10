@@ -20,5 +20,6 @@
     <results-settings *ngIf="settings.reportType=='Results'" [settings]="resultsSettings" (ionChange)="updateResults()"> </results-settings>
     <prediction-settings *ngIf="settings.reportType=='Predictions'" (ionChange)="changePrediction()"> </prediction-settings>
     <analysis-settings *ngIf="settings.reportType=='Analysis'" [settings]="analysisSettings" (ionChange)="reloadAnalysis()"> </analysis-settings>
+    <booth-settings *ngIf="settings.reportType=='Booth'" [acIds]="acIds" (ionChange)="acChanged($event)" > </booth-settings>
   </div>
 </ion-card>

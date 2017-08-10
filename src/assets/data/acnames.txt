@@ -1,0 +1,822 @@
+[
+  {
+    "Id": 1,
+    "Name": "Nippani"
+  },
+  {
+    "Id": 2,
+    "Name": "Chikkodi-Sadalga"
+  },
+  {
+    "Id": 3,
+    "Name": "Athani"
+  },
+  {
+    "Id": 4,
+    "Name": "Kagwad"
+  },
+  {
+    "Id": 5,
+    "Name": "Kudachi"
+  },
+  {
+    "Id": 6,
+    "Name": "Raybag"
+  },
+  {
+    "Id": 7,
+    "Name": "Hukkeri"
+  },
+  {
+    "Id": 8,
+    "Name": "Arabhavi"
+  },
+  {
+    "Id": 9,
+    "Name": "Gokak"
+  },
+  {
+    "Id": 10,
+    "Name": "Yemkanmardi"
+  },
+  {
+    "Id": 11,
+    "Name": "Belgaum Uttar"
+  },
+  {
+    "Id": 12,
+    "Name": "Belgaum Dakshin"
+  },
+  {
+    "Id": 13,
+    "Name": "Belgaum Rural"
+  },
+  {
+    "Id": 14,
+    "Name": "Khanapur"
+  },
+  {
+    "Id": 15,
+    "Name": "Kittur"
+  },
+  {
+    "Id": 16,
+    "Name": "Bailhongal"
+  },
+  {
+    "Id": 17,
+    "Name": "Saundatti yellamma"
+  },
+  {
+    "Id": 18,
+    "Name": "Ramdurg"
+  },
+  {
+    "Id": 19,
+    "Name": "Mudhol"
+  },
+  {
+    "Id": 20,
+    "Name": "Terdal"
+  },
+  {
+    "Id": 21,
+    "Name": "Jamkhandi"
+  },
+  {
+    "Id": 22,
+    "Name": "Bilgi"
+  },
+  {
+    "Id": 23,
+    "Name": "Badami"
+  },
+  {
+    "Id": 24,
+    "Name": "Bagalkot"
+  },
+  {
+    "Id": 25,
+    "Name": "Hungund"
+  },
+  {
+    "Id": 26,
+    "Name": "Muddebihal"
+  },
+  {
+    "Id": 27,
+    "Name": "Devar Hippargi"
+  },
+  {
+    "Id": 28,
+    "Name": "Basavana Bagevadi"
+  },
+  {
+    "Id": 29,
+    "Name": "Babaleshwar"
+  },
+  {
+    "Id": 30,
+    "Name": "Bijapur City"
+  },
+  {
+    "Id": 31,
+    "Name": "Nagthan"
+  },
+  {
+    "Id": 32,
+    "Name": "Indi"
+  },
+  {
+    "Id": 33,
+    "Name": "Sindgi"
+  },
+  {
+    "Id": 34,
+    "Name": "Afzalpur"
+  },
+  {
+    "Id": 35,
+    "Name": "Jevargi"
+  },
+  {
+    "Id": 36,
+    "Name": "Shorapur"
+  },
+  {
+    "Id": 37,
+    "Name": "Shahapur"
+  },
+  {
+    "Id": 38,
+    "Name": "Yadgir"
+  },
+  {
+    "Id": 39,
+    "Name": "Gurmitkal"
+  },
+  {
+    "Id": 40,
+    "Name": "Chittapur"
+  },
+  {
+    "Id": 41,
+    "Name": "Sedam"
+  },
+  {
+    "Id": 42,
+    "Name": "Chincholi"
+  },
+  {
+    "Id": 43,
+    "Name": "Gulbarga Rural"
+  },
+  {
+    "Id": 44,
+    "Name": "Gulbarga Dakshin"
+  },
+  {
+    "Id": 45,
+    "Name": "Gulbarga Uttar"
+  },
+  {
+    "Id": 46,
+    "Name": "Aland"
+  },
+  {
+    "Id": 47,
+    "Name": "Basavakalyan"
+  },
+  {
+    "Id": 48,
+    "Name": "Humnabad"
+  },
+  {
+    "Id": 49,
+    "Name": "Bidar South"
+  },
+  {
+    "Id": 50,
+    "Name": "Bidar"
+  },
+  {
+    "Id": 51,
+    "Name": "Bhalki"
+  },
+  {
+    "Id": 52,
+    "Name": "Aurad"
+  },
+  {
+    "Id": 53,
+    "Name": "Raichur Rural"
+  },
+  {
+    "Id": 54,
+    "Name": "Raichur"
+  },
+  {
+    "Id": 55,
+    "Name": "Manvi"
+  },
+  {
+    "Id": 56,
+    "Name": "Devadurga"
+  },
+  {
+    "Id": 57,
+    "Name": "Lingsugur"
+  },
+  {
+    "Id": 58,
+    "Name": "Sindhanur"
+  },
+  {
+    "Id": 59,
+    "Name": "Maski"
+  },
+  {
+    "Id": 60,
+    "Name": "Kushtagi"
+  },
+  {
+    "Id": 61,
+    "Name": "Kanakagiri"
+  },
+  {
+    "Id": 62,
+    "Name": "Gangawati"
+  },
+  {
+    "Id": 64,
+    "Name": "Koppal"
+  },
+  {
+    "Id": 65,
+    "Name": "Shirahatti"
+  },
+  {
+    "Id": 66,
+    "Name": "Gadag"
+  },
+  {
+    "Id": 67,
+    "Name": "Ron"
+  },
+  {
+    "Id": 68,
+    "Name": "Nargund"
+  },
+  {
+    "Id": 69,
+    "Name": "Navalgund"
+  },
+  {
+    "Id": 70,
+    "Name": "Kundgol"
+  },
+  {
+    "Id": 71,
+    "Name": "Dharwad"
+  },
+  {
+    "Id": 72,
+    "Name": "Hubli-dharwad-East"
+  },
+  {
+    "Id": 73,
+    "Name": "Hubli-dharwad-Central"
+  },
+  {
+    "Id": 74,
+    "Name": "Hubli-dharwad- West"
+  },
+  {
+    "Id": 75,
+    "Name": "Kalghatgi"
+  },
+  {
+    "Id": 79,
+    "Name": "Bhatkal"
+  },
+  {
+    "Id": 80,
+    "Name": "Sirsi"
+  },
+  {
+    "Id": 81,
+    "Name": "Yellapur"
+  },
+  {
+    "Id": 82,
+    "Name": "Hangal"
+  },
+  {
+    "Id": 83,
+    "Name": "Shiggaon"
+  },
+  {
+    "Id": 84,
+    "Name": "Haveri"
+  },
+  {
+    "Id": 85,
+    "Name": "Byadgi"
+  },
+  {
+    "Id": 86,
+    "Name": "Hirekerur"
+  },
+  {
+    "Id": 87,
+    "Name": "Ranibennur"
+  },
+  {
+    "Id": 89,
+    "Name": "Hagaribommanahalli"
+  },
+  {
+    "Id": 90,
+    "Name": "Vijayanagara"
+  },
+  {
+    "Id": 91,
+    "Name": "Kampli"
+  },
+  {
+    "Id": 92,
+    "Name": "Siruguppa"
+  },
+  {
+    "Id": 93,
+    "Name": "Bellary"
+  },
+  {
+    "Id": 94,
+    "Name": "Bellary City"
+  },
+  {
+    "Id": 95,
+    "Name": "Sandur"
+  },
+  {
+    "Id": 96,
+    "Name": "Kudligi"
+  },
+  {
+    "Id": 97,
+    "Name": "Molakalmuru"
+  },
+  {
+    "Id": 98,
+    "Name": "Challakere"
+  },
+  {
+    "Id": 99,
+    "Name": "Chitradurga"
+  },
+  {
+    "Id": 100,
+    "Name": "Hiriyur"
+  },
+  {
+    "Id": 102,
+    "Name": "Holalkere"
+  },
+  {
+    "Id": 103,
+    "Name": "Jagalur"
+  },
+  {
+    "Id": 104,
+    "Name": "Harapanahalli"
+  },
+  {
+    "Id": 105,
+    "Name": "Harihar"
+  },
+  {
+    "Id": 106,
+    "Name": "Davanagere North"
+  },
+  {
+    "Id": 107,
+    "Name": "Davanagere South"
+  },
+  {
+    "Id": 108,
+    "Name": "Mayakonda"
+  },
+  {
+    "Id": 109,
+    "Name": "Channagiri"
+  },
+  {
+    "Id": 110,
+    "Name": "Honnali"
+  },
+  {
+    "Id": 111,
+    "Name": "Shimoga Rural"
+  },
+  {
+    "Id": 112,
+    "Name": "Bhadravati"
+  },
+  {
+    "Id": 115,
+    "Name": "Shikaripura"
+  },
+  {
+    "Id": 116,
+    "Name": "Sorab"
+  },
+  {
+    "Id": 117,
+    "Name": "Sagar"
+  },
+  {
+    "Id": 118,
+    "Name": "Byndoor"
+  },
+  {
+    "Id": 122,
+    "Name": "Karkal"
+  },
+  {
+    "Id": 123,
+    "Name": "Sringeri"
+  },
+  {
+    "Id": 124,
+    "Name": "Mudigere"
+  },
+  {
+    "Id": 125,
+    "Name": "Chikmagalur"
+  },
+  {
+    "Id": 126,
+    "Name": "Tarikere"
+  },
+  {
+    "Id": 127,
+    "Name": "Kadur"
+  },
+  {
+    "Id": 129,
+    "Name": "Tiptur"
+  },
+  {
+    "Id": 132,
+    "Name": "Tumkur City"
+  },
+  {
+    "Id": 133,
+    "Name": "Tumkur Rural"
+  },
+  {
+    "Id": 134,
+    "Name": "Koratagere"
+  },
+  {
+    "Id": 137,
+    "Name": "Pavagada"
+  },
+  {
+    "Id": 139,
+    "Name": "Gauribidanur"
+  },
+  {
+    "Id": 140,
+    "Name": "Bagepalli"
+  },
+  {
+    "Id": 141,
+    "Name": "Chikkaballapur"
+  },
+  {
+    "Id": 142,
+    "Name": "Sidlaghatta"
+  },
+  {
+    "Id": 143,
+    "Name": "Chintamani"
+  },
+  {
+    "Id": 144,
+    "Name": "Srinivaspur"
+  },
+  {
+    "Id": 145,
+    "Name": "Mulbagal"
+  },
+  {
+    "Id": 146,
+    "Name": "Kolar gold field"
+  },
+  {
+    "Id": 147,
+    "Name": "Bangarapet"
+  },
+  {
+    "Id": 148,
+    "Name": "Kolar"
+  },
+  {
+    "Id": 149,
+    "Name": "Malur"
+  },
+  {
+    "Id": 150,
+    "Name": "Yelahanka"
+  },
+  {
+    "Id": 151,
+    "Name": "K.R.Pura"
+  },
+  {
+    "Id": 152,
+    "Name": "Byatarayanapura"
+  },
+  {
+    "Id": 153,
+    "Name": "Yeshvanthapura"
+  },
+  {
+    "Id": 154,
+    "Name": "Rajarajeshwarinagar"
+  },
+  {
+    "Id": 155,
+    "Name": "Dasarahalli"
+  },
+  {
+    "Id": 156,
+    "Name": "Mahalakshmi Layout"
+  },
+  {
+    "Id": 157,
+    "Name": "Malleshwaram"
+  },
+  {
+    "Id": 158,
+    "Name": "Hebbal"
+  },
+  {
+    "Id": 159,
+    "Name": "Pulakeshinagar"
+  },
+  {
+    "Id": 160,
+    "Name": "Sarvagnanagar"
+  },
+  {
+    "Id": 161,
+    "Name": "C.V. Raman Nagar"
+  },
+  {
+    "Id": 162,
+    "Name": "Shivajinagar"
+  },
+  {
+    "Id": 163,
+    "Name": "Shanti Nagar"
+  },
+  {
+    "Id": 164,
+    "Name": "Gandhi Nagar"
+  },
+  {
+    "Id": 165,
+    "Name": "Rajaji Nagar"
+  },
+  {
+    "Id": 166,
+    "Name": "Govindraj Nagar"
+  },
+  {
+    "Id": 167,
+    "Name": "Vijay Nagar"
+  },
+  {
+    "Id": 168,
+    "Name": "Chamrajpet"
+  },
+  {
+    "Id": 169,
+    "Name": "Chickpet"
+  },
+  {
+    "Id": 170,
+    "Name": "Basavanagudi"
+  },
+  {
+    "Id": 171,
+    "Name": "Padmanaba Nagar"
+  },
+  {
+    "Id": 172,
+    "Name": "B.T.M.Layout"
+  },
+  {
+    "Id": 173,
+    "Name": "Jayanagar"
+  },
+  {
+    "Id": 174,
+    "Name": "Mahadevapura"
+  },
+  {
+    "Id": 175,
+    "Name": "Bommanahalli"
+  },
+  {
+    "Id": 176,
+    "Name": "Bangalore South"
+  },
+  {
+    "Id": 177,
+    "Name": "Anekal"
+  },
+  {
+    "Id": 178,
+    "Name": "Hosakote"
+  },
+  {
+    "Id": 179,
+    "Name": "Devanahalli"
+  },
+  {
+    "Id": 182,
+    "Name": "Magadi"
+  },
+  {
+    "Id": 183,
+    "Name": "Ramanagaram"
+  },
+  {
+    "Id": 184,
+    "Name": "Kanakapura"
+  },
+  {
+    "Id": 185,
+    "Name": "Channapatna"
+  },
+  {
+    "Id": 186,
+    "Name": "Malavalli"
+  },
+  {
+    "Id": 187,
+    "Name": "Maddur"
+  },
+  {
+    "Id": 188,
+    "Name": "Melukote"
+  },
+  {
+    "Id": 189,
+    "Name": "Mandya"
+  },
+  {
+    "Id": 190,
+    "Name": "Shrirangapattana"
+  },
+  {
+    "Id": 191,
+    "Name": "Nagamangala"
+  },
+  {
+    "Id": 192,
+    "Name": "Krishnarajpet"
+  },
+  {
+    "Id": 193,
+    "Name": "Shravanabelagola"
+  },
+  {
+    "Id": 194,
+    "Name": "Arsikere"
+  },
+  {
+    "Id": 195,
+    "Name": "Belur"
+  },
+  {
+    "Id": 196,
+    "Name": "Hassan"
+  },
+  {
+    "Id": 197,
+    "Name": "Holenarasipur"
+  },
+  {
+    "Id": 198,
+    "Name": "Arkalgud"
+  },
+  {
+    "Id": 199,
+    "Name": "Sakleshpur"
+  },
+  {
+    "Id": 200,
+    "Name": "Belthangady"
+  },
+  {
+    "Id": 201,
+    "Name": "Moodabidri"
+  },
+  {
+    "Id": 202,
+    "Name": "Mangalore City North"
+  },
+  {
+    "Id": 203,
+    "Name": "Mangalore City South"
+  },
+  {
+    "Id": 204,
+    "Name": "Mangalore"
+  },
+  {
+    "Id": 205,
+    "Name": "Bantval"
+  },
+  {
+    "Id": 206,
+    "Name": "Puttur"
+  },
+  {
+    "Id": 207,
+    "Name": "Sullia"
+  },
+  {
+    "Id": 208,
+    "Name": "Madikeri"
+  },
+  {
+    "Id": 209,
+    "Name": "Virajpet"
+  },
+  {
+    "Id": 210,
+    "Name": "Periyapatna"
+  },
+  {
+    "Id": 211,
+    "Name": "Krishnarajanagara"
+  },
+  {
+    "Id": 212,
+    "Name": "Hunsur"
+  },
+  {
+    "Id": 213,
+    "Name": "Heggadadevankote"
+  },
+  {
+    "Id": 214,
+    "Name": "Nanjangud"
+  },
+  {
+    "Id": 215,
+    "Name": "Chamundeshwari"
+  },
+  {
+    "Id": 216,
+    "Name": "Krishnaraja"
+  },
+  {
+    "Id": 217,
+    "Name": "Chamaraja"
+  },
+  {
+    "Id": 218,
+    "Name": "Narasimharaja"
+  },
+  {
+    "Id": 219,
+    "Name": "Varuna"
+  },
+  {
+    "Id": 220,
+    "Name": "T.Narasipur"
+  },
+  {
+    "Id": 221,
+    "Name": "Hanur"
+  },
+  {
+    "Id": 222,
+    "Name": "Kollegal"
+  },
+  {
+    "Id": 223,
+    "Name": "Chamarajanagar"
+  },
+  {
+    "Id": 224,
+    "Name": "Gundlupet"
+  }
+]

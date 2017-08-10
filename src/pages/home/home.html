@@ -6,12 +6,13 @@
             <ion-icon name="power"></ion-icon>
         </button>
         </ion-buttons>  
-        <map-settings *ngIf="showMapSettings" [settings]="settings" (ionChange)="redraw()"> </map-settings>
+        <map-settings *ngIf="showMapSettings" [settings]="settings" (ionChange)="redraw()" (boothAcChange)="boothAcChanged($event)"> </map-settings>
         <summary *ngIf="showSummary" [nameIdMap]="nameIdMap" [results]="results" [acIds]="acIds"> </summary>
         <ac-result *ngIf="showAcResults" [name]="acName" [results]="acResults" [electionYear]="electionYear" 
             [acPrev1Results]="acPrev1Results" [prev1Year]="prev1Year" 
             [acPrev2Results]="acPrev2Results" [prev2Year]="prev2Year" > </ac-result>
         <caste-breakup *ngIf="showCasteBreakup"> </caste-breakup>
+        <booth-info *ngIf="showBoothInfo" [booth]="booth"> </booth-info>
     </div>
     <div id="legend">
         <legend *ngIf="showLegend"> </legend>

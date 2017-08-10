@@ -11,6 +11,8 @@ import { SummaryComponent } from './summary/summary';
 import { PredictionSettingsComponent } from './prediction-settings/prediction-settings';
 import { ResultsSettingsComponent } from './results-settings/results-settings';
 import { AnalysisSettingsComponent } from './analysis-settings/analysis-settings';
+import { BoothSettingsComponent } from './booth-settings/booth-settings';
+import { BoothInfoComponent } from './booth-info/booth-info';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { AnalysisSettingsComponent } from './analysis-settings/analysis-settings
     SummaryComponent,
     PredictionSettingsComponent,
     ResultsSettingsComponent,
-    AnalysisSettingsComponent
+    AnalysisSettingsComponent,
+    BoothSettingsComponent,
+    BoothInfoComponent
   ],
   imports: [
     IonicPageModule,
@@ -36,7 +40,9 @@ import { AnalysisSettingsComponent } from './analysis-settings/analysis-settings
     SummaryComponent,
     PredictionSettingsComponent,
     ResultsSettingsComponent,
-    AnalysisSettingsComponent
+    AnalysisSettingsComponent,
+    BoothSettingsComponent,
+    BoothInfoComponent
   ],
   providers: [
     DataProvider,
