@@ -9,7 +9,10 @@
     <ion-label range-left>0</ion-label>
     <ion-label range-right>3</ion-label>
 </ion-range>
+<span *ngIf="analysisType=='safeSeats'"> *Safe Seats are the seats that haven't changed in past <b> {{settings.electionsNo}} elections </b> </span>
 <ion-range *ngIf="analysisType=='changeSeats'" min="0" max="3" pin="true" [(ngModel)]="settings.electionsNo" (ionChange)="changed()">
     <ion-label range-left>0</ion-label>
     <ion-label range-right>3</ion-label>
 </ion-range>
+<span *ngIf="analysisType=='changeSeats'"> *Change (Anti-incumbency) Seats are the seats that have changed in past <b> {{settings.electionsNo}} elections </b> 
+</span>

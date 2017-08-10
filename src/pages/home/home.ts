@@ -7,6 +7,7 @@ import * as Enumerable from 'linq';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { LoginPage } from '../login/login';
 import { MapSettings } from '../../models/map-settings';
+import { Utils } from '../../models/utils';
 //endregion Imports
 
 declare var d3;
@@ -40,9 +41,13 @@ export class HomePage {
   boothGeoJson: any;
   styleMaps: any;
   results: any[];
+  prev1results: any[];
+  prev2results: any[];
   years: string[];
   loading: Loading;
   acResults: CandidateVote[];
+  acPrev1Results: CandidateVote[];
+  acPrev2Results: CandidateVote[];
 
   showLegend: boolean = true;
   showAcResults: boolean = false;
@@ -175,7 +180,7 @@ export class HomePage {
       if (self.settings.electionsNo > 1) {
         let results2En = Enumerable.from(acResults[2]).where(t => t.Id == element.Id);
         if (!results2En.any()) {
-          acStyleMaps.push(styleMap); return;          
+          acStyleMaps.push(styleMap); return;
         }
         let v2 = Enumerable.from(results2En.first().Votes)
         if (winner2014 != v2.first(t => t.Position == 1).Party) {
@@ -185,7 +190,7 @@ export class HomePage {
       if (self.settings.electionsNo > 2) {
         let results3En = Enumerable.from(acResults[3]).where(t => t.Id == element.Id);
         if (!results3En.any()) {
-          acStyleMaps.push(styleMap); return;          
+          acStyleMaps.push(styleMap); return;
         }
         let v3 = Enumerable.from(results3En.first().Votes)
         if (winner2014 != v3.first(t => t.Position == 1).Party) {
@@ -235,7 +240,7 @@ export class HomePage {
       if (self.settings.electionsNo > 1) {
         let results2En = Enumerable.from(acResults[2]).where(t => t.Id == element.Id);
         if (!results2En.any()) {
-          acStyleMaps.push(styleMap); return;          
+          acStyleMaps.push(styleMap); return;
         }
         let v2 = Enumerable.from(results2En.first().Votes)
         if (winner2014 != v2.first(t => t.Position == 1).Party) {
@@ -245,7 +250,7 @@ export class HomePage {
       if (self.settings.electionsNo > 2) {
         let results3En = Enumerable.from(acResults[3]).where(t => t.Id == element.Id);
         if (!results3En.any()) {
-          acStyleMaps.push(styleMap); return;          
+          acStyleMaps.push(styleMap); return;
         }
         let v3 = Enumerable.from(results3En.first().Votes)
         if (winner2014 != v3.first(t => t.Position == 1).Party) {
@@ -289,6 +294,14 @@ export class HomePage {
     if (Enumerable.from(this.results).any(r => r.Id == id)) {
       let acResult = Enumerable.from(this.results).first(r => r.Id == id);
       this.acResults = acResult.Votes;
+      if (this.prev1Year != 0) {
+        let ac1Result = Enumerable.from(this.prev1results).first(r => r.Id == id);
+        this.acPrev1Results = ac1Result.Votes;
+      }
+      if (this.prev2Year != 0) {
+        let ac2Result = Enumerable.from(this.prev2results).first(r => r.Id == id);
+        this.acPrev2Results = ac2Result.Votes;
+      }
       this.showAcResults = true;
     }
   }
@@ -304,12 +317,12 @@ export class HomePage {
     if (this.electionYear < 2008) {
       this.geoJson = await this.data.getPreDelimGeoJson();
       geojsonfornames = this.geoJson.features;
-      this.nameIdMap = Enumerable.from(geojsonfornames).select(c => { return { "acId": c.properties.AC_NO, "name": c.properties.AC_NAME }}).toArray();
+      this.nameIdMap = Enumerable.from(geojsonfornames).select(c => { return { "acId": c.properties.AC_NO, "name": c.properties.AC_NAME } }).toArray();
     }
     else {
       this.geoJson = await this.data.getGeoJson();
       geojsonfornames = this.geoJson.features;
-      this.nameIdMap = Enumerable.from(geojsonfornames).select(c => { return { "acId": c.properties.ac, "name": c.properties.ac_name }}).toArray();
+      this.nameIdMap = Enumerable.from(geojsonfornames).select(c => { return { "acId": c.properties.ac, "name": c.properties.ac_name } }).toArray();
     }
     this.geoJsonFeatures = this.map.data.addGeoJson(this.geoJson);
     this.addGeoJsonEventHandlers();
@@ -320,9 +333,19 @@ export class HomePage {
   }
 
 
+  prev1Year: number;
+  prev2Year: number;
   async loadResults() {
     this.showSummary = true;
     this.results = await this.data.getResults(this.electionYear.toString(), 'ac');
+    this.prev1Year = Utils.getPreviousElectionYear(this.electionYear);
+    if (this.prev1Year != 0) {
+      this.prev1results = await this.data.getResults(this.prev1Year.toString(), 'ac');
+    }
+    this.prev2Year = Utils.getPreviousElectionYear(this.prev1Year);
+    if (this.prev2Year != 0) {
+      this.prev2results = await this.data.getResults(this.prev2Year.toString(), 'ac');
+    }
     this.styleMaps = this.GenerateStyleMaps(this.results);
     this.displayStyleMaps(this.styleMaps);
   }
