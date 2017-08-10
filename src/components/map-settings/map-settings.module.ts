@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { PredictionSettingsComponent } from '../prediction-settings/prediction-settings';
+//import { PredictionSettingsComponent } from '../prediction-settings/prediction-settings';
 
 @NgModule({
   declarations: [
-    PredictionSettingsComponent
+    //PredictionSettingsComponent
   ],
   imports: [
     IonicPageModule,
   ],
   exports: [
-    PredictionSettingsComponent
+    //PredictionSettingsComponent
   ],
   providers: [
   ]

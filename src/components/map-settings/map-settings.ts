@@ -1,7 +1,6 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { DataProvider } from '../../providers/data';
 import { Survey } from '../../models/survey';
-import * as Enumerable from 'linq';
 import { MapSettings } from '../../models/map-settings';
 import { ResultsSettings } from '../../models/results-settings';
 import { AnalysisSettings } from '../../models/analysis-settings';

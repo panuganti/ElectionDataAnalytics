@@ -1,9 +1,8 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Survey } from '../../models/survey';
 import { SurveyCollection, SurveyVotes } from '../../models/surveyCollection';
 import { DataProvider } from '../../providers/data';
 import * as Enumerable from 'linq';
-import { Prediction } from '../../models/prediction';
 
 @Component({
     selector: 'prediction-settings',
@@ -83,7 +82,7 @@ export class PredictionSettingsComponent {
 
     incomeChange() {
         let updatedSurveyAndVotes = this.getUpdatedSurveyAndVotes('income', this.survey, this.surveyCollection, this.demographics)
-        let survey = Survey.clone(updatedSurveyAndVotes.survey);
+        //let survey = Survey.clone(updatedSurveyAndVotes.survey);
         this.votes = updatedSurveyAndVotes.votes;
         this.winner = this.getWinner(updatedSurveyAndVotes.votes);
         this.emit();
