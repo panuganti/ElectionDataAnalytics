@@ -33,7 +33,7 @@ export class HomePage {
     "electionYear": 2014,
     "marginLimit": 0,
     "showMargins": true,
-    "reportType": "Results",
+    "reportType": "Booth",
     "electionsNo": 1,
     "analysisType": 'safeSeats'
   }
@@ -66,6 +66,43 @@ export class HomePage {
       this.navCtrl.setRoot('LoginPage');
     }
   }
+
+  async boothAcChanged(ev) {
+    this.removeGeoJson();
+    await this.setBoothMap(ev);
+  }
+
+  async setBoothMap(id: number) {
+    var lineSymbol = {
+      path: google.maps.SymbolPath.CIRCLE,
+      scale: 5,
+      strokeColor: '#393'
+    };
+
+    this.boothGeoJson = await this.data.getBoothGeoJson(id);
+
+    let latLng = new google.maps.LatLng(this.boothGeoJson.features[0].geometry.coordinates[1], this.boothGeoJson.features[0].geometry.coordinates[0]);
+    let mapOptions = { center: latLng, zoom: 10 };
+    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+    this.map.setMapTypeId('terrain');
+
+    this.boothGeoJson.features.forEach(element => {
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(element.geometry.coordinates[1], element.geometry.coordinates[0]),
+        icon: lineSymbol
+      });
+      marker.addListener('click', (event) => { this.zone.run( () => this.boothClicked(element)  )});
+      marker.setMap(this.map);
+    });
+  }
+
+  showBoothInfo: boolean = false;
+  booth: any;
+  boothClicked(element) {
+    this.booth = element;
+    this.showBoothInfo = true;
+  }
+
 
   signOut() {
     window.localStorage.removeItem('email');
@@ -449,9 +486,6 @@ export class HomePage {
     fillColor: "white"
   };
 
-
-  selectedAC: number;
-
   acName: string = '';
   acClicked(event: any) {
     this.showAcName = true;
@@ -464,10 +498,6 @@ export class HomePage {
       this.showResults(event.feature.getProperty('ac'));
     }
   }
-
-
-  visibility: boolean = true;
-
 
 }
 
@@ -502,25 +532,3 @@ export class Distribution {
   Percent: number;
 }
 
-/*
-  async setBoothMap() {
-    let latLng = new google.maps.LatLng(12.96, 77.59);
-    let mapOptions = { center: latLng, zoom: 7 };
-    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-    this.map.setMapTypeId('terrain');
-
-    var lineSymbol = {
-      path: google.maps.SymbolPath.CIRCLE,
-      scale: 5,
-      strokeColor: '#393'
-    };
-
-    this.boothGeoJson.features.forEach(element => {
-      var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(element.geometry.coordinates[1], element.geometry.coordinates[0]),
-        icon: lineSymbol
-      });
-      marker.setMap(this.map);
-    });
-  }
-  */

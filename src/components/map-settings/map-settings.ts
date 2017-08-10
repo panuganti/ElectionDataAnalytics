@@ -14,9 +14,10 @@ import { AnalysisSettings } from '../../models/analysis-settings';
 export class MapSettingsComponent {
   @Output() ionChange: EventEmitter<any> = new EventEmitter<any>();
   @Input() settings: MapSettings;
+  @Output() boothAcChange: EventEmitter<any> = new EventEmitter<any>();
 
   showReportsOptions: boolean = true;
-  reportTypes: string[] = ["Results", "Predictions", "Analysis"];
+  reportTypes: string[] = ["Results", "Predictions", "Analysis", "Booth"];
   resultsSettings: ResultsSettings = {
     "transparency": 100,
     "electionYear": 2014,
@@ -30,6 +31,19 @@ export class MapSettingsComponent {
   }
 
   constructor(public data: DataProvider) {
+  }
+
+  async ngOnInit() {
+    await this.getAcNames();
+  }
+
+  acChanged(ev) {
+    this.boothAcChange.emit(ev);
+  }
+
+  acIds: number[];
+  async getAcNames() {
+    this.acIds = await this.data.getIdNames();
   }
 
   updateResults() {

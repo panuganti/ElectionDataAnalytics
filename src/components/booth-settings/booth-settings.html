@@ -1,0 +1,6 @@
+<ion-item>
+  <ion-label color="dark"> Constituency </ion-label>
+  <ion-select [(ngModel)]="acId" (ionChange)="changed()"> 
+  <ion-option *ngFor="let ac of acIds" value="{{ac.Id}}"> {{ac.Name}} </ion-option>
+</ion-select>
+</ion-item>

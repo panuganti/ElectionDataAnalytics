@@ -74,6 +74,14 @@ export class DataProvider {
     }
   }
 
+  async getBoothGeoJson(id: number) {
+    return await this.http.get('assets/data/boothGeoJsons/' + id + '.geojson.txt').map(res => res.json()).toPromise();
+  }
+
+  async getIdNames() {
+    return await this.http.get('assets/data/acnames.txt').map(res => res.json()).toPromise();
+  }
+
   async getBoothResults(year: number) {
     let filename: string = '';
     switch (year) {
