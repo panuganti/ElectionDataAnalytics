@@ -8,6 +8,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { LoginPage } from '../login/login';
 import { MapSettings } from '../../models/map-settings';
 import { Utils } from '../../models/utils';
+import { BoothResult } from '../../models/booth-result';
+
 //endregion Imports
 
 declare var d3;
@@ -33,7 +35,7 @@ export class HomePage {
     "electionYear": 2014,
     "marginLimit": 0,
     "showMargins": true,
-    "reportType": "Booth",
+    "reportType": "Results",
     "electionsNo": 1,
     "analysisType": 'safeSeats'
   }
@@ -70,9 +72,14 @@ export class HomePage {
   async boothAcChanged(ev) {
     this.removeGeoJson();
     await this.setBoothMap(ev);
+    if (this.electionYear != 2014) {
+      this.loadAcResultsForBooth();
+    }
+    this.showResults(ev);
   }
 
   async setBoothMap(id: number) {
+    this.showLoading();
     var lineSymbol = {
       path: google.maps.SymbolPath.CIRCLE,
       scale: 5,
@@ -82,7 +89,7 @@ export class HomePage {
     this.boothGeoJson = await this.data.getBoothGeoJson(id);
 
     let latLng = new google.maps.LatLng(this.boothGeoJson.features[0].geometry.coordinates[1], this.boothGeoJson.features[0].geometry.coordinates[0]);
-    let mapOptions = { center: latLng, zoom: 10 };
+    let mapOptions = { center: latLng, zoom: 11 };
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
     this.map.setMapTypeId('terrain');
 
@@ -91,18 +98,73 @@ export class HomePage {
         position: new google.maps.LatLng(element.geometry.coordinates[1], element.geometry.coordinates[0]),
         icon: lineSymbol
       });
-      marker.addListener('click', (event) => { this.zone.run( () => this.boothClicked(element)  )});
+      marker.addListener('click', (event) => { this.zone.run(() => this.boothClicked(element)) });
       marker.setMap(this.map);
     });
+    this.dismissLoading();
   }
+
+  async loadAcResultsForBooth() {
+    this.showSummary = true;
+    this.electionYear = 2014;
+    this.prev1Year = 2013;
+    this.prev2Year = 2009;
+    this.results = await this.data.getResults('2014', 'ac');
+    this.prev1results = await this.data.getResults('2013', 'ac');
+    this.prev2results = await this.data.getResults('2009', 'ac');
+  }
+
 
   showBoothInfo: boolean = false;
   booth: any;
-  boothClicked(element) {
+  boothResult: BoothResult;
+  booth1Result: BoothResult;
+  booth2Result: BoothResult;
+
+  showBoothResult: boolean;
+  showBooth1Result: boolean;
+  showBooth2Result: boolean;
+
+  async boothClicked(element) {
     this.booth = element;
     this.showBoothInfo = true;
+    if (this.booth == undefined) { return; }
+    await this.getBoothResult(this.booth.properties.booth, this.booth.properties.ac);
+    await this.getBooth1Result(this.booth.properties.booth, this.booth.properties.ac);
+    await this.getBooth2Result(this.booth.properties.booth, this.booth.properties.ac);
   }
 
+  async getBoothResult(boothId: string, acId: string) {
+    try {
+      this.boothResult = await this.data.getBoothResult(boothId.toString(), acId.toString(), '2014');
+      this.showBoothResult = true;
+    }
+    catch (err) {
+      console.log(err);
+      debugger;
+      this.showBoothResult = true;
+    }
+  }
+
+  async getBooth1Result(boothId: string, acId: string) {
+    try {
+      this.booth1Result = await this.data.getBoothResult(boothId.toString(), acId.toString(), '2013');
+      this.showBooth1Result = true;
+    }
+    catch (err) {
+      this.showBooth1Result = true;
+    }
+  }
+
+  async getBooth2Result(boothId: string, acId: string) {
+    try {
+      this.booth2Result = await this.data.getBoothResult(boothId.toString(), acId.toString(), '2009');
+      this.showBooth2Result = true;
+    }
+    catch (err) {
+      this.showBooth2Result = true;
+    }
+  }
 
   signOut() {
     window.localStorage.removeItem('email');
@@ -126,6 +188,7 @@ export class HomePage {
       this.dismissLoading();
     });
   }
+
 
   async redraw() {
     if (this.settings.reportType == 'Results') {
@@ -340,6 +403,19 @@ export class HomePage {
         this.acPrev2Results = ac2Result.Votes;
       }
       this.showAcResults = true;
+    }
+  }
+
+  async reportTypeChanged(ev) {
+    await this.loadMap();
+    this.showAcResults = false;
+    this.acName = '';
+    this.showSummary = false;
+    this.reportType = ev;
+
+    if (this.reportType == 'Results') {
+      await this.loadGeoJson();
+      await this.loadResults();
     }
   }
 

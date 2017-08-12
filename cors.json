@@ -1,0 +1,8 @@
+[
+  {
+    "origin": ["https://electiondataanalytics-2cbbb.firebaseapp.com"],
+    "responseHeader": ["Content-Type"],
+    "method": ["GET"],
+    "maxAgeSeconds": 3600
+  }
+]

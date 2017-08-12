@@ -1,6 +1,79 @@
 <ion-card>
-  <ion-label text-wrap> {{booth.properties.booth_name}} </ion-label>
-  <ion-label> {{booth.properties.ac_name}} </ion-label>
+  <ion-item>
+    <ion-label text-wrap text-center> <small> <b> Booth: {{getBoothName()}} </b> </small> </ion-label>
+  </ion-item>
+</ion-card>
 
-  
+<ion-card *ngIf="showBoothIssue">
+  <ion-item>
+    <ion-label text-wrap text-center>
+      <small> <b>       Primary Issue in this Booth:
+{{getBoothIssue()}}
+     </b> </small> </ion-label>
+  </ion-item>
+</ion-card>
+
+<ion-card *ngIf="showBoothPrediction">
+  <ion-item>
+    <ion-label text-wrap text-center>
+      <small> <b> Predicted Winner : {{getBoothPrediction()}}
+     </b> </small> </ion-label>
+  </ion-item>
+</ion-card>
+
+<ion-grid>
+  <ion-row style="color:white; background: black">
+    <ion-col>
+      <button ion-button clear danger> <span style="color: white !important"> Booth Results </span> </button>
+    </ion-col>
+    <ion-col>
+      <ion-buttons end>
+        <button *ngIf="show" ion-button clear (click)="toggle()">Hide</button>
+        <button *ngIf="!show" ion-button clear (click)="toggle()">Show</button>
+      </ion-buttons>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-card *ngIf="showBoothResult && show">
+  <h2 text-center> <b> Booth Results </b> </h2>
+  <h2 text-center> <b> 2014 </b> </h2>
+  <ion-grid *ngIf="boothResult != undefined">
+    <ion-row style="color:white; background: black">
+      <ion-col col-8> Candidate </ion-col>
+      <ion-col col-4> Votes </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let candidateVote of boothResult.Candidates; let i = index" [style.backgroundColor]="getBkgndColor(i)">
+      <ion-col col-8> {{candidateVote.Name}} </ion-col>
+      <ion-col col-4> {{candidateVote.Votes}} </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>
+
+<ion-card *ngIf="showBooth1Result  && show">
+  <h2 text-center> <b> 2013 </b> </h2>
+  <ion-grid *ngIf="booth1Result != undefined">
+    <ion-row style="color:white; background: black">
+      <ion-col col-8> Candidate </ion-col>
+      <ion-col col-4> Votes </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let candidateVote of booth1Result.Candidates; let i = index" [style.backgroundColor]="getBkgndColor(i)">
+      <ion-col col-8> {{candidateVote.Name}} </ion-col>
+      <ion-col col-4> {{candidateVote.Votes}} </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>
+
+<ion-card *ngIf="showBooth2Result && show">
+  <h2 text-center> <b> 2009 </b> </h2>
+  <ion-grid *ngIf="booth2Result != undefined">
+    <ion-row style="color:white; background: black">
+      <ion-col col-8> Candidate </ion-col>
+      <ion-col col-4> Votes </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let candidateVote of booth2Result.Candidates; let i = index" [style.backgroundColor]="getBkgndColor(i)">
+      <ion-col col-8> {{candidateVote.Name}} </ion-col>
+      <ion-col col-4> {{candidateVote.Votes}} </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-card>

@@ -59,33 +59,40 @@ export class PredictionSettingsComponent {
     toggleIncome() { this.showIncome = !this.showIncome; }
 
     genderChange() {
-        debugger;
+        /*
         let updatedSurveyAndVotes = this.getUpdatedSurveyAndVotes('gender', this.survey, this.surveyCollection, this.demographics)
         this.survey = Survey.clone(updatedSurveyAndVotes.survey);
         this.votes = updatedSurveyAndVotes.votes;
         this.winner = this.getWinner(updatedSurveyAndVotes.votes);
+        */
         this.emit();
     }
     communityChange() {
+        /*
         let updatedSurveyAndVotes = this.getUpdatedSurveyAndVotes('community', this.survey, this.surveyCollection, this.demographics)
         this.survey = Survey.clone(updatedSurveyAndVotes.survey);
         this.votes = updatedSurveyAndVotes.votes;
         this.winner = this.getWinner(updatedSurveyAndVotes.votes);
+        */
         this.emit();
     }
     ageChange() {
+        /*
         let updatedSurveyAndVotes = this.getUpdatedSurveyAndVotes('age', this.survey, this.surveyCollection, this.demographics)
         this.survey = Survey.clone(updatedSurveyAndVotes.survey);
         this.votes = updatedSurveyAndVotes.votes;
         this.winner = this.getWinner(updatedSurveyAndVotes.votes);
+        */
         this.emit();
     }
 
     incomeChange() {
+        /*
         let updatedSurveyAndVotes = this.getUpdatedSurveyAndVotes('income', this.survey, this.surveyCollection, this.demographics)
         let survey = Survey.clone(updatedSurveyAndVotes.survey);
         this.votes = updatedSurveyAndVotes.votes;
         this.winner = this.getWinner(updatedSurveyAndVotes.votes);
+        */
         this.emit();
     }
 

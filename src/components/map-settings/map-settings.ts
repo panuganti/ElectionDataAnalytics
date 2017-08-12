@@ -15,6 +15,7 @@ export class MapSettingsComponent {
   @Output() ionChange: EventEmitter<any> = new EventEmitter<any>();
   @Input() settings: MapSettings;
   @Output() boothAcChange: EventEmitter<any> = new EventEmitter<any>();
+  @Output() reportTypeChange: EventEmitter<any> = new EventEmitter<any>();
 
   showReportsOptions: boolean = true;
   reportTypes: string[] = ["Results", "Predictions", "Analysis", "Booth"];
@@ -59,7 +60,9 @@ export class MapSettingsComponent {
     this.settings.analysisType = this.analysisSettings.analysisType;
     this.ionChange.emit();    
   }
-  reportTypeChanged() {   }
+  reportTypeChanged() { 
+    this.reportTypeChange.emit(this.settings.reportType);
+    }
 
   hidden: boolean = false;
   toggle() {

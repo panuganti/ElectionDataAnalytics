@@ -1,0 +1,36 @@
+{
+  "Candidates": [
+    {
+      "Name": "KATTI RAMESH VISHWANAT H",
+      "Votes": 122
+    },
+    {
+      "Name": "PRAKASH BABANNA HUKKERI",
+      "Votes": 1100
+    },
+    {
+      "Name": "SHIVANANDWANTAMUR I SIDDAMALL APPA",
+      "Votes": 440
+    },
+    {
+      "Name": "BANASHAN KARI BHIMAPPA ITTAPPA",
+      "Votes": 445
+    },
+    {
+      "Name": "MALLAPPA MARUTI KHATANVE",
+      "Votes": 5
+    },
+    {
+      "Name": "YASHWANT MANOHAR SUTAR",
+      "Votes": 4
+    },
+    {
+      "Name": "SHAILA SURESH KOLI",
+      "Votes": 2
+    }
+  ],
+  "MarginOfVictory": 655,
+  "AssemblyConstituency": null,
+  "ACId": "001",
+  "BoothId": "1100"
+}
