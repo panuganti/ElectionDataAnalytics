@@ -16,6 +16,13 @@ export class MapSettingsComponent {
   @Input() settings: MapSettings;
   @Output() boothAcChange: EventEmitter<any> = new EventEmitter<any>();
 
+  constructor(public data: DataProvider) {
+  }
+
+  async ngOnInit() {
+    await this.getAcNames();
+  }
+
   showReportsOptions: boolean = true;
   reportTypes: string[] = ["Results", "Predictions", "Analysis", "Booth"];
   resultsSettings: ResultsSettings = {
@@ -30,12 +37,6 @@ export class MapSettingsComponent {
     "analysisType": 'safeSeats'
   }
 
-  constructor(public data: DataProvider) {
-  }
-
-  async ngOnInit() {
-    await this.getAcNames();
-  }
 
   acChanged(ev) {
     this.boothAcChange.emit(ev);

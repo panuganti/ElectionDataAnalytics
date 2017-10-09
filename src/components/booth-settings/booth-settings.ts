@@ -9,12 +9,16 @@ import { DataProvider } from '../../providers/data';
 })
 export class BoothSettingsComponent {
   @Output() ionChange: EventEmitter<any> = new EventEmitter<any>();
-  @Input() acIds: number[];
+  @Input() acIds: any[];
   acId: number;
   constructor(public data: DataProvider) {
   }
 
   changed() {
     this.ionChange.emit(this.acId);
+  }
+
+  getAcs(): any[]{
+    return Enumerable.from(this.acIds).orderBy(ac => ac.Name).toArray();
   }
 }

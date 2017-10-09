@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <booth-settings [acIds]="acIds" (ionChange)="acChanged($event)"> </booth-settings>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <ac-result *ngIf="showAcResult" [name]="acName" [results]="acResults" 
+        [electionYear]="electionYear" [acPrev1Results]="acPrev1Results"
+          [prev1Year]="prev1Year" [acPrev2Results]="acPrev2Results" [prev2Year]="prev2Year"> </ac-result>
+      </ion-col>
+      <ion-col col-6>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- 
+  <caste-breakup *ngIf="showCasteBreakup"> </caste-breakup>
+  <booth-info *ngIf="showBoothInfo" [booth]="booth"> </booth-info>
+    -->
+</ion-content>

@@ -27,7 +27,7 @@ export class LoginPage {
       let loggedInUser = await this.afAuth.auth.signInWithEmailAndPassword(this.email.trim(), this.password.trim())
       this.showSpinnie = false;
       window.localStorage.setItem('email', loggedInUser.email);
-      this.navCtrl.setRoot('HomePage');
+      this.navCtrl.setRoot('ConstituencyDashboardPage');
     }
     catch (err) {
       this.showSpinnie = false;
